@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2EE5B3A51CE3578300590827 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A41CE3578300590827 /* main.m */; };
+		2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A71CE3578300590827 /* AppDelegate.m */; };
+		2EE5B3AB1CE3578300590827 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3AA1CE3578300590827 /* ViewController.m */; };
+		2EE5B3AE1CE3578300590827 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5B3AC1CE3578300590827 /* Main.storyboard */; };
+		2EE5B3B01CE3578300590827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5B3AF1CE3578300590827 /* Assets.xcassets */; };
+		2EE5B3B31CE3578300590827 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5B3B11CE3578300590827 /* LaunchScreen.storyboard */; };
+		2EE5B3BE1CE3578300590827 /* ReFilmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3BD1CE3578300590827 /* ReFilmTests.m */; };
+		2EE5B3C91CE3578300590827 /* ReFilmUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3C81CE3578300590827 /* ReFilmUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2EE5B3BA1CE3578300590827 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EE5B3981CE3578200590827 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EE5B39F1CE3578200590827;
+			remoteInfo = ReFilm;
+		};
+		2EE5B3C51CE3578300590827 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EE5B3981CE3578200590827 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EE5B39F1CE3578200590827;
+			remoteInfo = ReFilm;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2EE5B3A01CE3578200590827 /* ReFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EE5B3A41CE3578300590827 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2EE5B3A61CE3578300590827 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2EE5B3A71CE3578300590827 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2EE5B3A91CE3578300590827 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2EE5B3AA1CE3578300590827 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2EE5B3AD1CE3578300590827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2EE5B3AF1CE3578300590827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2EE5B3B21CE3578300590827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2EE5B3B41CE3578300590827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EE5B3B91CE3578300590827 /* ReFilmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReFilmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EE5B3BD1CE3578300590827 /* ReFilmTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReFilmTests.m; sourceTree = "<group>"; };
+		2EE5B3BF1CE3578300590827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EE5B3C41CE3578300590827 /* ReFilmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReFilmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EE5B3C81CE3578300590827 /* ReFilmUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReFilmUITests.m; sourceTree = "<group>"; };
+		2EE5B3CA1CE3578300590827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2EE5B39D1CE3578200590827 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EE5B3B61CE3578300590827 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EE5B3C11CE3578300590827 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2EE5B3971CE3578200590827 = {
+			isa = PBXGroup;
+			children = (
+				2EE5B3A21CE3578300590827 /* ReFilm */,
+				2EE5B3BC1CE3578300590827 /* ReFilmTests */,
+				2EE5B3C71CE3578300590827 /* ReFilmUITests */,
+				2EE5B3A11CE3578200590827 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2EE5B3A11CE3578200590827 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2EE5B3A01CE3578200590827 /* ReFilm.app */,
+				2EE5B3B91CE3578300590827 /* ReFilmTests.xctest */,
+				2EE5B3C41CE3578300590827 /* ReFilmUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EE5B3A21CE3578300590827 /* ReFilm */ = {
+			isa = PBXGroup;
+			children = (
+				2EE5B3A61CE3578300590827 /* AppDelegate.h */,
+				2EE5B3A71CE3578300590827 /* AppDelegate.m */,
+				2EE5B3A91CE3578300590827 /* ViewController.h */,
+				2EE5B3AA1CE3578300590827 /* ViewController.m */,
+				2EE5B3AC1CE3578300590827 /* Main.storyboard */,
+				2EE5B3AF1CE3578300590827 /* Assets.xcassets */,
+				2EE5B3B11CE3578300590827 /* LaunchScreen.storyboard */,
+				2EE5B3B41CE3578300590827 /* Info.plist */,
+				2EE5B3A31CE3578300590827 /* Supporting Files */,
+			);
+			path = ReFilm;
+			sourceTree = "<group>";
+		};
+		2EE5B3A31CE3578300590827 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2EE5B3A41CE3578300590827 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2EE5B3BC1CE3578300590827 /* ReFilmTests */ = {
+			isa = PBXGroup;
+			children = (
+				2EE5B3BD1CE3578300590827 /* ReFilmTests.m */,
+				2EE5B3BF1CE3578300590827 /* Info.plist */,
+			);
+			path = ReFilmTests;
+			sourceTree = "<group>";
+		};
+		2EE5B3C71CE3578300590827 /* ReFilmUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2EE5B3C81CE3578300590827 /* ReFilmUITests.m */,
+				2EE5B3CA1CE3578300590827 /* Info.plist */,
+			);
+			path = ReFilmUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2EE5B39F1CE3578200590827 /* ReFilm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EE5B3CD1CE3578300590827 /* Build configuration list for PBXNativeTarget "ReFilm" */;
+			buildPhases = (
+				2EE5B39C1CE3578200590827 /* Sources */,
+				2EE5B39D1CE3578200590827 /* Frameworks */,
+				2EE5B39E1CE3578200590827 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReFilm;
+			productName = ReFilm;
+			productReference = 2EE5B3A01CE3578200590827 /* ReFilm.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2EE5B3B81CE3578300590827 /* ReFilmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EE5B3D01CE3578300590827 /* Build configuration list for PBXNativeTarget "ReFilmTests" */;
+			buildPhases = (
+				2EE5B3B51CE3578300590827 /* Sources */,
+				2EE5B3B61CE3578300590827 /* Frameworks */,
+				2EE5B3B71CE3578300590827 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2EE5B3BB1CE3578300590827 /* PBXTargetDependency */,
+			);
+			name = ReFilmTests;
+			productName = ReFilmTests;
+			productReference = 2EE5B3B91CE3578300590827 /* ReFilmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2EE5B3C31CE3578300590827 /* ReFilmUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EE5B3D31CE3578300590827 /* Build configuration list for PBXNativeTarget "ReFilmUITests" */;
+			buildPhases = (
+				2EE5B3C01CE3578300590827 /* Sources */,
+				2EE5B3C11CE3578300590827 /* Frameworks */,
+				2EE5B3C21CE3578300590827 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2EE5B3C61CE3578300590827 /* PBXTargetDependency */,
+			);
+			name = ReFilmUITests;
+			productName = ReFilmUITests;
+			productReference = 2EE5B3C41CE3578300590827 /* ReFilmUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2EE5B3981CE3578200590827 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = VicChan;
+				TargetAttributes = {
+					2EE5B39F1CE3578200590827 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 23D5PVYLWJ;
+					};
+					2EE5B3B81CE3578300590827 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 23D5PVYLWJ;
+						TestTargetID = 2EE5B39F1CE3578200590827;
+					};
+					2EE5B3C31CE3578300590827 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 23D5PVYLWJ;
+						TestTargetID = 2EE5B39F1CE3578200590827;
+					};
+				};
+			};
+			buildConfigurationList = 2EE5B39B1CE3578200590827 /* Build configuration list for PBXProject "ReFilm" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2EE5B3971CE3578200590827;
+			productRefGroup = 2EE5B3A11CE3578200590827 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2EE5B39F1CE3578200590827 /* ReFilm */,
+				2EE5B3B81CE3578300590827 /* ReFilmTests */,
+				2EE5B3C31CE3578300590827 /* ReFilmUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2EE5B39E1CE3578200590827 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EE5B3B31CE3578300590827 /* LaunchScreen.storyboard in Resources */,
+				2EE5B3B01CE3578300590827 /* Assets.xcassets in Resources */,
+				2EE5B3AE1CE3578300590827 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EE5B3B71CE3578300590827 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EE5B3C21CE3578300590827 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2EE5B39C1CE3578200590827 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EE5B3AB1CE3578300590827 /* ViewController.m in Sources */,
+				2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */,
+				2EE5B3A51CE3578300590827 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EE5B3B51CE3578300590827 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EE5B3BE1CE3578300590827 /* ReFilmTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EE5B3C01CE3578300590827 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EE5B3C91CE3578300590827 /* ReFilmUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2EE5B3BB1CE3578300590827 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EE5B39F1CE3578200590827 /* ReFilm */;
+			targetProxy = 2EE5B3BA1CE3578300590827 /* PBXContainerItemProxy */;
+		};
+		2EE5B3C61CE3578300590827 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EE5B39F1CE3578200590827 /* ReFilm */;
+			targetProxy = 2EE5B3C51CE3578300590827 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2EE5B3AC1CE3578300590827 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EE5B3AD1CE3578300590827 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2EE5B3B11CE3578300590827 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EE5B3B21CE3578300590827 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2EE5B3CB1CE3578300590827 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2EE5B3CC1CE3578300590827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2EE5B3CE1CE3578300590827 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ReFilm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2EE5B3CF1CE3578300590827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ReFilm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2EE5B3D11CE3578300590827 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ReFilmTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReFilm.app/ReFilm";
+			};
+			name = Debug;
+		};
+		2EE5B3D21CE3578300590827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ReFilmTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReFilm.app/ReFilm";
+			};
+			name = Release;
+		};
+		2EE5B3D41CE3578300590827 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ReFilmUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilmUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ReFilm;
+			};
+			name = Debug;
+		};
+		2EE5B3D51CE3578300590827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ReFilmUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilmUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ReFilm;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2EE5B39B1CE3578200590827 /* Build configuration list for PBXProject "ReFilm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EE5B3CB1CE3578300590827 /* Debug */,
+				2EE5B3CC1CE3578300590827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EE5B3CD1CE3578300590827 /* Build configuration list for PBXNativeTarget "ReFilm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EE5B3CE1CE3578300590827 /* Debug */,
+				2EE5B3CF1CE3578300590827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2EE5B3D01CE3578300590827 /* Build configuration list for PBXNativeTarget "ReFilmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EE5B3D11CE3578300590827 /* Debug */,
+				2EE5B3D21CE3578300590827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2EE5B3D31CE3578300590827 /* Build configuration list for PBXNativeTarget "ReFilmUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EE5B3D41CE3578300590827 /* Debug */,
+				2EE5B3D51CE3578300590827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2EE5B3981CE3578200590827 /* Project object */;
+}
