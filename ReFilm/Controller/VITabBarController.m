@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[UITabBar appearance]setBarTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance]setTintColor:[UIColor whiteColor]];
     
     UINavigationController *navi1 = [[UINavigationController alloc]initWithRootViewController:[MasterViewController new]];
     [self addOneChildController:navi1 withTitle:@"发现" image:[UIImage imageNamed:@"world"]];
@@ -51,13 +52,13 @@
 
 
 - (void)addOneChildController:(UIViewController *)controller withTitle:(NSString *)title image:(UIImage *)image {
-  //  controller.tabBarItem.
+    //  controller.tabBarItem.
     controller.tabBarItem.title = title;
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     controller.tabBarItem.image = [image imageWithColor:[UIColor grayColor]];
     
     UIImage *selectedImage = [image imageWithColor:[UIColor greenColor]];
-   selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     controller.tabBarItem.selectedImage = selectedImage;
     
     [self addChildViewController:controller];

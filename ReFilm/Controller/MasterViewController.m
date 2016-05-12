@@ -5,13 +5,14 @@
 //  Created by VicChan on 5/12/16.
 //  Copyright © 2016 VicChan. All rights reserved.
 //
-
+// Controller
 #import "MasterViewController.h"
-
+// ViewModel
 #import "RFDataManager.h"
+//
+#import <Masonry.h>
 
-
-#define MAIN_HEIGHT   (self.view.frame.size.height)
+#define MAIN_HEIGHT    ([UIScreen mainScreen].bounds.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
@@ -30,19 +31,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     //: Main ScrollView
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT)];
-    _scrollView.contentSize = CGSizeMake(MAIN_WIDTH * 3, MAIN_HEIGHT);
-    _scrollView.showsHorizontalScrollIndicator = YES;
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    [self.view addSubview:_scrollView];
+
+    _scrollView.contentSize = CGSizeMake(MAIN_WIDTH * 3, MAIN_HEIGHT-113);
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = YES;
     _scrollView.delegate = self;
-    
-    UIView *redView = [[UIView alloc]initWithFrame:CGRectMake(MAIN_WIDTH, 0, MAIN_WIDTH, MAIN_HEIGHT)];
+    _scrollView.directionalLockEnabled = YES;
+
+    UIView *redView = [[UIView alloc]init];
     redView.backgroundColor = [UIColor redColor];
     [_scrollView addSubview:redView];
-    [self.view addSubview:_scrollView];
+    [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_scrollView.mas_centerX).with.offset(MAIN_WIDTH);
+        make.centerY.equalTo(_scrollView.mas_centerY);
+        make.height.equalTo(_scrollView.mas_height);
+        make.width.equalTo(_scrollView.mas_width);
+    }];
     //: UISegmentedControl
     
     _segmentControl = [[UISegmentedControl alloc]init];
@@ -55,7 +64,7 @@
     [_segmentControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
     [_segmentControl setSelectedSegmentIndex:0];
     [self.navigationController.navigationBar addSubview:_segmentControl];
-    [self test];
+   // [self test];
     
 }
 
