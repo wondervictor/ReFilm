@@ -18,8 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     self.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:nil tag:0];
     self.view.backgroundColor = [UIColor whiteColor];
+    
     self.title = @"首页";
     
 }

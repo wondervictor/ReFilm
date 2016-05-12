@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"收藏" image:nil tag:1];
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 

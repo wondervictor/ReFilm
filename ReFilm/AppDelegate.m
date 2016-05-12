@@ -8,9 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import "MasterViewController.h"
-#import "FavoriteController.h"
-#import "SettingController.h"
+#import "VITabBarController.h"
+
 
 
 
@@ -31,11 +30,9 @@
     _window.rootViewController = tabBarController;
      
      */
-    
-    UINavigationController *naviagtion = [[UINavigationController alloc]initWithRootViewController:[MasterViewController new]];
     [[UINavigationBar appearance]setBarTintColor:[UIColor greenColor]];
-    
-    _window.rootViewController = naviagtion;
+
+    _window.rootViewController = [VITabBarController new];
     
     [_window makeKeyAndVisible];
     

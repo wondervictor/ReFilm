@@ -1,5 +1,5 @@
 //
-//  VITabBarController.h
+//  UIImage+TintColor.h
 //  ReFilm
 //
 //  Created by VicChan on 5/12/16.
@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VITabBarController : UITabBarController
+@interface UIImage (TintColor)
 
 
-
-
+- (UIImage *)imageWithColor:(UIColor *)color;
 
 @end
