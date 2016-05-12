@@ -10,6 +10,7 @@
 		2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */; };
 		2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */; };
 		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
+		2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */; };
 		2EE5B3A51CE3578300590827 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A41CE3578300590827 /* main.m */; };
 		2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A71CE3578300590827 /* AppDelegate.m */; };
 		2EE5B3B01CE3578300590827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5B3AF1CE3578300590827 /* Assets.xcassets */; };
@@ -56,6 +57,8 @@
 		2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFNetworkManager.m; path = ReFilm/RFNetwork/RFNetworkManager.m; sourceTree = "<group>"; };
 		2E447F911CE4A62500187C8E /* RFDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDataManager.h; path = ReFilm/Model/RFDataManager.h; sourceTree = "<group>"; };
 		2E447F921CE4A62500187C8E /* RFDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDataManager.m; path = ReFilm/Model/RFDataManager.m; sourceTree = "<group>"; };
+		2ED3AEE01CE4D7FC00DF1F7E /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchController.h; path = ReFilm/Controller/SearchController.h; sourceTree = "<group>"; };
+		2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchController.m; path = ReFilm/Controller/SearchController.m; sourceTree = "<group>"; };
 		2EE5B3A01CE3578200590827 /* ReFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE5B3A41CE3578300590827 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2EE5B3A61CE3578300590827 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				2EE5B5AB1CE4482900590827 /* SettingController.m */,
 				2EE5B5AD1CE449F700590827 /* VITabBarController.h */,
 				2EE5B5AE1CE449F700590827 /* VITabBarController.m */,
+				2ED3AEE01CE4D7FC00DF1F7E /* SearchController.h */,
+				2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				2EE5B5B51CE44A8100590827 /* MovieCollectionCell.m in Sources */,
 				2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */,
 				2EE5B5B81CE44A9D00590827 /* MovieTableCell.m in Sources */,
+				2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */,
 				2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */,
 				2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */,
 				2EE5B5AC1CE4482900590827 /* SettingController.m in Sources */,

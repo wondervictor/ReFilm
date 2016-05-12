@@ -7,6 +7,7 @@
 //
 // Controller
 #import "MasterViewController.h"
+#import "SearchController.h"
 // ViewModel
 #import "RFDataManager.h"
 //
@@ -16,10 +17,12 @@
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
-@interface MasterViewController()<UIScrollViewDelegate>
+@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate,SearchControllerDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UITapGestureRecognizer *searchTapGesture;
 
 
 @end
@@ -33,6 +36,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //: Main ScrollView
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     [self.view addSubview:_scrollView];
     
@@ -67,6 +73,11 @@
     [_segmentControl setSelectedSegmentIndex:0];
     [self.navigationController.navigationBar addSubview:_segmentControl];
    // [self test];
+    
+    UIBarButtonItem *search = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
+    self.navigationItem.rightBarButtonItem = search;
+    
+    
     
 }
 
@@ -108,6 +119,22 @@
     [manager sendRequestForCommingMovies];
 }
 
+- (void)showSearchController:(id)sender {
+    SearchController *search = [SearchController new];
+    [self showViewController:search  sender:nil];
+    [_segmentControl removeFromSuperview];
+    search.delegate = self;
+}
+
+#pragma mark - SearchControllerDelegate
+
+- (void)popOut {
+    _segmentControl.alpha = 0.1;
+    [self.navigationController.navigationBar addSubview:_segmentControl];
+    [UIView animateWithDuration:0.2 animations:^{
+        _segmentControl.alpha = 1;
+    }];
+}
 
 
 @end
