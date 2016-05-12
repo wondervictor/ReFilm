@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[UITabBar appearance]setBarTintColor:[UIColor whiteColor]];
     
     UINavigationController *navi1 = [[UINavigationController alloc]initWithRootViewController:[MasterViewController new]];
@@ -36,6 +35,8 @@
 
 - (void)setUpTabBarItemTextAttributes{
     
+    [[UITabBar appearance]setBarTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance]setBackgroundColor:[UIColor whiteColor]];
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
     normalAttrs[NSForegroundColorAttributeName] = [UIColor grayColor];
     

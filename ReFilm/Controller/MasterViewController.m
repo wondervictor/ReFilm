@@ -8,6 +8,9 @@
 
 #import "MasterViewController.h"
 
+#import "RFDataManager.h"
+
+
 #define MAIN_HEIGHT   (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
@@ -26,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:nil tag:0];
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     //: Main ScrollView
@@ -53,7 +55,7 @@
     [_segmentControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
     [_segmentControl setSelectedSegmentIndex:0];
     [self.navigationController.navigationBar addSubview:_segmentControl];
-    
+    [self test];
     
 }
 
@@ -86,6 +88,15 @@
     
     
 }
+
+
+#pragma mark - Test
+
+- (void)test {
+    RFDataManager *manager = [RFDataManager sharedManager];
+    [manager sendRequestForCommingMovies];
+}
+
 
 
 @end

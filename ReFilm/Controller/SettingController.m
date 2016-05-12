@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
-    self.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"设置" image:nil tag:2];
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

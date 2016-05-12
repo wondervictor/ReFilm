@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */; };
+		2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */; };
+		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
 		2EE5B3A51CE3578300590827 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A41CE3578300590827 /* main.m */; };
 		2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A71CE3578300590827 /* AppDelegate.m */; };
 		2EE5B3B01CE3578300590827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5B3AF1CE3578300590827 /* Assets.xcassets */; };
@@ -50,6 +52,10 @@
 		2DCCC943B7D37B9D9FD53211 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E447F8A1CE4909000187C8E /* UIImage+TintColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+TintColor.h"; path = "ReFilm/Utlis/UIImage+TintColor.h"; sourceTree = "<group>"; };
 		2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+TintColor.m"; path = "ReFilm/Utlis/UIImage+TintColor.m"; sourceTree = "<group>"; };
+		2E447F8E1CE49FFD00187C8E /* RFNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFNetworkManager.h; path = ReFilm/RFNetwork/RFNetworkManager.h; sourceTree = "<group>"; };
+		2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFNetworkManager.m; path = ReFilm/RFNetwork/RFNetworkManager.m; sourceTree = "<group>"; };
+		2E447F911CE4A62500187C8E /* RFDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDataManager.h; path = ReFilm/Model/RFDataManager.h; sourceTree = "<group>"; };
+		2E447F921CE4A62500187C8E /* RFDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDataManager.m; path = ReFilm/Model/RFDataManager.m; sourceTree = "<group>"; };
 		2EE5B3A01CE3578200590827 /* ReFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE5B3A41CE3578300590827 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2EE5B3A61CE3578300590827 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,9 +125,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E447F8D1CE49F7700187C8E /* RFNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				2E447F8E1CE49FFD00187C8E /* RFNetworkManager.h */,
+				2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */,
+			);
+			name = RFNetwork;
+			sourceTree = "<group>";
+		};
 		2EE5B3971CE3578200590827 = {
 			isa = PBXGroup;
 			children = (
+				2E447F8D1CE49F7700187C8E /* RFNetwork */,
 				2EE5B5C01CE44F9200590827 /* Frameworks */,
 				2EE5B5BC1CE44ACF00590827 /* ViewModel */,
 				2EE5B3D91CE3586E00590827 /* Utlis */,
@@ -238,6 +254,8 @@
 			children = (
 				2EE5B5BA1CE44AC300590827 /* CoreDataManager.m */,
 				2EE5B5B91CE44AC300590827 /* CoreDataManager.h */,
+				2E447F911CE4A62500187C8E /* RFDataManager.h */,
+				2E447F921CE4A62500187C8E /* RFDataManager.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -449,7 +467,9 @@
 				2EE5B5BF1CE44F0A00590827 /* TabButton.m in Sources */,
 				2EE5B5A61CE4477300590827 /* MasterViewController.m in Sources */,
 				2EE5B5B51CE44A8100590827 /* MovieCollectionCell.m in Sources */,
+				2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */,
 				2EE5B5B81CE44A9D00590827 /* MovieTableCell.m in Sources */,
+				2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */,
 				2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */,
 				2EE5B5AC1CE4482900590827 /* SettingController.m in Sources */,
 				2EE5B3A51CE3578300590827 /* main.m in Sources */,
