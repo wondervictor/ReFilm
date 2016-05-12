@@ -12,7 +12,7 @@
 //
 #import <Masonry.h>
 
-#define MAIN_HEIGHT    ([UIScreen mainScreen].bounds.size.height)
+#define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
@@ -32,8 +32,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     //: Main ScrollView
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     [self.view addSubview:_scrollView];
+    
 
     _scrollView.contentSize = CGSizeMake(MAIN_WIDTH * 3, MAIN_HEIGHT-113);
     _scrollView.showsHorizontalScrollIndicator = NO;

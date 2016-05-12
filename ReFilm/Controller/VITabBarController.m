@@ -23,7 +23,7 @@
     [super viewDidLoad];
     [[UITabBar appearance]setBarTintColor:[UIColor whiteColor]];
     [[UITabBar appearance]setTintColor:[UIColor whiteColor]];
-    
+    self.tabBar.translucent = NO;
     UINavigationController *navi1 = [[UINavigationController alloc]initWithRootViewController:[MasterViewController new]];
     [self addOneChildController:navi1 withTitle:@"发现" image:[UIImage imageNamed:@"world"]];
     UINavigationController *navi2 = [[UINavigationController alloc]initWithRootViewController:[FavoriteController new]];
