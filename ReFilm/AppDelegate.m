@@ -8,6 +8,12 @@
 
 #import "AppDelegate.h"
 
+#import "MasterViewController.h"
+#import "FavoriteController.h"
+#import "SettingController.h"
+
+
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +23,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    /*
+    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    tabBarController.viewControllers = @[[MasterViewController new],[FavoriteController new],[SettingController new]];
+    
+    _window.rootViewController = tabBarController;
+     
+     */
+    
+    UINavigationController *naviagtion = [[UINavigationController alloc]initWithRootViewController:[MasterViewController new]];
+    [[UINavigationBar appearance]setBarTintColor:[UIColor greenColor]];
+    
+    _window.rootViewController = naviagtion;
+    
+    [_window makeKeyAndVisible];
     
     // Override point for customization after application launch.
     return YES;
