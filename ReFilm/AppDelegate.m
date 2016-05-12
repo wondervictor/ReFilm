@@ -22,16 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    
-    /*
-    UITabBarController *tabBarController = [[UITabBarController alloc]init];
-    tabBarController.viewControllers = @[[MasterViewController new],[FavoriteController new],[SettingController new]];
-    
-    _window.rootViewController = tabBarController;
-     
-     */
-    [[UINavigationBar appearance]setBarTintColor:[UIColor greenColor]];
 
+    [[UINavigationBar appearance]setBarTintColor:[UIColor greenColor]];
+    [[UINavigationBar appearance]setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil,[UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0], nil]];
     _window.rootViewController = [VITabBarController new];
     
     [_window makeKeyAndVisible];
