@@ -10,7 +10,7 @@
 #import "RFNetworkManager.h"
 #import "RFParser.h"
 #import "MovieActor.h"
-
+#import "CoreDataManager.h"
 
 
 

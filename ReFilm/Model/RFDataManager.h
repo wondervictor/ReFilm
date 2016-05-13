@@ -11,10 +11,12 @@
 
 
 @protocol RFDataManagerDelegate <NSObject>
-/// Movies NSArray<Movie>
+// Movies NSArray<Movie>
 - (void)didReceiveHotMovieDataWith:(NSArray *)movies error:(NSString *)error;
 
 - (void)didReceiveCommingMovies:(NSArray *)movies error:(NSString *)error;
+
+- (void)didReceiveTopMovies:(NSArray *)movies error:(NSString *)error;
 
 @end
 
@@ -25,16 +27,33 @@
 
 + (RFDataManager *)sharedManager;
 
-/// Hot movies
+/// Network Request
+
+// Hot movies
 - (void)sendRequestForHotMovies;
 
-/// Comming Movies
+// Comming Movies
 - (void)sendRequestForCommingMovies;
 
-/// Top100
+// Top100
 - (void)sendRequestForTop100Movies;
 
+// Search
 - (void)sendRequestSearchMovieWithName:(NSString *)movieName;
+
+
+/// Persistent Store
+
+// addNewFavorite
+- (void)addFavoriteMovie:(Movie *)movie;
+
+// deleteFavoriteMovie
+- (void)deleteFavoriteMovie:(Movie *)movie;
+
+// getAllFavoriteMovie
+- (NSArray *)getAllFavoriteMovies;
+
+
 
 
 @end

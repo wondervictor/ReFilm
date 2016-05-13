@@ -19,7 +19,7 @@
 @implementation RFNetworkManager
 
 + (RFNetworkManager *)sharedManager {
-    static RFNetworkManager * sharedManager = nil;
+    static RFNetworkManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc]init];

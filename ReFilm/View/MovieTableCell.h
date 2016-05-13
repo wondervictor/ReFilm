@@ -10,4 +10,18 @@
 
 @interface MovieTableCell : UITableViewCell
 
+
+@property (nonatomic, strong) UIImageView *movieImage;
+
+@property (nonatomic, strong) UILabel *movieName;
+
+@property (nonatomic, strong) UILabel *ratingLabel;
+
+@property (nonatomic, strong) UILabel *directorLabel;
+
+@property (nonatomic, strong) UILabel *actorsLabel;
+
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+
 @end
