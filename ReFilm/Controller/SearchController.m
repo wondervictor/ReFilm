@@ -8,23 +8,33 @@
 
 #import "SearchController.h"
 
+@interface SearchController()<UISearchBarDelegate>
+
+@property (nonatomic, strong) UISearchBar *searchBar;
+
+@end
+
+
 @implementation SearchController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 260, 30)];
+    _searchBar.barTintColor = [UIColor clearColor];
+    _searchBar.showsCancelButton = YES;
+    _searchBar.delegate = self;
+    _searchBar.placeholder = @"输入您感兴趣的电影";
+    self.navigationItem.titleView = _searchBar;
+    
+    
     
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [_delegate popOut];
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"click");
 }
 
 @end

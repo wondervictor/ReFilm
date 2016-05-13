@@ -17,7 +17,7 @@
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
-@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate,SearchControllerDelegate>
+@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
@@ -71,7 +71,8 @@
     [_segmentControl insertSegmentWithTitle:@"TOP100" atIndex:2 animated:YES];
     [_segmentControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
     [_segmentControl setSelectedSegmentIndex:0];
-    [self.navigationController.navigationBar addSubview:_segmentControl];
+    self.navigationItem.titleView = _segmentControl;
+    //[self.navigationController.navigationBar addSubview:_segmentControl];
    // [self test];
     
     UIBarButtonItem *search = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
@@ -123,17 +124,6 @@
     SearchController *search = [SearchController new];
     [self showViewController:search  sender:nil];
     [_segmentControl removeFromSuperview];
-    search.delegate = self;
-}
-
-#pragma mark - SearchControllerDelegate
-
-- (void)popOut {
-    _segmentControl.alpha = 0.1;
-    [self.navigationController.navigationBar addSubview:_segmentControl];
-    [UIView animateWithDuration:0.2 animations:^{
-        _segmentControl.alpha = 1;
-    }];
 }
 
 

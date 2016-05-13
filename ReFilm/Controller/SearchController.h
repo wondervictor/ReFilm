@@ -8,16 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SearchControllerDelegate <NSObject>
-
-- (void)popOut;
-
-@end
-
-
 @interface SearchController : UIViewController
 
 
-@property (nonatomic, weak) id<SearchControllerDelegate> delegate;
 
 @end
