@@ -52,8 +52,6 @@
 
                                                  NSError *jsonError = nil;
                                                  id dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-                                                 //NSLog(@"%s -- %@",__func__,dict);
-                                
                                                  success(dict,response);
                                                  
                                              }
@@ -66,7 +64,6 @@
     
     [task resume];
 
-    
 }
 
 

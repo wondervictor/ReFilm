@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
 
 @interface CoreDataManager : NSObject
+
+@property (nonatomic, readonly) NSPersistentStore *store;
+
+
 
 @end

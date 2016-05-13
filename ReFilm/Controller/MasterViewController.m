@@ -73,7 +73,7 @@
     [_segmentControl setSelectedSegmentIndex:0];
     self.navigationItem.titleView = _segmentControl;
     //[self.navigationController.navigationBar addSubview:_segmentControl];
-   // [self test];
+    [self test];
     
     UIBarButtonItem *search = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
     self.navigationItem.rightBarButtonItem = search;
@@ -109,7 +109,6 @@
     NSInteger index = x / MAIN_WIDTH;
     [_segmentControl setSelectedSegmentIndex:index];
     
-    
 }
 
 
@@ -117,7 +116,8 @@
 
 - (void)test {
     RFDataManager *manager = [RFDataManager sharedManager];
-    [manager sendRequestForCommingMovies];
+    //[manager sendRequestForHotMovies];
+    [manager sendRequestSearchMovieWithName:@"北京遇上西雅图"];
 }
 
 - (void)showSearchController:(id)sender {

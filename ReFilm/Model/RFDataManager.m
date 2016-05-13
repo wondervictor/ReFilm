@@ -8,23 +8,8 @@
 
 #import "RFDataManager.h"
 #import "RFNetworkManager.h"
-
-@interface RFParser()
-
-@end
-
-@implementation RFParser
-
-+ (Movie *)parserForMovie:(NSDictionary *)data {
-    Movie *movie = [Movie new];
-    
-    return movie;
-}
-
-@end
-
-
-
+#import "RFParser.h"
+#import "MovieActor.h"
 
 
 
@@ -75,6 +60,23 @@
     } failure:^(NSError *error, NSString *errorMsg) {
         NSLog(@"error %@",errorMsg);
     }];
+}
+
+- (void)sendRequestSearchMovieWithName:(NSString *)movieName {
+    NSString *url = [NSString stringWithFormat:@"http://api.douban.com/v2/movie/search?q=%@",movieName];
+    RFNetworkManager *manager = [RFNetworkManager sharedManager];
+    [manager requestMovieDataWithURL:url success:^(NSDictionary *responseObject, NSURLResponse *response) {
+        NSLog(@"---%s------ %@",__func__,responseObject);
+        NSArray *array = [RFParser parseForSearchMovie:responseObject];
+        Movie *movie = [array firstObject];
+        NSLog(@"movie name: %@",movie.movieName);
+        MovieActor *actor = [RFParser parseForActor:[movie.movieActors firstObject]];
+        NSLog(@"actor : %@",actor.name);
+        
+    } failure:^(NSError *error, NSString *errorMsg) {
+        NSLog(@"error: %@",errorMsg);
+    }];
+
 }
 
 

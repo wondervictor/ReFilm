@@ -10,15 +10,6 @@
 #import "Movie.h"
 
 
-@interface RFParser : NSObject
-
-+ (Movie *)parserForMovie:(NSDictionary *)data;
-
-@end
-
-
-
-
 @protocol RFDataManagerDelegate <NSObject>
 /// Movies NSArray<Movie>
 - (void)didReceiveHotMovieDataWith:(NSArray *)movies error:(NSString *)error;
@@ -42,6 +33,9 @@
 
 /// Top100
 - (void)sendRequestForTop100Movies;
+
+- (void)sendRequestSearchMovieWithName:(NSString *)movieName;
+
 
 @end
 

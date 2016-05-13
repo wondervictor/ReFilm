@@ -10,6 +10,8 @@
 		2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */; };
 		2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */; };
 		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
+		2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC21CE601A0009EE639 /* RFParser.m */; };
+		2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC51CE6079C009EE639 /* MovieActor.m */; };
 		2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */; };
 		2EE5B3A51CE3578300590827 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A41CE3578300590827 /* main.m */; };
 		2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A71CE3578300590827 /* AppDelegate.m */; };
@@ -57,6 +59,10 @@
 		2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFNetworkManager.m; path = ReFilm/RFNetwork/RFNetworkManager.m; sourceTree = "<group>"; };
 		2E447F911CE4A62500187C8E /* RFDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDataManager.h; path = ReFilm/Model/RFDataManager.h; sourceTree = "<group>"; };
 		2E447F921CE4A62500187C8E /* RFDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDataManager.m; path = ReFilm/Model/RFDataManager.m; sourceTree = "<group>"; };
+		2EAB4AC11CE601A0009EE639 /* RFParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFParser.h; path = ReFilm/ViewModel/RFParser.h; sourceTree = "<group>"; };
+		2EAB4AC21CE601A0009EE639 /* RFParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFParser.m; path = ReFilm/ViewModel/RFParser.m; sourceTree = "<group>"; };
+		2EAB4AC41CE6079C009EE639 /* MovieActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieActor.h; path = ReFilm/Model/MovieActor.h; sourceTree = "<group>"; };
+		2EAB4AC51CE6079C009EE639 /* MovieActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieActor.m; path = ReFilm/Model/MovieActor.m; sourceTree = "<group>"; };
 		2ED3AEE01CE4D7FC00DF1F7E /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchController.h; path = ReFilm/Controller/SearchController.h; sourceTree = "<group>"; };
 		2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchController.m; path = ReFilm/Controller/SearchController.m; sourceTree = "<group>"; };
 		2EE5B3A01CE3578200590827 /* ReFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +217,8 @@
 			children = (
 				2EE5B5B01CE44A2800590827 /* Movie.h */,
 				2EE5B5B11CE44A2800590827 /* Movie.m */,
+				2EAB4AC41CE6079C009EE639 /* MovieActor.h */,
+				2EAB4AC51CE6079C009EE639 /* MovieActor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -257,10 +265,12 @@
 		2EE5B5BC1CE44ACF00590827 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2EE5B5BA1CE44AC300590827 /* CoreDataManager.m */,
 				2EE5B5B91CE44AC300590827 /* CoreDataManager.h */,
+				2EE5B5BA1CE44AC300590827 /* CoreDataManager.m */,
 				2E447F911CE4A62500187C8E /* RFDataManager.h */,
 				2E447F921CE4A62500187C8E /* RFDataManager.m */,
+				2EAB4AC11CE601A0009EE639 /* RFParser.h */,
+				2EAB4AC21CE601A0009EE639 /* RFParser.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -352,7 +362,7 @@
 				TargetAttributes = {
 					2EE5B39F1CE3578200590827 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 23D5PVYLWJ;
+						DevelopmentTeam = J22TFZQX2Y;
 					};
 					2EE5B3B81CE3578300590827 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -474,7 +484,9 @@
 				2EE5B5B51CE44A8100590827 /* MovieCollectionCell.m in Sources */,
 				2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */,
 				2EE5B5B81CE44A9D00590827 /* MovieTableCell.m in Sources */,
+				2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */,
 				2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */,
+				2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */,
 				2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */,
 				2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */,
 				2EE5B5AC1CE4482900590827 /* SettingController.m in Sources */,
@@ -613,11 +625,14 @@
 			baseConfigurationReference = 160D8C502A7848AA9B0D38CC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ReFilm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -626,11 +641,14 @@
 			baseConfigurationReference = 2DCCC943B7D37B9D9FD53211 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ReFilm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
