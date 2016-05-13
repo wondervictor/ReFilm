@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Movie.h"
-
+#import "MovieTableCell.h"
+#import "MovieCollectionCell.h"
 
 @protocol RFDataManagerDelegate <NSObject>
 // Movies NSArray<Movie>
+@optional
 - (void)didReceiveHotMovieDataWith:(NSArray *)movies error:(NSString *)error;
 
 - (void)didReceiveCommingMovies:(NSArray *)movies error:(NSString *)error;
@@ -54,7 +56,11 @@
 - (NSArray *)getAllFavoriteMovies;
 
 
+// ViewModel
 
+- (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie;
+
+- (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie;
 
 @end
 
