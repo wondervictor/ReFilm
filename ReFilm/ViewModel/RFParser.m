@@ -20,8 +20,22 @@
     }
     NSString *alt = [data valueForKey:@"alt"];
     NSArray *casts = [data valueForKey:@"casts"];  // 主演
+    NSMutableArray *movieActors = [NSMutableArray new];
+    for (NSDictionary *item in casts) {
+        MovieActor *actor = [self parseForActor:item];
+        if (actor != nil) {
+            [movieActors addObject:actor];
+        }
+    }
     NSInteger collectCount = [[data valueForKey:@"collect_count"] integerValue];
     NSArray *directors = [data valueForKey:@"directors"];  //  导演
+    NSMutableArray *movieDirectors = [NSMutableArray new];
+    for (NSDictionary *item in directors) {
+        MovieActor *director = [self parseForActor:item];
+        if (director != nil) {
+            [movieDirectors addObject:director];
+        }
+    }
     NSArray *genres = [data valueForKey:@"genres"];  // 类型
     NSString *movieID = [data valueForKey:@"id"];
     NSDictionary *movieImages = [data valueForKey:@"images"];
@@ -38,8 +52,8 @@
     movie.year = year;
     movie.averageRating = averageRate;
     movie.genres = genres;
-    movie.movieDirectors = directors;
-    movie.movieActors = casts;
+    movie.movieDirectors = movieDirectors;
+    movie.movieActors = movieActors;
     movie.collectCount = collectCount;
     movie.title = title;
     return movie;

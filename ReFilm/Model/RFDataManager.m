@@ -70,8 +70,6 @@
         NSArray *array = [RFParser parseForSearchMovie:responseObject];
         Movie *movie = [array firstObject];
         NSLog(@"movie name: %@",movie.movieName);
-        MovieActor *actor = [RFParser parseForActor:[movie.movieActors firstObject]];
-        NSLog(@"actor : %@",actor.name);
         
     } failure:^(NSError *error, NSString *errorMsg) {
         NSLog(@"error: %@",errorMsg);
