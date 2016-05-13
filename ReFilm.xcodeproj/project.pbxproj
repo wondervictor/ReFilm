@@ -12,6 +12,10 @@
 		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
 		2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC21CE601A0009EE639 /* RFParser.m */; };
 		2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC51CE6079C009EE639 /* MovieActor.m */; };
+		2EAB4AC81CE61840009EE639 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAB4AC71CE61840009EE639 /* WebKit.framework */; };
+		2EAB4ACB1CE61897009EE639 /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4ACA1CE61897009EE639 /* DetailController.m */; };
+		2EAB4ACE1CE618BA009EE639 /* WebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4ACD1CE618BA009EE639 /* WebController.m */; };
+		2EAB4AD11CE61A23009EE639 /* HotMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AD01CE61A23009EE639 /* HotMovieView.m */; };
 		2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */; };
 		2EE5B3A51CE3578300590827 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A41CE3578300590827 /* main.m */; };
 		2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A71CE3578300590827 /* AppDelegate.m */; };
@@ -63,6 +67,13 @@
 		2EAB4AC21CE601A0009EE639 /* RFParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFParser.m; path = ReFilm/ViewModel/RFParser.m; sourceTree = "<group>"; };
 		2EAB4AC41CE6079C009EE639 /* MovieActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieActor.h; path = ReFilm/Model/MovieActor.h; sourceTree = "<group>"; };
 		2EAB4AC51CE6079C009EE639 /* MovieActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieActor.m; path = ReFilm/Model/MovieActor.m; sourceTree = "<group>"; };
+		2EAB4AC71CE61840009EE639 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		2EAB4AC91CE61897009EE639 /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailController.h; path = ReFilm/Controller/DetailController.h; sourceTree = "<group>"; };
+		2EAB4ACA1CE61897009EE639 /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailController.m; path = ReFilm/Controller/DetailController.m; sourceTree = "<group>"; };
+		2EAB4ACC1CE618BA009EE639 /* WebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebController.h; path = ReFilm/Controller/WebController.h; sourceTree = "<group>"; };
+		2EAB4ACD1CE618BA009EE639 /* WebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebController.m; path = ReFilm/Controller/WebController.m; sourceTree = "<group>"; };
+		2EAB4ACF1CE61A23009EE639 /* HotMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotMovieView.h; path = ReFilm/View/HotMovieView.h; sourceTree = "<group>"; };
+		2EAB4AD01CE61A23009EE639 /* HotMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotMovieView.m; path = ReFilm/View/HotMovieView.m; sourceTree = "<group>"; };
 		2ED3AEE01CE4D7FC00DF1F7E /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchController.h; path = ReFilm/Controller/SearchController.h; sourceTree = "<group>"; };
 		2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchController.m; path = ReFilm/Controller/SearchController.m; sourceTree = "<group>"; };
 		2EE5B3A01CE3578200590827 /* ReFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EAB4AC81CE61840009EE639 /* WebKit.framework in Frameworks */,
 				2EE5B5C21CE44FAE00590827 /* CoreData.framework in Frameworks */,
 				E92D9500DBF676EC83DAF60C /* libPods.a in Frameworks */,
 			);
@@ -232,6 +244,8 @@
 				2EE5B5B71CE44A9D00590827 /* MovieTableCell.m */,
 				2EE5B5BD1CE44F0A00590827 /* TabButton.h */,
 				2EE5B5BE1CE44F0A00590827 /* TabButton.m */,
+				2EAB4ACF1CE61A23009EE639 /* HotMovieView.h */,
+				2EAB4AD01CE61A23009EE639 /* HotMovieView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -249,6 +263,10 @@
 				2EE5B5AE1CE449F700590827 /* VITabBarController.m */,
 				2ED3AEE01CE4D7FC00DF1F7E /* SearchController.h */,
 				2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */,
+				2EAB4AC91CE61897009EE639 /* DetailController.h */,
+				2EAB4ACA1CE61897009EE639 /* DetailController.m */,
+				2EAB4ACC1CE618BA009EE639 /* WebController.h */,
+				2EAB4ACD1CE618BA009EE639 /* WebController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -278,6 +296,7 @@
 		2EE5B5C01CE44F9200590827 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EAB4AC71CE61840009EE639 /* WebKit.framework */,
 				2EE5B5C11CE44FAD00590827 /* CoreData.framework */,
 			);
 			name = Frameworks;
@@ -477,12 +496,15 @@
 			files = (
 				2EE5B5AF1CE449F700590827 /* VITabBarController.m in Sources */,
 				2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */,
+				2EAB4ACB1CE61897009EE639 /* DetailController.m in Sources */,
+				2EAB4AD11CE61A23009EE639 /* HotMovieView.m in Sources */,
 				2EE5B5BB1CE44AC300590827 /* CoreDataManager.m in Sources */,
 				2EE5B5B21CE44A2800590827 /* Movie.m in Sources */,
 				2EE5B5BF1CE44F0A00590827 /* TabButton.m in Sources */,
 				2EE5B5A61CE4477300590827 /* MasterViewController.m in Sources */,
 				2EE5B5B51CE44A8100590827 /* MovieCollectionCell.m in Sources */,
 				2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */,
+				2EAB4ACE1CE618BA009EE639 /* WebController.m in Sources */,
 				2EE5B5B81CE44A9D00590827 /* MovieTableCell.m in Sources */,
 				2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */,
 				2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "SearchController.h"
+#import "RFDataManager.h"
 
 @interface SearchController()<UISearchBarDelegate>
 
@@ -27,8 +28,7 @@
     _searchBar.showsCancelButton = YES;
     _searchBar.placeholder = @"输入您感兴趣的电影";
     self.navigationItem.titleView = _searchBar;
-    
-    
+
     
 }
 
