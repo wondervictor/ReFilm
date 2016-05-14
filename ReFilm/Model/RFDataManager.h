@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Movie.h"
+#import "FavorieMovies.h"
 
 
 @protocol RFDataManagerDelegate <NSObject>
@@ -60,8 +61,7 @@
 - (void)addFavoriteMovie:(Movie *)movie;
 
 // deleteFavoriteMovie
-- (void)deleteFavoriteMovie:(Movie *)movie;
-
+- (void)deleteFavoriteMovie:(FavorieMovies *)movie;
 // getAllFavoriteMovie
 - (NSArray *)getAllFavoriteMovies;
 

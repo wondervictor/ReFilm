@@ -20,4 +20,5 @@
 - (void)saveContext;
 - (void)setStore;
 
+- (void)getPath;
 @end

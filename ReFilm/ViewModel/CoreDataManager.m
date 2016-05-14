@@ -89,6 +89,9 @@ static NSString *storeFileName = @"movie.sqlite";
 
 }
 
+- (void)getPath {
+    NSLog(@"%@",[self storeURL]);
+}
 
 
 @end

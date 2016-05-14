@@ -12,7 +12,7 @@
 #import "RFParser.h"
 #import "MovieActor.h"
 #import "Movie.h"
-
+#import "CoreDataManager.h"
 
 #define MAIN_HEIGHT   (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -41,9 +41,19 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
+    [self getFavoriteMovieData];
+    CoreDataManager *manager = [CoreDataManager new];
+    [manager getPath];
     
     //[self test];
     
+}
+
+- (void)getFavoriteMovieData {
+    RFDataManager *manager = [RFDataManager sharedManager];
+    [self.movies removeAllObjects];
+    [self.movies addObjectsFromArray:[manager getAllFavoriteMovies]];
+    [self.tableView reloadData];
 }
 
 
@@ -94,6 +104,30 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Detail Controller
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if ([self.movies count] == 0) {
+            return;
+        }
+        else {
+            RFDataManager *manager = [RFDataManager sharedManager];
+            [manager deleteFavoriteMovie:[self.movies objectAtIndex:indexPath.row]];
+            [self.movies removeObject:[self.movies objectAtIndex:indexPath.row]];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+}
+
+
 #pragma mark - Test
 - (void)test {
     RFDataManager *manager = [RFDataManager sharedManager];
@@ -109,6 +143,8 @@
     }
     else {
         NSLog(@"%lur",[movies count]);
+        //RFDataManager *manager = [RFDataManager sharedManager];
+        
         [self.movies removeAllObjects];
         [self.movies addObjectsFromArray:movies];
         [self.tableView reloadData];

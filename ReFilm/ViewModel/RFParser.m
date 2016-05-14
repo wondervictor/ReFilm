@@ -88,9 +88,9 @@
     return actor;
 }
 
-+ (void )handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie {
++ (void )handleTableCell:(MovieTableCell *)cell withMovie:(FavorieMovies *)movie {
     cell.movieName.text = movie.movieName;
-    NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+    NSData *imageData = movie.movieImage; //[[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
     UIImage *image = [UIImage imageWithData:imageData scale:1];
     cell.movieImage.image = image;
     
@@ -98,15 +98,50 @@
     [directors appendString:@"导演:"];
     NSMutableString *actors = [NSMutableString new];
     [actors appendString:@"演员:"];
+    /*
     for (MovieActor *actor in movie.movieActors) {
         [actors appendFormat:@" %@",actor.name];
     }
     for (MovieActor *director in movie.movieDirectors) {
         [directors appendFormat:@" %@",director.name];
     }
+     */
+    NSArray *movieActors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieActors];
+    for (NSDictionary *item in movieActors) {
+       MovieActor *actor = [RFParser parseDictIntoMovieActor:item];
+        [actors appendFormat:@" %@",actor.name];
+    }
+    NSArray *movieDirectors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieDirectors];
+    for (NSDictionary *item in movieDirectors) {
+        MovieActor *director = [RFParser parseDictIntoMovieActor:item];
+        [directors appendFormat:@" %@",director.name];
+    }
+    
+    
     cell.actorsLabel.text = actors;
     cell.directorLabel.text = directors;
-    cell.ratingLabel.text = [NSString stringWithFormat:@"%.1f",movie.averageRating];
+    cell.ratingLabel.text = [NSString stringWithFormat:@"%.1f",[movie.averageRating floatValue]];
+}
+
+
++ (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie {
+    
+}
+
+
++ (NSDictionary *)parserActorIntoDict:(MovieActor *)movieActor {
+    NSArray *values = [[NSArray alloc]initWithObjects:movieActor.name,movieActor.imageURL,movieActor.actorID,movieActor.actorInfo, nil];
+    NSDictionary *dict = [[NSDictionary alloc]initWithObjects:values forKeys:@[@"name",@"image",@"id",@"actorinfo"]];
+    return dict;
+}
+
++ (MovieActor *)parseDictIntoMovieActor:(NSDictionary *)dict {
+    MovieActor *movieActor = [MovieActor new];
+    movieActor.name = [dict valueForKey:@"name"];
+    movieActor.imageURL = [dict valueForKey:@"image"];
+    movieActor.actorInfo = [dict valueForKey:@"actorinfo"];
+    movieActor.actorID = [dict valueForKey:@"id"];
+    return movieActor;
 }
 
 

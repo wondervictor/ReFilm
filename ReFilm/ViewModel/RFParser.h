@@ -11,6 +11,7 @@
 #import "MovieActor.h"
 #import "MovieTableCell.h"
 #import "MovieCollectionCell.h"
+#import "FavorieMovies.h"
 
 
 @interface RFParser : NSObject
@@ -21,11 +22,11 @@
 
 + (MovieActor *)parseForActor:(NSDictionary *)dict;
 
-
++ (NSDictionary *)parserActorIntoDict:(MovieActor *)movieActor;
 
 // ViewModel
 
-+ (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie;
++ (void)handleTableCell:(MovieTableCell *)cell withMovie:(FavorieMovies *)movie;
 
 + (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie;
 

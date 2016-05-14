@@ -13,7 +13,6 @@
 #import "CoreDataManager.h"
 
 #import "FavorieMovies+CoreDataProperties.h"
-#import "FavorieMovies.h"
 
 
 @interface RFDataManager()
@@ -137,11 +136,24 @@
     fmovie.movieImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
     fmovie.imageURL = movie.imageURL;
     
-    NSData *actorData = [NSKeyedArchiver archivedDataWithRootObject:movie.movieActors];
-    NSData *directorData = [NSKeyedArchiver archivedDataWithRootObject:movie.movieDirectors];
+    
+    NSMutableArray *actors = [NSMutableArray new];
+    for (MovieActor *actor in movie.movieActors) {
+        NSDictionary *dict = [RFParser parserActorIntoDict:actor];
+        [actors addObject:dict];
+    }
+
+    NSMutableArray *directors = [NSMutableArray new];
+    for (MovieActor *director in movie.movieDirectors) {
+        NSDictionary *dict = [RFParser parserActorIntoDict:director];
+        [directors addObject:dict];
+    }
+    
+    
+    NSData *actorData = [NSKeyedArchiver archivedDataWithRootObject:actors];
+    NSData *directorData = [NSKeyedArchiver archivedDataWithRootObject:directors];
     NSData *genresData = [NSKeyedArchiver archivedDataWithRootObject:movie.genres];
     fmovie.movieActors = actorData;
-    
     fmovie.movieDirectors = directorData;
     
     fmovie.genres = genresData;
@@ -150,7 +162,7 @@
     
 }
 
-- (void)deleteFavoriteMovie:(Movie *)movie {
+- (void)deleteFavoriteMovie:(FavorieMovies *)movie {
     NSArray *list = [self getAllFavoriteMovies];
     
     for (FavorieMovies *fmovie in list ) {
@@ -162,13 +174,10 @@
 }
 
 - (NSArray *)getAllFavoriteMovies {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@""];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMovies"];
     NSArray *fetchObject = [self.coreDataManager.context executeFetchRequest:fetchRequest error:nil];
     return fetchObject;
 }
-
-
-
 
 
 

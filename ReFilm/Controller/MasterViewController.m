@@ -115,7 +115,7 @@
 #pragma mark - Test
 
 - (void)test {
-    RFDataManager *manager = [RFDataManager sharedManager];
+   // RFDataManager *manager = [RFDataManager sharedManager];
     //[manager sendRequestForCommingMovies];
    // [manager sendRequestForCommentWithMovieID:@"25794302"];
    // [manager sendRequestSearchMovieWithName:@"美国队长"];
