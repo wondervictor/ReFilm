@@ -34,12 +34,14 @@
     [self.ratingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView.mas_right).with.offset(-5);
         make.top.equalTo(self.contentView.mas_top).with.offset(5);
-        make.width.equalTo(@40);
+        make.width.equalTo(@60);
         make.height.equalTo(@70);
     }];
+    self.ratingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:20];
+    self.ratingLabel.textColor = [UIColor orangeColor];
+    self.ratingLabel.adjustsFontSizeToFitWidth = YES;
+    self.ratingLabel.textAlignment = NSTextAlignmentCenter;
     
-    
-
     self.movieName = [UILabel new];
     [self.contentView addSubview:self.movieName];
     [self.movieName mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -48,7 +50,7 @@
         make.height.equalTo(@30);
         make.right.equalTo(self.ratingLabel.mas_left).with.offset(-5);
     }];
-    
+    self.movieName.adjustsFontSizeToFitWidth = YES;
     
     self.directorLabel = [UILabel new];
     [self.contentView addSubview:self.directorLabel];
@@ -58,6 +60,8 @@
         make.height.equalTo(@20);
         make.right.equalTo(self.ratingLabel.mas_left).with.offset(-5);
     }];
+    self.directorLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
+    self.directorLabel.textColor = [UIColor lightGrayColor];
     
     self.actorsLabel = [UILabel new];
     [self.contentView addSubview:self.actorsLabel];
@@ -67,6 +71,10 @@
         make.height.equalTo(@20);
         make.right.equalTo(self.ratingLabel.mas_left).with.offset(-5);
     }];
+    self.actorsLabel.textColor = [UIColor lightGrayColor];
+    self.actorsLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
+    self.actorsLabel.adjustsFontSizeToFitWidth = YES;
+    
     
 
 }

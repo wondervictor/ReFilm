@@ -9,6 +9,10 @@
 #import "FavoriteController.h"
 #import "MovieTableCell.h"
 #import "RFDataManager.h"
+#import "RFParser.h"
+#import "MovieActor.h"
+#import "Movie.h"
+
 
 #define MAIN_HEIGHT   (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -59,12 +63,33 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MovieTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+    static NSString *cellIdentifier = @"MovieCell";
+    MovieTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[MovieTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MovieCell"];
+        cell = [[MovieTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    RFDataManager *manager = [RFDataManager sharedManager];
-    [manager handleTableCell:cell withMovie:[self.movies objectAtIndex:indexPath.row]];
+    /*
+    Movie *movie = [self.movies objectAtIndex:indexPath.row];
+    cell.movieName.text = movie.movieName;
+    NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+    UIImage *image = [UIImage imageWithData:imageData scale:1];
+    cell.movieImage.image = image;
+    
+    NSMutableString *directors = [NSMutableString new];
+    [directors appendString:@"导演:"];
+    NSMutableString *actors = [NSMutableString new];
+    [actors appendString:@"演员:"];
+    for (MovieActor *actor in movie.movieActors) {
+        [actors appendFormat:@" %@",actor.name];
+    }
+    for (MovieActor *director in movie.movieDirectors) {
+        [directors appendFormat:@" %@",director.name];
+    }
+    cell.actorsLabel.text = actors;
+    cell.directorLabel.text = directors;
+    cell.ratingLabel.text = [NSString stringWithFormat:@"%f",movie.averageRating];
+*/
+    [RFParser handleTableCell:cell withMovie:[self.movies objectAtIndex:indexPath.row]];
     return cell;
 }
 

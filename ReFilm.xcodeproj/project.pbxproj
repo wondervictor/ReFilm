@@ -16,6 +16,7 @@
 		2EAB4ACB1CE61897009EE639 /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4ACA1CE61897009EE639 /* DetailController.m */; };
 		2EAB4ACE1CE618BA009EE639 /* WebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4ACD1CE618BA009EE639 /* WebController.m */; };
 		2EAB4AD11CE61A23009EE639 /* HotMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AD01CE61A23009EE639 /* HotMovieView.m */; };
+		2EAB4AD51CE6F928009EE639 /* RFProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AD41CE6F928009EE639 /* RFProgressHUD.m */; };
 		2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */; };
 		2EE5B3A51CE3578300590827 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A41CE3578300590827 /* main.m */; };
 		2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A71CE3578300590827 /* AppDelegate.m */; };
@@ -74,6 +75,8 @@
 		2EAB4ACD1CE618BA009EE639 /* WebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebController.m; path = ReFilm/Controller/WebController.m; sourceTree = "<group>"; };
 		2EAB4ACF1CE61A23009EE639 /* HotMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotMovieView.h; path = ReFilm/View/HotMovieView.h; sourceTree = "<group>"; };
 		2EAB4AD01CE61A23009EE639 /* HotMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotMovieView.m; path = ReFilm/View/HotMovieView.m; sourceTree = "<group>"; };
+		2EAB4AD31CE6F928009EE639 /* RFProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFProgressHUD.h; path = ReFilm/RFHUD/RFProgressHUD.h; sourceTree = "<group>"; };
+		2EAB4AD41CE6F928009EE639 /* RFProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFProgressHUD.m; path = ReFilm/RFHUD/RFProgressHUD.m; sourceTree = "<group>"; };
 		2ED3AEE01CE4D7FC00DF1F7E /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchController.h; path = ReFilm/Controller/SearchController.h; sourceTree = "<group>"; };
 		2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchController.m; path = ReFilm/Controller/SearchController.m; sourceTree = "<group>"; };
 		2EE5B3A01CE3578200590827 /* ReFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,9 +158,19 @@
 			name = RFNetwork;
 			sourceTree = "<group>";
 		};
+		2EAB4AD21CE6F910009EE639 /* RFHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2EAB4AD31CE6F928009EE639 /* RFProgressHUD.h */,
+				2EAB4AD41CE6F928009EE639 /* RFProgressHUD.m */,
+			);
+			name = RFHUD;
+			sourceTree = "<group>";
+		};
 		2EE5B3971CE3578200590827 = {
 			isa = PBXGroup;
 			children = (
+				2EAB4AD21CE6F910009EE639 /* RFHUD */,
 				2E447F8D1CE49F7700187C8E /* RFNetwork */,
 				2EE5B5C01CE44F9200590827 /* Frameworks */,
 				2EE5B5BC1CE44ACF00590827 /* ViewModel */,
@@ -507,6 +520,7 @@
 				2EAB4ACE1CE618BA009EE639 /* WebController.m in Sources */,
 				2EE5B5B81CE44A9D00590827 /* MovieTableCell.m in Sources */,
 				2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */,
+				2EAB4AD51CE6F928009EE639 /* RFProgressHUD.m in Sources */,
 				2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */,
 				2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */,
 				2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */,

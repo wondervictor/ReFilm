@@ -88,5 +88,26 @@
     return actor;
 }
 
++ (void )handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie {
+    cell.movieName.text = movie.movieName;
+    NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+    UIImage *image = [UIImage imageWithData:imageData scale:1];
+    cell.movieImage.image = image;
+    
+    NSMutableString *directors = [NSMutableString new];
+    [directors appendString:@"导演:"];
+    NSMutableString *actors = [NSMutableString new];
+    [actors appendString:@"演员:"];
+    for (MovieActor *actor in movie.movieActors) {
+        [actors appendFormat:@" %@",actor.name];
+    }
+    for (MovieActor *director in movie.movieDirectors) {
+        [directors appendFormat:@" %@",director.name];
+    }
+    cell.actorsLabel.text = actors;
+    cell.directorLabel.text = directors;
+    cell.ratingLabel.text = [NSString stringWithFormat:@"%.1f",movie.averageRating];
+}
+
 
 @end

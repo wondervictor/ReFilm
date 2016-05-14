@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Movie.h"
 #import "MovieActor.h"
+#import "MovieTableCell.h"
+#import "MovieCollectionCell.h"
 
 
 @interface RFParser : NSObject
@@ -18,5 +20,15 @@
 + (NSArray *)parseForSearchMovie:(NSDictionary *)data;
 
 + (MovieActor *)parseForActor:(NSDictionary *)dict;
+
+
+
+// ViewModel
+
++ (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie;
+
++ (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie;
+
+
 
 @end
