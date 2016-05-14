@@ -13,7 +13,11 @@
 @interface CoreDataManager : NSObject
 
 @property (nonatomic, readonly) NSPersistentStore *store;
+@property (nonatomic, readonly) NSPersistentStoreCoordinator *coordinator;
+@property (nonatomic, readonly) NSManagedObjectContext *context;
+@property (nonatomic, readonly) NSManagedObjectModel *model;
 
-
+- (void)saveContext;
+- (void)setStore;
 
 @end

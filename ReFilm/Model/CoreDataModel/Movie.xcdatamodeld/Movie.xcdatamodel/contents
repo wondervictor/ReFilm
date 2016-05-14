@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="FavoriteMovies" representedClassName="FavorieMovies" syncable="YES">
+        <attribute name="alt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="averageRating" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="genres" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieActors" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="movieDirectors" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="movieID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="movieName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FavoriteMovies" positionX="-63" positionY="-18" width="128" height="195"/>
+    </elements>
+</model>

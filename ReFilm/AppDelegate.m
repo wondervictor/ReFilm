@@ -28,6 +28,8 @@
     [[UINavigationBar appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil,[UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0], nil]];
     _window.rootViewController = [VITabBarController new];
     
+    
+    
     [_window makeKeyAndVisible];
     
     // Override point for customization after application launch.

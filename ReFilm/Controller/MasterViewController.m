@@ -116,9 +116,9 @@
 
 - (void)test {
     RFDataManager *manager = [RFDataManager sharedManager];
-    [manager sendRequestForCommingMovies];
-    
-   // [manager sendRequestSearchMovieWithName:@"北京遇上西雅图"];
+    //[manager sendRequestForCommingMovies];
+   // [manager sendRequestForCommentWithMovieID:@"25794302"];
+   // [manager sendRequestSearchMovieWithName:@"美国队长"];
 }
 
 - (void)showSearchController:(id)sender {

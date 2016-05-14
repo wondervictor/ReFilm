@@ -19,6 +19,11 @@
 
 - (void)didReceiveTopMovies:(NSArray *)movies error:(NSString *)error;
 
+- (void)didReceiveSearchMovies:(NSArray *)movies error:(NSString *)error;
+
+- (void)didReceiveMovieInfo:(Movie *)movies error:(NSString *)error;
+
+
 @end
 
 @interface RFDataManager : NSObject
@@ -41,6 +46,12 @@
 
 // Search
 - (void)sendRequestSearchMovieWithName:(NSString *)movieName;
+
+// Comments and Info
+- (void)sendRequestForMovieWithID:(NSString *)movieID;
+
+// Comments
+- (void)sendRequestForCommentWithMovieID:(NSString *)movieID;
 
 
 /// Persistent Store

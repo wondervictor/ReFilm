@@ -42,7 +42,7 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
-    [self test];
+    //[self test];
     
 }
 
