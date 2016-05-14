@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSArray *movies;
 
+
+- (id)initWithFrame:(CGRect)frame;
+
 @end

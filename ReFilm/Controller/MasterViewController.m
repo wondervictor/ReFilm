@@ -12,6 +12,8 @@
 #import "RFDataManager.h"
 //
 #import <Masonry.h>
+// View
+#import "HotMovieView.h"
 
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -23,7 +25,7 @@
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITapGestureRecognizer *searchTapGesture;
-
+@property (nonatomic, strong) HotMovieView *hotMovieView;
 
 @end
 
@@ -51,10 +53,10 @@
     _scrollView.delegate = self;
     _scrollView.directionalLockEnabled = YES;
 
-    UIView *redView = [[UIView alloc]init];
-    redView.backgroundColor = [UIColor redColor];
-    [_scrollView addSubview:redView];
-    [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *greenView = [[UIView alloc]init];
+    greenView.backgroundColor = [UIColor greenColor];
+    [_scrollView addSubview:greenView];
+    [greenView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_scrollView.mas_centerX).with.offset(MAIN_WIDTH);
         make.centerY.equalTo(_scrollView.mas_centerY);
         make.height.equalTo(_scrollView.mas_height);
@@ -73,12 +75,13 @@
     [_segmentControl setSelectedSegmentIndex:0];
     self.navigationItem.titleView = _segmentControl;
     //[self.navigationController.navigationBar addSubview:_segmentControl];
-    [self test];
+    //[self test];
     
     UIBarButtonItem *search = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
     self.navigationItem.rightBarButtonItem = search;
     
-    
+    self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    [_scrollView addSubview:self.hotMovieView];
     
 }
 

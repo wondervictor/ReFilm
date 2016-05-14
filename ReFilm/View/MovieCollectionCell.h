@@ -10,4 +10,12 @@
 
 @interface MovieCollectionCell : UICollectionViewCell
 
+@property (nonatomic, strong) UIImageView *movieImage;
+
+@property (nonatomic, strong) UILabel *movieTitleLabel;
+
+@property (nonatomic, strong) UILabel *movieRatingLabel;
+
+@property (nonatomic, strong) UILabel *actorLabel;
+
 @end

@@ -8,6 +8,11 @@
 
 #import "RFProgressHUD.h"
 
+
+@interface RFProgressHUD()
+
+@end
+
 @implementation RFProgressHUD
 
 @end
