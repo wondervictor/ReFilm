@@ -144,5 +144,22 @@
     return movieActor;
 }
 
++ (void)handleCell:(MovieCollectionCell *)cell withMovie:(FavorieMovies *)movie {
+    cell.movieTitleLabel.text = movie.movieName;
+    NSData *imageData = movie.movieImage; //[[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+    UIImage *image = [UIImage imageWithData:imageData scale:1];
+    cell.movieImage.image = image;
+
+    NSMutableString *actors = [NSMutableString new];
+    [actors appendString:@"演员:"];
+    NSArray *movieActors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieActors];
+    for (NSDictionary *item in movieActors) {
+        MovieActor *actor = [RFParser parseDictIntoMovieActor:item];
+        [actors appendFormat:@" %@",actor.name];
+    }
+    cell.actorLabel.text = actors;
+    cell.movieRatingLabel.text = [NSString stringWithFormat:@"%.1f",[movie.averageRating floatValue]];
+    
+}
 
 @end

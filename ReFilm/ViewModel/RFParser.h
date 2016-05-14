@@ -29,7 +29,8 @@
 + (void)handleTableCell:(MovieTableCell *)cell withMovie:(FavorieMovies *)movie;
 
 + (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie;
-
+// test
++ (void)handleCell:(MovieCollectionCell *)cell withMovie:(FavorieMovies *)movie;
 
 
 @end

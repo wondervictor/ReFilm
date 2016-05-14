@@ -82,6 +82,13 @@
     
     self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     [_scrollView addSubview:self.hotMovieView];
+    [self loadHotView];
+    
+}
+
+- (void)loadHotView {
+    RFDataManager *manager = [RFDataManager sharedManager];
+    [_hotMovieView loadDataWithArray:[manager getAllFavoriteMovies]];
     
 }
 

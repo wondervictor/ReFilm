@@ -15,4 +15,6 @@
 
 - (id)initWithFrame:(CGRect)frame;
 
+- (void)loadDataWithArray:(NSArray *)array;
+
 @end

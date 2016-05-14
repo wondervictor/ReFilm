@@ -39,15 +39,24 @@
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:_tableView];
     [self getFavoriteMovieData];
     CoreDataManager *manager = [CoreDataManager new];
     [manager getPath];
+    _tableView.tableFooterView = [self getFooterLabel];
     
     //[self test];
     
 }
+
+- (UILabel *)getFooterLabel {
+    UILabel *footerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 30)];
+    footerLabel.text = @"电影信息来源于[豆瓣电影]";
+    footerLabel.textAlignment = NSTextAlignmentCenter;
+    return footerLabel;
+}
+
 
 - (void)getFavoriteMovieData {
     RFDataManager *manager = [RFDataManager sharedManager];
