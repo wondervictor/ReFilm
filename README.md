@@ -11,4 +11,6 @@ image:
 
 主界面：
 
-![]()
+![](https://github.com/wondervictor/ReFilm/blob/master/main.png)
+
+还需要一些界面上的工作
