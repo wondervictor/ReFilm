@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E061D3A1CE7806900B2C161 /* favoriteView.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E061D391CE7806900B2C161 /* favoriteView.png */; };
+		2E3DCA811CE8A1D60062BD26 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E3DCA801CE8A1D60062BD26 /* main.png */; };
 		2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */; };
 		2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */; };
 		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
@@ -64,6 +65,7 @@
 		160D8C502A7848AA9B0D38CC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2DCCC943B7D37B9D9FD53211 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E061D391CE7806900B2C161 /* favoriteView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoriteView.png; sourceTree = "<group>"; };
+		2E3DCA801CE8A1D60062BD26 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		2E447F8A1CE4909000187C8E /* UIImage+TintColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+TintColor.h"; path = "ReFilm/Utlis/UIImage+TintColor.h"; sourceTree = "<group>"; };
 		2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+TintColor.m"; path = "ReFilm/Utlis/UIImage+TintColor.m"; sourceTree = "<group>"; };
 		2E447F8E1CE49FFD00187C8E /* RFNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFNetworkManager.h; path = ReFilm/RFNetwork/RFNetworkManager.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		2E061D381CE7805800B2C161 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2E3DCA801CE8A1D60062BD26 /* main.png */,
 				2E061D391CE7806900B2C161 /* favoriteView.png */,
 			);
 			name = Resources;
@@ -470,6 +473,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E3DCA811CE8A1D60062BD26 /* main.png in Resources */,
 				2EE5B3B31CE3578300590827 /* LaunchScreen.storyboard in Resources */,
 				2EE5B3B01CE3578300590827 /* Assets.xcassets in Resources */,
 				2E061D3A1CE7806900B2C161 /* favoriteView.png in Resources */,
