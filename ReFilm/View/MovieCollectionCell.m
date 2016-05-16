@@ -48,21 +48,27 @@
         make.left.equalTo(viusalView.mas_left).with.offset(3);
         make.right.equalTo(viusalView.mas_right).with.offset(-3);
         make.top.equalTo(viusalView.mas_top);
-        make.height.equalTo(@30);
+        make.height.equalTo(@40);
     }];
-    self.movieRatingLabel.adjustsFontSizeToFitWidth = YES;
+    self.movieTitleLabel.adjustsFontSizeToFitWidth = YES;
+    self.movieTitleLabel.numberOfLines = 2;
+    self.movieTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
+    self.movieTitleLabel.textColor = [UIColor blackColor];
+    
+    
     
     self.movieRatingLabel = [UILabel new];
     [viusalView addSubview:self.movieRatingLabel];
     [self.movieRatingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@50);
+        make.height.equalTo(@40);
         make.top.equalTo(self.movieTitleLabel.mas_bottom);
         make.right.equalTo(viusalView.mas_right);
-        make.width.equalTo(@50);
+        make.width.equalTo(@40);
     }];
     self.movieRatingLabel.textAlignment = NSTextAlignmentCenter;
-    
-    
+    self.movieRatingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18];
+    self.movieRatingLabel.textAlignment = NSTextAlignmentCenter;
+    self.movieRatingLabel.textColor = [UIColor orangeColor];
 
     
     self.actorLabel = [UILabel new];
@@ -70,11 +76,11 @@
     [self.actorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(viusalView.mas_left).with.offset(5);
         make.right.equalTo(self.movieRatingLabel.mas_left).with.offset(-3);
-        make.top.equalTo(self.movieTitleLabel.mas_bottom).with.offset(5);
+        make.top.equalTo(self.movieTitleLabel.mas_bottom).with.offset(2);
         make.bottom.equalTo(viusalView.mas_bottom).with.offset(-5);
     }];
     self.actorLabel.font = [UIFont systemFontOfSize:12];
-    
+    self.actorLabel.textColor = [UIColor lightGrayColor];
 }
 
 

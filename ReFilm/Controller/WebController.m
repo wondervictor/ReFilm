@@ -65,6 +65,9 @@
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     NSLog(@"Finish");
+    NSString *title = webView.title;
+    self.title = title;
+    
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
@@ -125,7 +128,6 @@
         make.width.equalTo([NSNumber numberWithFloat:MAIN_WIDTH/3.0]);
     }];
     
-
 }
 
 - (void)webViewBack:(UIButton *)sender {
