@@ -88,7 +88,7 @@
     return actor;
 }
 
-+ (void )handleTableCell:(MovieTableCell *)cell withMovie:(FavorieMovies *)movie {
++ (void )handleTableCell:(MovieTableCell *)cell withFavoriteMovie:(FavorieMovies *)movie {
     cell.movieName.text = movie.movieName;
     NSData *imageData = movie.movieImage; //[[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
     UIImage *image = [UIImage imageWithData:imageData scale:1];
@@ -129,6 +129,8 @@
 }
 
 
+
+
 + (NSDictionary *)parserActorIntoDict:(MovieActor *)movieActor {
     NSArray *values = [[NSArray alloc]initWithObjects:movieActor.name,movieActor.imageURL,movieActor.actorID,movieActor.actorInfo, nil];
     NSDictionary *dict = [[NSDictionary alloc]initWithObjects:values forKeys:@[@"name",@"image",@"id",@"actorinfo"]];
@@ -166,5 +168,8 @@
     return movie.alt;
 }
 
++ (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie {
+    
+}
 
 @end

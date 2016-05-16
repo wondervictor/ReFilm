@@ -108,7 +108,7 @@
     cell.directorLabel.text = directors;
     cell.ratingLabel.text = [NSString stringWithFormat:@"%f",movie.averageRating];
 */
-    [RFParser handleTableCell:cell withMovie:[self.movies objectAtIndex:indexPath.row]];
+    [RFParser handleTableCell:cell withFavoriteMovie:[self.movies objectAtIndex:indexPath.row]];
     return cell;
 }
 

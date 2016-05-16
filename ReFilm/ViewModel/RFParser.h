@@ -26,12 +26,15 @@
 
 // ViewModel
 
-+ (void)handleTableCell:(MovieTableCell *)cell withMovie:(FavorieMovies *)movie;
++ (void)handleTableCell:(MovieTableCell *)cell withFavoriteMovie:(FavorieMovies *)movie;
 
 + (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie;
 // test
 + (void)handleCell:(MovieCollectionCell *)cell withMovie:(FavorieMovies *)movie;
 
 + (NSString *)getURLFromFavoriteMovies:(FavorieMovies *)movie;
+
++ (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie;
+
 
 @end
