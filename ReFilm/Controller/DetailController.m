@@ -18,10 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"详细信息";
-    //UIBarButtonItem *favotireButton = [UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBa target:<#(nullable id)#> action:<#(nullable SEL)#>;
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self configureSubViews];
 }
 
+- (void)configureSubViews {
+    UIBarButtonItem *favoriteButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"favoriteButton"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButtonPressed:)];
+    
+    self.navigationItem.rightBarButtonItem = favoriteButton;
+}
 
+- (void)favoriteButtonPressed:(UIBarButtonItem *)sender {
+    NSLog(@"Favorite");
+}
 
 
 @end

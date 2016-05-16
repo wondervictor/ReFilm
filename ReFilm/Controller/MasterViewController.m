@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "SearchController.h"
 #import "WebController.h"
+#import "DetailController.h"
 
 // ViewModel
 #import "RFDataManager.h"
@@ -150,11 +151,18 @@
 
 - (void)touchCellAtIndex:(NSInteger)index {
     NSLog(@"touch %lu",index);
+    /// 打开WebController
+    /*
     WebController *webController = [WebController new];
     NSString *url = [RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
     webController.openURL = url;
     
     [self showViewController:webController sender:nil];
+    */
+    /// 打开DetailController
+    DetailController *detailController = [DetailController new];
+    [self showViewController:detailController sender:nil];
+    
     
 }
 

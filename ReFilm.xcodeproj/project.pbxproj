@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E061D3A1CE7806900B2C161 /* favoriteView.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E061D391CE7806900B2C161 /* favoriteView.png */; };
 		2E3DCA811CE8A1D60062BD26 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E3DCA801CE8A1D60062BD26 /* main.png */; };
+		2E3DCA841CE9C1510062BD26 /* TopMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3DCA831CE9C1510062BD26 /* TopMovieCell.m */; };
 		2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */; };
 		2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */; };
 		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
@@ -66,6 +67,8 @@
 		2DCCC943B7D37B9D9FD53211 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E061D391CE7806900B2C161 /* favoriteView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoriteView.png; sourceTree = "<group>"; };
 		2E3DCA801CE8A1D60062BD26 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
+		2E3DCA821CE9C1510062BD26 /* TopMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopMovieCell.h; path = ReFilm/View/TopMovieCell.h; sourceTree = "<group>"; };
+		2E3DCA831CE9C1510062BD26 /* TopMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopMovieCell.m; path = ReFilm/View/TopMovieCell.m; sourceTree = "<group>"; };
 		2E447F8A1CE4909000187C8E /* UIImage+TintColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+TintColor.h"; path = "ReFilm/Utlis/UIImage+TintColor.h"; sourceTree = "<group>"; };
 		2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+TintColor.m"; path = "ReFilm/Utlis/UIImage+TintColor.m"; sourceTree = "<group>"; };
 		2E447F8E1CE49FFD00187C8E /* RFNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFNetworkManager.h; path = ReFilm/RFNetwork/RFNetworkManager.h; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				2EE5B5BE1CE44F0A00590827 /* TabButton.m */,
 				2EAB4ACF1CE61A23009EE639 /* HotMovieView.h */,
 				2EAB4AD01CE61A23009EE639 /* HotMovieView.m */,
+				2E3DCA821CE9C1510062BD26 /* TopMovieCell.h */,
+				2E3DCA831CE9C1510062BD26 /* TopMovieCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 				2EAB4AF41CE711F1009EE639 /* FavorieMovies.m in Sources */,
 				2EE5B5BB1CE44AC300590827 /* CoreDataManager.m in Sources */,
 				2EE5B5B21CE44A2800590827 /* Movie.m in Sources */,
+				2E3DCA841CE9C1510062BD26 /* TopMovieCell.m in Sources */,
 				2EE5B5BF1CE44F0A00590827 /* TabButton.m in Sources */,
 				2EE5B5A61CE4477300590827 /* MasterViewController.m in Sources */,
 				2EE5B5B51CE44A8100590827 /* MovieCollectionCell.m in Sources */,
