@@ -8,15 +8,23 @@
 
 #import "SearchController.h"
 #import "RFDataManager.h"
+#import <Masonry.h>
+#import "MovieTableCell.h"
 
-@interface SearchController()<UISearchBarDelegate>
+
+@interface SearchController()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
+
+@property (nonatomic, strong) UITableView *resultTableView;
+
+@property (nonatomic, strong) NSArray *resultLists;
+
 
 @end
 
 static BOOL cancel = NO;
-
+static NSString *const cellIdentifier = @"cell";
 
 @implementation SearchController
 
@@ -30,10 +38,23 @@ static BOOL cancel = NO;
     _searchBar.placeholder = @"输入您感兴趣的电影";
     self.navigationItem.titleView = _searchBar;
 
+    _resultTableView = [[UITableView alloc]init];
+    [self.view addSubview:_resultTableView];
+    [_resultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    
+    _resultTableView.dataSource = self;
+    _resultTableView.delegate = self;
+    [_resultTableView registerClass:[MovieTableCell class] forCellReuseIdentifier:cellIdentifier];
+    
     
 }
 
-
+#pragma mark - UISearchBarDelegate
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     cancel = YES;
     [searchBar resignFirstResponder];
@@ -70,10 +91,26 @@ static BOOL cancel = NO;
         NSLog(@"search: %@",searchBar.text);
     }
 
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MovieTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    return  cell;
     
 }
 
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 
 @end
