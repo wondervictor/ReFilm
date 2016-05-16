@@ -162,4 +162,9 @@
     
 }
 
++ (NSString *)getURLFromFavoriteMovies:(FavorieMovies *)movie {
+    return movie.alt;
+}
+
+
 @end

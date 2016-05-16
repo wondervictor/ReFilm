@@ -11,4 +11,8 @@
 
 @interface WebController : UIViewController
 
+@property (nonatomic, strong) NSString *openURL;
+
+- (void)loadWeb:(NSString *)urlString;
+
 @end

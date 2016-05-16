@@ -8,24 +8,30 @@
 // Controller
 #import "MasterViewController.h"
 #import "SearchController.h"
+#import "WebController.h"
+
 // ViewModel
 #import "RFDataManager.h"
+#import "RFParser.h"
 //
 #import <Masonry.h>
 // View
 #import "HotMovieView.h"
 
+
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
-@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate>
+@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate,HotMovieViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITapGestureRecognizer *searchTapGesture;
 @property (nonatomic, strong) HotMovieView *hotMovieView;
+
+@property (nonatomic, strong) NSArray *hotMovies;
 
 @end
 
@@ -81,6 +87,7 @@
     self.navigationItem.rightBarButtonItem = search;
     
     self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    self.hotMovieView.delegate = self;
     [_scrollView addSubview:self.hotMovieView];
     [self loadHotView];
     
@@ -88,6 +95,7 @@
 
 - (void)loadHotView {
     RFDataManager *manager = [RFDataManager sharedManager];
+    self.hotMovies = [manager getAllFavoriteMovies];
     [_hotMovieView loadDataWithArray:[manager getAllFavoriteMovies]];
     
 }
@@ -137,5 +145,21 @@
     [_segmentControl removeFromSuperview];
 }
 
+
+#pragma mark - HotMovieViewDelegate
+
+- (void)touchCellAtIndex:(NSInteger)index {
+    NSLog(@"touch %lu",index);
+    WebController *webController = [WebController new];
+    NSString *url = [RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
+    webController.openURL = url;
+    
+    [self showViewController:webController sender:nil];
+    
+}
+
+- (void)longTouchCellAtIndex:(NSInteger)index {
+    NSLog(@"long touch %lu",index);
+}
 
 @end

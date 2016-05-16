@@ -10,16 +10,10 @@
 
 @class MovieCollectionCell;
 
-@protocol MovieCollectionCellDelegate <NSObject>
-
-- (void)longPressedCellWith:(MovieCollectionCell *)cell;
-
-@end
 
 
 @interface MovieCollectionCell : UICollectionViewCell
 
-@property (nonatomic, weak) id<MovieCollectionCellDelegate> delegate;
 
 @property (nonatomic, strong) UIImageView *movieImage;
 

@@ -8,10 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol HotMovieViewDelegate <NSObject>
+
+- (void)touchCellAtIndex:(NSInteger)index;
+
+- (void)longTouchCellAtIndex:(NSInteger)index;
+
+@end
+
+
+
+
 @interface HotMovieView : UIView
 
 @property (nonatomic, strong) NSArray *movies;
-
+@property (nonatomic, weak) id <HotMovieViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame;
 

@@ -22,8 +22,6 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 
-
-
 @end
 
 static NSString *cellIdentifier = @"hotMovieCollectionCell";
@@ -48,6 +46,8 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 
         [self.collectionView registerClass:[MovieCollectionCell class] forCellWithReuseIdentifier:cellIdentifier];
         
+
+        
     }
     return self;
 }
@@ -61,7 +61,6 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     NSLog(@"index: %lu",index);
 
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    
 
     [RFParser handleCell:cell withMovie:[self.movies objectAtIndex:index]];
     NSLog(@"index: %lu",index);
@@ -100,11 +99,18 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     return 5;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = indexPath.section * 2 + indexPath.row;
+    [_delegate touchCellAtIndex:index];
+}
+
 /*
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 */
+
+
 
 - (void)loadDataWithArray:(NSArray *)array {
     self.movies = array;
@@ -112,8 +118,14 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     
     [self.collectionView reloadData];
 }
-
-
+/*
+- (void)longPressedCellWith:(MovieCollectionCell *)cell {
+    NSLog(@"adfsghc");
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    NSInteger index = indexPath.section * 2 + indexPath.row;
+    [_delegate longTouchCellAtIndex:index];
+}
+ */
 
 
 

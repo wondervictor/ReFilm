@@ -32,5 +32,6 @@
 // test
 + (void)handleCell:(MovieCollectionCell *)cell withMovie:(FavorieMovies *)movie;
 
++ (NSString *)getURLFromFavoriteMovies:(FavorieMovies *)movie;
 
 @end

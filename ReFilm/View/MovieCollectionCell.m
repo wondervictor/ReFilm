@@ -13,7 +13,6 @@
 #define MAIN_HEIGHT  (self.frame.size.height)
 
 @interface MovieCollectionCell()
-@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 
 @end
 
@@ -21,11 +20,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressedCell:)];
-        self.longPressGesture.numberOfTapsRequired = 1;
-        self.longPressGesture.numberOfTouchesRequired = 1;
-        self.longPressGesture.minimumPressDuration = 1;
-        [self addGestureRecognizer:self.longPressGesture];
+
         [self configureSubViews];
         
     }
@@ -82,9 +77,6 @@
     
 }
 
-- (void)longPressedCell:(UILongPressGestureRecognizer *)recognizer {
-    [_delegate longPressedCellWith:self];
-}
 
 
 
