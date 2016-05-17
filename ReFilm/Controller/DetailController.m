@@ -87,12 +87,15 @@
     
     _movieImageView = [[UIImageView alloc]init];
     [visualView addSubview:_movieImageView];
+    [_movieImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(visualView.mas_height);
+        make.width.equalTo(visualView.mas_height).multipliedBy(42/60.0);
+        make.centerY.equalTo(visualView.mas_centerY);
+        make.centerX.equalTo(visualView.mas_centerX);
+    }];
     
     
-    
-    
-    
-    
+
     
 }
 
