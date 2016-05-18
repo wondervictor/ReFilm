@@ -88,47 +88,6 @@
     return actor;
 }
 
-+ (void )handleTableCell:(MovieTableCell *)cell withFavoriteMovie:(FavorieMovies *)movie {
-    cell.movieName.text = movie.movieName;
-    NSData *imageData = movie.movieImage; //[[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
-    UIImage *image = [UIImage imageWithData:imageData scale:1];
-    cell.movieImage.image = image;
-    
-    NSMutableString *directors = [NSMutableString new];
-    [directors appendString:@"导演:"];
-    NSMutableString *actors = [NSMutableString new];
-    [actors appendString:@"演员:"];
-    /*
-    for (MovieActor *actor in movie.movieActors) {
-        [actors appendFormat:@" %@",actor.name];
-    }
-    for (MovieActor *director in movie.movieDirectors) {
-        [directors appendFormat:@" %@",director.name];
-    }
-     */
-    NSArray *movieActors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieActors];
-    for (NSDictionary *item in movieActors) {
-       MovieActor *actor = [RFParser parseDictIntoMovieActor:item];
-        [actors appendFormat:@" %@",actor.name];
-    }
-    NSArray *movieDirectors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieDirectors];
-    for (NSDictionary *item in movieDirectors) {
-        MovieActor *director = [RFParser parseDictIntoMovieActor:item];
-        [directors appendFormat:@" %@",director.name];
-    }
-    
-    
-    cell.actorsLabel.text = actors;
-    cell.directorLabel.text = directors;
-    cell.ratingLabel.text = [NSString stringWithFormat:@"%.1f",[movie.averageRating floatValue]];
-}
-
-
-+ (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie {
-    
-}
-
-
 
 
 + (NSDictionary *)parserActorIntoDict:(MovieActor *)movieActor {
@@ -146,23 +105,6 @@
     return movieActor;
 }
 
-+ (void)handleCell:(MovieCollectionCell *)cell withMovie:(FavorieMovies *)movie {
-    cell.movieTitleLabel.text = movie.movieName;
-    NSData *imageData = movie.movieImage; //[[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
-    UIImage *image = [UIImage imageWithData:imageData scale:1];
-    cell.movieImage.image = image;
-
-    NSMutableString *actors = [NSMutableString new];
-    [actors appendString:@"演员:"];
-    NSArray *movieActors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieActors];
-    for (NSDictionary *item in movieActors) {
-        MovieActor *actor = [RFParser parseDictIntoMovieActor:item];
-        [actors appendFormat:@" %@",actor.name];
-    }
-    cell.actorLabel.text = actors;
-    cell.movieRatingLabel.text = [NSString stringWithFormat:@"%.1f",[movie.averageRating floatValue]];
-    
-}
 
 + (NSString *)getURLFromFavoriteMovies:(FavorieMovies *)movie {
     return movie.alt;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 
 
 @interface Movie : NSObject
@@ -33,5 +33,9 @@
 @property (nonatomic, strong) NSString *alt;
 
 @property (nonatomic, assign) NSInteger collectCount;
+/// 电影图片
+@property (nonatomic, strong) UIImage *movieImage;
+/// summary
+@property (nonatomic, strong) NSString *summary;
 
 @end

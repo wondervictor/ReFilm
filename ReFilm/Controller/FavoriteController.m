@@ -13,6 +13,8 @@
 #import "MovieActor.h"
 #import "Movie.h"
 #import "CoreDataManager.h"
+#import "RFViewModel.h"
+
 
 #define MAIN_HEIGHT   (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -108,7 +110,8 @@
     cell.directorLabel.text = directors;
     cell.ratingLabel.text = [NSString stringWithFormat:@"%f",movie.averageRating];
 */
-    [RFParser handleTableCell:cell withFavoriteMovie:[self.movies objectAtIndex:indexPath.row]];
+    RFViewModel *rfViewModel = [[RFViewModel alloc]init];
+    [rfViewModel handleTableCell:cell withFavoriteMovies:[self.movies objectAtIndex:indexPath.row]];
     return cell;
 }
 

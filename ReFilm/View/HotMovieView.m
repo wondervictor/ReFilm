@@ -9,6 +9,7 @@
 #import "HotMovieView.h"
 #import "MovieCollectionCell.h"
 #import "RFParser.h"
+#import "RFViewModel.h"
 
 
 #define MAIN_WIDTH   (self.frame.size.width)
@@ -61,8 +62,9 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     NSLog(@"index: %lu",index);
 
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-
-    [RFParser handleCell:cell withMovie:[self.movies objectAtIndex:index]];
+    RFViewModel *rfViewModel = [[RFViewModel alloc]init];
+    [rfViewModel handleCollectionCell:cell withFavoriteMovies:[self.movies objectAtIndex:index]];
+    
     NSLog(@"index: %lu",index);
     
     return cell;
