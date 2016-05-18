@@ -24,7 +24,7 @@
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
-@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate,HotMovieViewDelegate>
+@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate,RFDataManagerDelegate,HotMovieViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
@@ -95,9 +95,12 @@
 }
 
 - (void)loadHotView {
-    RFDataManager *manager = [RFDataManager sharedManager];
-    self.hotMovies = [manager getAllFavoriteMovies];
-    [_hotMovieView loadDataWithArray:[manager getAllFavoriteMovies]];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        RFDataManager *manager = [RFDataManager sharedManager];
+        [manager sendRequestForHotMovies];
+        manager.delegate = self;
+    });
     
 }
 
@@ -168,6 +171,19 @@
 
 - (void)longTouchCellAtIndex:(NSInteger)index {
     NSLog(@"long touch %lu",index);
+}
+
+
+#pragma mark - RFDataManagerDelegate
+- (void)didReceiveHotMovieDataWith:(NSArray *)movies error:(NSString *)error {
+    if (error) {
+        NSLog(@"errorz: %@",error);
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_hotMovieView loadDataWithArray:movies];
+        });
+    }
 }
 
 @end
