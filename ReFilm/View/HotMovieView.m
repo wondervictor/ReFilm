@@ -80,8 +80,14 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     NSLog(@"%lu",self.movies.count);
     if (self.movies.count == 0) {
         return 0;
+    } else if (self.movies.count %2 == 0) {
+        return self.movies.count /2 ;
     }
-    return self.movies.count/2 + 1;
+    else if (self.movies.count %2 != 0 ) {
+        return self.movies.count/2 + 1;
+    }
+    return 0;
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

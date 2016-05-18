@@ -32,18 +32,26 @@
     }
     cell.actorLabel.text = actors;
     if (!movie.movieImage) {
+        RFDataManager *manager = [RFDataManager sharedManager];
+        NSData *imgData = [manager getImageWithID:movie.movieID];
+        if (imgData) {
+            cell.movieImage.image = [UIImage imageWithData:imgData];
+        } else {
+            cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
+           
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+                if (imageData) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        cell.movieImage.image = [UIImage imageWithData:imageData];
+                        [manager saveImageData:imageData imageID:movie.movieID];
+                        
+                    });
+                }
+            });
+        }
         // 没有照片
-        cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
-            if (imageData) {
-                RFDataManager *manager = [RFDataManager sharedManager];
-                [manager saveImageData:imageData imageID:movie.movieID];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    cell.movieImage.image = [UIImage imageWithData:imageData];
-                });
-            }
-        });
+
     } else {
         cell.movieImage.image = movie.movieImage;
     }
