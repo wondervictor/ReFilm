@@ -65,7 +65,12 @@
 // getAllFavoriteMovie
 - (NSArray *)getAllFavoriteMovies;
 
-
+/// 获取缓存图片
+- (NSData *)getImageWithID:(NSString *)imageID;
+/// 存储缓存图片
+- (void)saveImageData:(NSData *)imageData imageID:(NSString *)imageID;
+/// 删除所有缓存
+- (void)removeAllImageData;
 
 @end
 

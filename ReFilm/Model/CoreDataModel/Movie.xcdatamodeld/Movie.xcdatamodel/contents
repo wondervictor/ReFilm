@@ -12,7 +12,12 @@
         <attribute name="movieName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="MovieImage" representedClassName="MovieImage" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="FavoriteMovies" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="MovieImage" positionX="-63" positionY="54" width="128" height="75"/>
     </elements>
 </model>

@@ -10,6 +10,8 @@
 		2E061D3A1CE7806900B2C161 /* favoriteView.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E061D391CE7806900B2C161 /* favoriteView.png */; };
 		2E23878D1CEC9EC1002738DC /* RFViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E23878C1CEC9EC1002738DC /* RFViewModel.m */; };
 		2E2387901CECA1C4002738DC /* MovieComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E23878F1CECA1C4002738DC /* MovieComment.m */; };
+		2E2387951CECA317002738DC /* MovieImage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2387921CECA317002738DC /* MovieImage+CoreDataProperties.m */; };
+		2E2387961CECA317002738DC /* MovieImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2387941CECA317002738DC /* MovieImage.m */; };
 		2E3DCA811CE8A1D60062BD26 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E3DCA801CE8A1D60062BD26 /* main.png */; };
 		2E3DCA841CE9C1510062BD26 /* TopMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3DCA831CE9C1510062BD26 /* TopMovieCell.m */; };
 		2E3DCA871CEAE0A10062BD26 /* MainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3DCA861CEAE0A10062BD26 /* MainViewModel.m */; };
@@ -72,6 +74,10 @@
 		2E23878C1CEC9EC1002738DC /* RFViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFViewModel.m; path = ReFilm/ViewModel/RFViewModel.m; sourceTree = "<group>"; };
 		2E23878E1CECA1C4002738DC /* MovieComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieComment.h; path = ReFilm/Model/MovieComment.h; sourceTree = "<group>"; };
 		2E23878F1CECA1C4002738DC /* MovieComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieComment.m; path = ReFilm/Model/MovieComment.m; sourceTree = "<group>"; };
+		2E2387911CECA317002738DC /* MovieImage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MovieImage+CoreDataProperties.h"; path = "ReFilm/Model/CoreDataModel/MovieImage+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2E2387921CECA317002738DC /* MovieImage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MovieImage+CoreDataProperties.m"; path = "ReFilm/Model/CoreDataModel/MovieImage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		2E2387931CECA317002738DC /* MovieImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieImage.h; path = ReFilm/Model/CoreDataModel/MovieImage.h; sourceTree = "<group>"; };
+		2E2387941CECA317002738DC /* MovieImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieImage.m; path = ReFilm/Model/CoreDataModel/MovieImage.m; sourceTree = "<group>"; };
 		2E3DCA801CE8A1D60062BD26 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		2E3DCA821CE9C1510062BD26 /* TopMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopMovieCell.h; path = ReFilm/View/TopMovieCell.h; sourceTree = "<group>"; };
 		2E3DCA831CE9C1510062BD26 /* TopMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopMovieCell.m; path = ReFilm/View/TopMovieCell.m; sourceTree = "<group>"; };
@@ -203,6 +209,10 @@
 		2EAB4AD91CE70834009EE639 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				2E2387911CECA317002738DC /* MovieImage+CoreDataProperties.h */,
+				2E2387921CECA317002738DC /* MovieImage+CoreDataProperties.m */,
+				2E2387931CECA317002738DC /* MovieImage.h */,
+				2E2387941CECA317002738DC /* MovieImage.m */,
 				2EAB4AEF1CE711F1009EE639 /* FavorieMovies+CoreDataProperties.h */,
 				2EAB4AF01CE711F1009EE639 /* FavorieMovies+CoreDataProperties.m */,
 				2EAB4AF11CE711F1009EE639 /* FavorieMovies.h */,
@@ -568,6 +578,7 @@
 				2EE5B5AF1CE449F700590827 /* VITabBarController.m in Sources */,
 				2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */,
 				2EAB4ACB1CE61897009EE639 /* DetailController.m in Sources */,
+				2E2387961CECA317002738DC /* MovieImage.m in Sources */,
 				2E2387901CECA1C4002738DC /* MovieComment.m in Sources */,
 				2EAB4AD11CE61A23009EE639 /* HotMovieView.m in Sources */,
 				2EAB4AF41CE711F1009EE639 /* FavorieMovies.m in Sources */,
@@ -585,6 +596,7 @@
 				2EAB4ADC1CE70C99009EE639 /* Movie.xcdatamodeld in Sources */,
 				2EAB4AD51CE6F928009EE639 /* RFProgressHUD.m in Sources */,
 				2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */,
+				2E2387951CECA317002738DC /* MovieImage+CoreDataProperties.m in Sources */,
 				2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */,
 				2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */,
 				2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */,

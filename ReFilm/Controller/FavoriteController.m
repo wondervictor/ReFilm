@@ -9,7 +9,6 @@
 #import "FavoriteController.h"
 #import "MovieTableCell.h"
 #import "RFDataManager.h"
-#import "RFParser.h"
 #import "MovieActor.h"
 #import "Movie.h"
 #import "CoreDataManager.h"

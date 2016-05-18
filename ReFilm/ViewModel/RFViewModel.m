@@ -8,7 +8,8 @@
 
 #import "RFViewModel.h"
 #import "RFParser.h"
-
+#import "MovieActor.h"
+#import "RFDataManager.h"
 
 @implementation RFViewModel
 
@@ -22,8 +23,34 @@
 
 
 - (void)handleCollectionCell:(MovieCollectionCell *)cell withMovie:(Movie *)movie {
+    cell.movieTitleLabel.text = movie.movieName;
+    cell.movieRatingLabel.text = [NSString stringWithFormat:@"%.1f",movie.averageRating];
+    NSMutableString *actors = [NSMutableString new];
+    [actors appendString:@"演员:"];
+    for (MovieActor *actor in movie.movieActors) {
+        [actors appendFormat:@" %@",actor.name];
+    }
+    cell.actorLabel.text = actors;
+    if (!movie.movieImage) {
+        // 没有照片
+        cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+            if (imageData) {
+                RFDataManager *manager = [RFDataManager sharedManager];
+                [manager saveImageData:imageData imageID:movie.movieID];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    cell.movieImage.image = [UIImage imageWithData:imageData];
+                });
+            }
+        });
+    } else {
+        cell.movieImage.image = movie.movieImage;
+    }
     
 }
+
+
 
 - (void)handleTableCell:(MovieTableCell *)cell withFavoriteMovies:(FavorieMovies *)movie {
     cell.movieName.text = movie.movieName;

@@ -13,7 +13,7 @@
 #import "CoreDataManager.h"
 
 #import "FavorieMovies+CoreDataProperties.h"
-
+#import "MovieImage.h"
 
 @interface RFDataManager()
 
@@ -106,7 +106,7 @@
 
 
 #pragma mark - Perisistent Store
-
+#pragma mark - FavoriteMovie
 - (CoreDataManager *)coreDataManager {
     if (_coreDataManager == nil) {
         _coreDataManager = [[CoreDataManager alloc]init];
@@ -179,6 +179,35 @@
     return fetchObject;
 }
 
+#pragma mark - ImageData
+- (void)saveImageData:(NSData *)imageData imageID:(NSString *)imageID {
+    MovieImage *movieImage = [NSEntityDescription insertNewObjectForEntityForName:@"MovieImage" inManagedObjectContext:self.coreDataManager.context];
+    movieImage.image = imageData;
+    movieImage.imageID = imageID;
+    [self.coreDataManager saveContext];
+}
 
+- (NSData *)getImageWithID:(NSString *)imageID {
+    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"MovieImage"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"imageID=%@",imageID];
+    [request setPredicate:predicate];
+    NSArray *fetchObject = [self.coreDataManager.context executeFetchRequest:request error:nil];
+    if (fetchObject.count != 0) {
+        MovieImage *image = fetchObject.lastObject;
+        return image.image;
+    } else {
+        return nil;
+    }
+    
+}
+
+- (void)removeAllImageData {
+    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"MovieImage"];
+    NSArray *fetchObjects = [self.coreDataManager.context executeFetchRequest:request error:nil];
+    for (MovieImage *item in fetchObjects) {
+        [self.coreDataManager.context deleteObject:item];
+    }
+    [self.coreDataManager saveContext];
+}
 
 @end

@@ -110,8 +110,5 @@
     return movie.alt;
 }
 
-+ (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie {
-    
-}
 
 @end
