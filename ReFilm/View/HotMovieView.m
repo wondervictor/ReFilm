@@ -63,9 +63,12 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     RFViewModel *rfViewModel = [[RFViewModel alloc]init];
-    [rfViewModel handleCollectionCell:cell withFavoriteMovies:[self.movies objectAtIndex:index]];
+    Movie *movie = [self.movies objectAtIndex:index];
+    if (movie == nil) {
+        return nil;
+    }
+    [rfViewModel handleCollectionCell:cell withMovie:movie];
     
-    NSLog(@"index: %lu",index);
     
     return cell;
 }
@@ -75,6 +78,9 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     NSLog(@"%lu",self.movies.count);
+    if (self.movies.count == 0) {
+        return 0;
+    }
     return self.movies.count/2 + 1;
 }
 
