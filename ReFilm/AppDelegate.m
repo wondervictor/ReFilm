@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "RFDataManager.h"
 #import "VITabBarController.h"
 
 
@@ -55,6 +55,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [[RFDataManager sharedManager]removeAllImageData];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
