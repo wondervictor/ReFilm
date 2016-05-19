@@ -38,10 +38,12 @@
         make.height.equalTo(@40);
     }];
     [self configureWebButtons];
+    [self addObserver:self forKeyPath:@"openURL" options:NSKeyValueObservingOptionNew||NSKeyValueChangeOldKey context:nil];
     
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    NSLog(@"SDAF");
     [self loadWeb:self.openURL];
 }
 
@@ -59,6 +61,7 @@
 
 - (void)loadWeb:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"%@",_openURL);
     NSURLRequest *reuqest = [NSURLRequest requestWithURL:url];
     [_mainWebView loadRequest:reuqest];
 }
@@ -81,6 +84,7 @@
 }
 
 - (void)dealloc {
+    [self removeObserver:self forKeyPath:@"openURL"];
 }
 
 - (void)configureWebButtons {
@@ -140,6 +144,12 @@
 
 - (void)webViewRefresh:(UIButton *)sender {
     [_mainWebView reload];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"openURL"]) {
+        [self loadWeb:_openURL];
+    }
 }
 
 @end

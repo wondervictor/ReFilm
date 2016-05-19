@@ -19,6 +19,7 @@
         return nil;
     }
     NSString *alt = [data valueForKey:@"alt"];
+    NSLog(@"%@",alt);
     NSArray *casts = [data valueForKey:@"casts"];  // 主演
     NSMutableArray *movieActors = [NSMutableArray new];
     for (NSDictionary *item in casts) {

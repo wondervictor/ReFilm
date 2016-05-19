@@ -155,16 +155,17 @@
 - (void)touchCellAtIndex:(NSInteger)index {
     NSLog(@"touch %lu",index);
     /// 打开WebController
-    /*
-    WebController *webController = [WebController new];
-    NSString *url = [RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
-    webController.openURL = url;
     
+    WebController *webController = [WebController new];
+    Movie *movie = [self.hotMovies objectAtIndex:index];
+    NSLog(@"%@",movie.alt);
+    NSString *url = movie.alt;//[RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
+    webController.openURL = url;
     [self showViewController:webController sender:nil];
-    */
+    
     /// 打开DetailController
-    DetailController *detailController = [DetailController new];
-    [self showViewController:detailController sender:nil];
+    //DetailController *detailController = [DetailController new];
+    //[self showViewController:detailController sender:nil];
     
     
 }
@@ -181,6 +182,7 @@
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.hotMovies = movies;
             [_hotMovieView loadDataWithArray:movies];
         });
     }

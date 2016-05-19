@@ -55,6 +55,8 @@
     UILabel *footerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 30)];
     footerLabel.text = @"电影信息来源于[豆瓣电影]";
     footerLabel.textAlignment = NSTextAlignmentCenter;
+    footerLabel.textColor = [UIColor lightGrayColor];
+    footerLabel.font = [UIFont systemFontOfSize:13];
     return footerLabel;
 }
 

@@ -46,6 +46,12 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
         self.collectionView.dataSource = self;
 
         [self.collectionView registerClass:[MovieCollectionCell class] forCellWithReuseIdentifier:cellIdentifier];
+        UILabel *sourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 20)];
+        sourceLabel.text = @"电影信息来源于[豆瓣电影]";
+        sourceLabel.textAlignment = NSTextAlignmentCenter;
+        sourceLabel.font = [UIFont systemFontOfSize:13];
+        sourceLabel.textColor = [UIColor lightGrayColor];
+        //self.collectionVie
         
 
         
@@ -117,6 +123,11 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     NSInteger index = indexPath.section * 2 + indexPath.row;
     [_delegate touchCellAtIndex:index];
 }
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 
 /*
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
