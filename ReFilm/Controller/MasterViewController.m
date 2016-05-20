@@ -31,8 +31,9 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITapGestureRecognizer *searchTapGesture;
 @property (nonatomic, strong) HotMovieView *hotMovieView;
-
+@property (nonatomic, strong) HotMovieView *comingMovieView;
 @property (nonatomic, strong) NSArray *hotMovies;
+@property (nonatomic, strong) NSArray *comingMovies;
 
 @end
 
@@ -60,15 +61,7 @@
     _scrollView.delegate = self;
     _scrollView.directionalLockEnabled = YES;
 
-    UIView *greenView = [[UIView alloc]init];
-    greenView.backgroundColor = [UIColor greenColor];
-    [_scrollView addSubview:greenView];
-    [greenView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_scrollView.mas_centerX).with.offset(MAIN_WIDTH);
-        make.centerY.equalTo(_scrollView.mas_centerY);
-        make.height.equalTo(_scrollView.mas_height);
-        make.width.equalTo(_scrollView.mas_width);
-    }];
+
     //: UISegmentedControl
     
     _segmentControl = [[UISegmentedControl alloc]init];
@@ -92,6 +85,12 @@
     [_scrollView addSubview:self.hotMovieView];
     [self loadHotView];
     
+    self.comingMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(MAIN_WIDTH, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    self.comingMovieView.delegate = self;
+    [_scrollView addSubview:_comingMovieView];
+    [self loadComingView];
+
+    
 }
 
 - (void)loadHotView {
@@ -102,6 +101,14 @@
         manager.delegate = self;
     });
     
+}
+
+- (void)loadComingView {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        RFDataManager *manager = [RFDataManager sharedManager];
+        [manager sendRequestForCommingMovies];
+        manager.delegate = self;
+    });
 }
 
 #pragma mark - UISegmentedControl-Action
@@ -137,8 +144,10 @@
 #pragma mark - Test
 
 - (void)test {
-   // RFDataManager *manager = [RFDataManager sharedManager];
-    //[manager sendRequestForCommingMovies];
+    
+    RFDataManager *manager = [RFDataManager sharedManager];
+    [manager sendRequestForCommingMovies];
+    manager.delegate = self;
    // [manager sendRequestForCommentWithMovieID:@"25794302"];
    // [manager sendRequestSearchMovieWithName:@"美国队长"];
 }
@@ -185,6 +194,19 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.hotMovies = movies;
             [_hotMovieView loadDataWithArray:movies];
+        });
+    }
+}
+
+- (void)didReceiveCommingMovies:(NSArray *)movies error:(NSString *)error {
+    if (error) {
+        NSLog(@"errorz: %@",error);
+
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.comingMovies = movies;
+            [_comingMovieView loadDataWithArray:movies];
         });
     }
 }

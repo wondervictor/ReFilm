@@ -38,7 +38,6 @@
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:urlString success:^(NSDictionary *responseObject, NSURLResponse *response) {
         NSArray *movies = [RFParser parseForSearchMovie:responseObject];
-        NSLog(@"%@",responseObject);
         [_delegate didReceiveHotMovieDataWith:movies error:nil];
     } failure:^(NSError *error, NSString *errorMsg) {
         NSLog(@"error : %@",errorMsg);
@@ -50,8 +49,8 @@
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:urlString success:^(NSDictionary *responseObject, NSURLResponse *response) {
         NSArray *movies = [RFParser parseForSearchMovie:responseObject];
-        [_delegate didReceiveCommingMovies:movies error:nil];
         NSLog(@"%@",responseObject);
+        [_delegate didReceiveCommingMovies:movies error:nil];
     } failure:^(NSError *error, NSString *errorMsg) {
         NSLog(@"error: %@",errorMsg);
     }];

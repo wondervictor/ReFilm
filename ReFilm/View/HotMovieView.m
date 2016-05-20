@@ -52,6 +52,7 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
         sourceLabel.font = [UIFont systemFontOfSize:13];
         sourceLabel.textColor = [UIColor lightGrayColor];
         //self.collectionVie
+#if 0
         _longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressed:)];
         _collectionView.userInteractionEnabled = YES;
         self.userInteractionEnabled = YES;
@@ -61,7 +62,7 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
         _longPressGesture.delegate = self;
         _longPressGesture.delaysTouchesBegan = NO;
         [_collectionView addGestureRecognizer:_longPressGesture];
-        
+#endif
 
         
     }
@@ -146,9 +147,7 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 
 
 - (void)loadDataWithArray:(NSArray *)array {
-    self.movies = array;
-    NSLog(@"asdsfg");
-    
+    self.movies = array;    
     [self.collectionView reloadData];
 }
 /*
@@ -159,7 +158,7 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     [_delegate longTouchCellAtIndex:index];
 }
  */
-
+/*
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"%@",touches);
     
@@ -168,7 +167,7 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"sadfgdhfgm");
 }
-
+*/
 #pragma mark - UIGesture
 
 - (void)longPressed:(UILongPressGestureRecognizer *)recognizer {
@@ -184,7 +183,6 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    NSLog(@"daFS");
     return YES;
 }
 
