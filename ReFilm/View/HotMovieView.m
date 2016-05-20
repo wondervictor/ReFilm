@@ -39,7 +39,7 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
         CGFloat itemWidth = (MAIN_WIDTH-30)/2;
         itemSize = CGSizeMake(itemWidth, itemWidth * 60/42);
         self.movies = [NSArray new];
-        self.collectionView = [[UICollectionView alloc]initWithFrame:frame collectionViewLayout:layout];
+        self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) collectionViewLayout:layout];
         [self addSubview:self.collectionView];
         self.collectionView.delegate = self;
         self.collectionView.backgroundColor = [UIColor whiteColor];
