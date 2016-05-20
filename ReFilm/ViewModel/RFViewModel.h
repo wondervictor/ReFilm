@@ -27,7 +27,7 @@
 /// 测试使用－－－ 处理CollectionView的 FavoriteMovie
 
 - (void)handleCollectionCell:(MovieCollectionCell *)cell withFavoriteMovies:(FavorieMovies *)movie;
-
-
+/// 处理TableView的 Movie model
+- (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie;
 
 @end

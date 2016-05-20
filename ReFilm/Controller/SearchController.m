@@ -10,9 +10,10 @@
 #import "RFDataManager.h"
 #import <Masonry.h>
 #import "MovieTableCell.h"
+#import "RFViewModel.h"
 
 
-@interface SearchController()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface SearchController()<RFDataManagerDelegate,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
@@ -61,6 +62,17 @@ static NSString *const cellIdentifier = @"cell";
     searchBar.text = @"";
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *search = searchBar.text;
+    if ([search isEqualToString:@""]) {
+        return;
+    }
+    else {
+        [self seachMovie:search];
+        [self searchBarCancelButtonClicked:searchBar];
+    }
+}
+
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:YES animated:YES];
@@ -93,24 +105,49 @@ static NSString *const cellIdentifier = @"cell";
 
 }
 
+- (void)seachMovie:(NSString *)movieName {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        RFDataManager *manager = [RFDataManager sharedManager];
+        manager.delegate = self;
+        [manager sendRequestSearchMovieWithName:movieName];
+    });
+}
+
 
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
+    RFViewModel *rfViewModel = [[RFViewModel alloc]init];
+    [rfViewModel handleTableCell:cell withMovie:[self.resultLists objectAtIndex:indexPath.row]];
     return  cell;
     
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.resultLists count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+#pragma mark - RFDataManagerDelegate
+- (void)didReceiveSearchMovies:(NSArray *)movies error:(NSString *)error {
+    if (error) {
+        NSLog(@"error : %@",error);
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.resultLists = movies;
+            [self.resultTableView reloadData];
+        });
+    }
+}
 
 @end
