@@ -16,7 +16,7 @@
 #define MAIN_HEIGHT  (self.frame.size.height)
 
 
-@interface HotMovieView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface HotMovieView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
 {
     CGSize itemSize;
 }
@@ -54,9 +54,12 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
         //self.collectionVie
         _longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressed:)];
         _collectionView.userInteractionEnabled = YES;
+        self.userInteractionEnabled = YES;
         _longPressGesture.numberOfTapsRequired = 1;
         _longPressGesture.numberOfTouchesRequired = 1;
         _longPressGesture.minimumPressDuration = 0.5;
+        _longPressGesture.delegate = self;
+        _longPressGesture.delaysTouchesBegan = NO;
         [_collectionView addGestureRecognizer:_longPressGesture];
         
 
@@ -166,7 +169,10 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     NSLog(@"sadfgdhfgm");
 }
 
+#pragma mark - UIGesture
+
 - (void)longPressed:(UILongPressGestureRecognizer *)recognizer {
+    NSLog(@"adfsghd");
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"long begin");
         CGPoint point = [recognizer locationInView:self];
@@ -177,7 +183,10 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     }
 }
 
-
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"daFS");
+    return YES;
+}
 
 
 @end

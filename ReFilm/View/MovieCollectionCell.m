@@ -83,6 +83,11 @@
     self.actorLabel.textColor = [UIColor lightGrayColor];
 }
 
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+}
+
+
 
 
 
