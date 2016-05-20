@@ -96,9 +96,7 @@
     
     
 
-    
 }
-
 
 
 - (void)favoriteButtonPressed:(UIBarButtonItem *)sender {

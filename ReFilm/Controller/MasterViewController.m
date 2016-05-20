@@ -161,6 +161,7 @@
     NSLog(@"%@",movie.alt);
     NSString *url = movie.alt;//[RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
     webController.openURL = url;
+    webController.movie = movie;
     [self showViewController:webController sender:nil];
     
     /// 打开DetailController

@@ -79,6 +79,19 @@
 
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    for (UIView *subView in self .subviews) {
+        if ([subView isKindOfClass:NSClassFromString(@"UITableViewCellDeleteConfirmationView")]) {
+            UIView *confirmView = (UIView *)[subView.subviews firstObject];
+            confirmView.backgroundColor=[UIColor greenColor];
+            
+            break;
+
+        }
+    }
+}
+
 
 
 

@@ -42,7 +42,6 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:_tableView];
-    [self getFavoriteMovieData];
     CoreDataManager *manager = [CoreDataManager new];
     [manager getPath];
     _tableView.tableFooterView = [self getFooterLabel];
@@ -50,6 +49,12 @@
     //[self test];
     
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self getFavoriteMovieData];
+    
+}
+
 
 - (UILabel *)getFooterLabel {
     UILabel *footerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 30)];
@@ -111,11 +116,17 @@
     cell.directorLabel.text = directors;
     cell.ratingLabel.text = [NSString stringWithFormat:@"%f",movie.averageRating];
 */
+    cell.editingAccessoryView = [self accesoryView];
     RFViewModel *rfViewModel = [[RFViewModel alloc]init];
     [rfViewModel handleTableCell:cell withFavoriteMovies:[self.movies objectAtIndex:indexPath.row]];
     return cell;
 }
 
+- (UIView *)accesoryView {
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 80)];
+    view.backgroundColor = [UIColor greenColor];
+    return view;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Detail Controller

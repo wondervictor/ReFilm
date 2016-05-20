@@ -21,7 +21,7 @@
     CGSize itemSize;
 }
 @property (nonatomic, strong) UICollectionView *collectionView;
-
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 
 @end
 
@@ -52,6 +52,12 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
         sourceLabel.font = [UIFont systemFontOfSize:13];
         sourceLabel.textColor = [UIColor lightGrayColor];
         //self.collectionVie
+        _longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressed:)];
+        _collectionView.userInteractionEnabled = YES;
+        _longPressGesture.numberOfTapsRequired = 1;
+        _longPressGesture.numberOfTouchesRequired = 1;
+        _longPressGesture.minimumPressDuration = 0.5;
+        [_collectionView addGestureRecognizer:_longPressGesture];
         
 
         
@@ -128,7 +134,6 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     return nil;
 }
 
-
 /*
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(5, 5, 5, 5);
@@ -152,6 +157,25 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 }
  */
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%@",touches);
+    
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"sadfgdhfgm");
+}
+
+- (void)longPressed:(UILongPressGestureRecognizer *)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"long begin");
+        CGPoint point = [recognizer locationInView:self];
+        NSLog(@"%@",NSStringFromCGPoint(point));
+    }
+    else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"ended");
+    }
+}
 
 
 

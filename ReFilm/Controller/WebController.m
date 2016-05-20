@@ -8,6 +8,7 @@
 
 #import "WebController.h"
 #import <Masonry.h>
+#import "RFDataManager.h"
 
 #define MAIN_HEIGHT   (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -39,6 +40,9 @@
     }];
     [self configureWebButtons];
     [self addObserver:self forKeyPath:@"openURL" options:NSKeyValueObservingOptionNew||NSKeyValueChangeOldKey context:nil];
+    UIBarButtonItem *favoriteButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"favoriteButton"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButtonPressed:)];
+    
+    self.navigationItem.rightBarButtonItem = favoriteButton;
     
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -150,6 +154,12 @@
     if ([keyPath isEqualToString:@"openURL"]) {
         [self loadWeb:_openURL];
     }
+}
+
+
+- (void)favoriteButtonPressed:(UIBarButtonItem *)sender {
+    RFDataManager *manager = [RFDataManager sharedManager];
+    [manager addFavoriteMovie:self.movie];
 }
 
 @end

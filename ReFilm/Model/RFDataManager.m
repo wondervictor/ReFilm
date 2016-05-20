@@ -133,7 +133,10 @@
     fmovie.alt = movie.alt;
     fmovie.averageRating = [NSNumber numberWithFloat:movie.averageRating];
     fmovie.year = movie.year;
-    fmovie.movieImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+    if (!fmovie.movieImage) {
+        fmovie.movieImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+    }
+    
     fmovie.imageURL = movie.imageURL;
     
     
