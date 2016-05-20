@@ -87,7 +87,8 @@
     
     self.comingMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(MAIN_WIDTH, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     self.comingMovieView.delegate = self;
-    [_scrollView addSubview:_comingMovieView];
+    //self.comingMovieView.backgroundColor = [UIColor greenColor];
+    [_scrollView addSubview:self.comingMovieView];
     [self loadComingView];
 
     

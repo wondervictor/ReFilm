@@ -158,16 +158,16 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
     [_delegate longTouchCellAtIndex:index];
 }
  */
-/*
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"%@",touches);
     
 }
-
+#if 0
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"sadfgdhfgm");
 }
-*/
+#endif
 #pragma mark - UIGesture
 
 - (void)longPressed:(UILongPressGestureRecognizer *)recognizer {
