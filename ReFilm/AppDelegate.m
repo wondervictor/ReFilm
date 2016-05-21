@@ -21,6 +21,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"线代稳过");
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
 
     [[UINavigationBar appearance]setBarTintColor:[UIColor greenColor]];
