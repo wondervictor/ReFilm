@@ -54,7 +54,6 @@
 // Comments
 - (void)sendRequestForCommentWithMovieID:(NSString *)movieID;
 
-
 /// Persistent Store
 
 // addNewFavorite

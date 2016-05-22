@@ -83,10 +83,11 @@
 }
 
 - (void)sendRequestForMovieWithID:(NSString *)movieID {
-    NSString *url = [NSString stringWithFormat:@"http://api.douban.com/v2/movie/subject/%@",movieID];
+    NSString *url = [NSString stringWithFormat:@"http://api.douban.com/v2/movie/%@",movieID];
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:url success:^(NSDictionary *responseObject, NSURLResponse *response) {
-        NSLog(@"----%@",responseObject);
+        NSLog(@"movie info----%@",responseObject);
+        //_delegate didReceiveMovieInfo: error:<#(NSString *)#>
     } failure:^(NSError *error, NSString *errorMsg) {
         
     }];
@@ -100,8 +101,8 @@
     } failure:^(NSError *error, NSString *errorMsg) {
         
     }];
-}
 
+}
 
 
 #pragma mark - Perisistent Store

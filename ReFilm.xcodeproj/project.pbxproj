@@ -45,6 +45,7 @@
 		2EE5B5BB1CE44AC300590827 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B5BA1CE44AC300590827 /* CoreDataManager.m */; };
 		2EE5B5BF1CE44F0A00590827 /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B5BE1CE44F0A00590827 /* TabButton.m */; };
 		2EE5B5C21CE44FAE00590827 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE5B5C11CE44FAD00590827 /* CoreData.framework */; };
+		2EF24D431CF1A6D7005FC8AE /* MovieDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF24D421CF1A6D7005FC8AE /* MovieDetail.m */; };
 		E92D9500DBF676EC83DAF60C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E01C51F3416B55E8A9B7048 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,8 @@
 		2EE5B5BD1CE44F0A00590827 /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabButton.h; path = ReFilm/View/TabButton.h; sourceTree = "<group>"; };
 		2EE5B5BE1CE44F0A00590827 /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabButton.m; path = ReFilm/View/TabButton.m; sourceTree = "<group>"; };
 		2EE5B5C11CE44FAD00590827 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2EF24D411CF1A6D7005FC8AE /* MovieDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieDetail.h; path = ReFilm/Model/MovieDetail.h; sourceTree = "<group>"; };
+		2EF24D421CF1A6D7005FC8AE /* MovieDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieDetail.m; path = ReFilm/Model/MovieDetail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +306,8 @@
 				2EAB4AC51CE6079C009EE639 /* MovieActor.m */,
 				2E23878E1CECA1C4002738DC /* MovieComment.h */,
 				2E23878F1CECA1C4002738DC /* MovieComment.m */,
+				2EF24D411CF1A6D7005FC8AE /* MovieDetail.h */,
+				2EF24D421CF1A6D7005FC8AE /* MovieDetail.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 			files = (
 				2E3DCA871CEAE0A10062BD26 /* MainViewModel.m in Sources */,
 				2EE5B5AF1CE449F700590827 /* VITabBarController.m in Sources */,
+				2EF24D431CF1A6D7005FC8AE /* MovieDetail.m in Sources */,
 				2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */,
 				2EAB4ACB1CE61897009EE639 /* DetailController.m in Sources */,
 				2E2387961CECA317002738DC /* MovieImage.m in Sources */,

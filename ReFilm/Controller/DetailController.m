@@ -14,7 +14,8 @@
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
-@interface DetailController()<UIScrollViewDelegate>
+
+@interface DetailController()<UIScrollViewDelegate, RFDataManagerDelegate>
 /// 主要的ScrollView
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 /// 电影海报
@@ -25,8 +26,12 @@
 @property (nonatomic, strong) UITableView *actorTableView;
 /// 电影介绍
 @property (nonatomic, strong) UIView *movieInduction;
+@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UIButton *inductionIndicator;
 /// 简短介绍(导演，上映时间，地区，类型)
+
 @property (nonatomic, strong) UIView *breifInductionView;
+
 
 /// UIScrollView 的size 和 contentOffSet
 @property (nonatomic, assign) CGSize contentSize;
@@ -51,9 +56,10 @@
     
     _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 700);
     [self getImage];
-    
+    [self getDetails];
     [self configureSubViews];
     [self configureMovieImageView];
+    [self configureBriefInductionView];
     
 }
 
@@ -79,6 +85,19 @@
     
     
 }
+
+- (void)configureBriefInductionView {
+    _breifInductionView = [UIView new];
+    [self.view addSubview:_breifInductionView];
+    [_breifInductionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.equalTo(@100);
+        make.top.equalTo(self.backImageView.mas_bottom);
+    }];
+    
+}
+
 
 
 // InductionView
@@ -136,7 +155,6 @@
             });
         }
     }
-    
 }
 
 
@@ -144,6 +162,18 @@
     NSLog(@"Favorite");
 }
 
+#pragma mark - Reuqest
 
+- (void)getDetails {
+    RFDataManager *manager = [RFDataManager sharedManager];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [manager sendRequestForMovieWithID:_movie.movieID];
+        manager.delegate = self;
+    });
+}
+#pragma mark - RFDataManagerDelegate
 
+- (void)didReceiveMovieInfo:(Movie *)movies error:(NSString *)error {
+    
+}
 @end
