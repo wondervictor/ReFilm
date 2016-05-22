@@ -33,6 +33,7 @@ static NSString *const cellIdentifier = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 260, 30)];
     _searchBar.barTintColor = [UIColor clearColor];
     _searchBar.delegate = self;

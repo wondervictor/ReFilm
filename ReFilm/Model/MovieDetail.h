@@ -26,7 +26,7 @@
 /// 平均评分
 @property (nonatomic, assign) float averageRating;
 
-/// 风图URL
+/// 封图URL
 @property (nonatomic, copy) NSString *imageURL;
 
 /// 影片类型

@@ -131,7 +131,7 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.section * 2 + indexPath.row;
-    [_delegate touchCellAtIndex:index];
+    [_delegate touchCollectionView:collectionView CellAtIndex:index inView:self];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

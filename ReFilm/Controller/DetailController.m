@@ -37,6 +37,24 @@
 /// 简短介绍(导演，上映时间，地区，类型)
 
 @property (nonatomic, strong) UIView *breifInductionView;
+/// 电影名
+@property (nonatomic, strong) UILabel *movieTitleLabel;
+/// 上映日期
+@property (nonatomic, strong) UILabel *dateLabel;
+/// 剧情
+@property (nonatomic, strong) UILabel *plotTypeLabel;
+/// 地区
+@property (nonatomic, strong) UILabel *countryLabel;
+/// 语言
+@property (nonatomic, strong) UILabel *languageLabel;
+/// 评分
+@property (nonatomic, strong) UILabel *ratingLabel;
+/// 在豆瓣中查看
+@property (nonatomic, strong) UIButton *checkInButton;
+///
+@property (nonatomic, strong) UILabel *durationLabel;
+
+
 
 @property (nonatomic, strong) MovieDetail *movieDetail;
 
@@ -86,12 +104,7 @@
     UIBarButtonItem *favoriteButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"favoriteButton"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButtonPressed:)];
     
     self.navigationItem.rightBarButtonItem = favoriteButton;
-    
 
-    
-    
-    
-    
     
 }
 
@@ -105,9 +118,80 @@
     [_breifInductionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
-        make.height.equalTo(@100);
+        make.height.equalTo(@120);
         make.top.equalTo(self.backImageView.mas_bottom).with.offset(3);
     }];
+    
+    // title
+    _movieTitleLabel = [UILabel new];
+    [_breifInductionView addSubview:_movieTitleLabel];
+    [_movieTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_breifInductionView.mas_top);
+        make.left.equalTo(_breifInductionView.mas_left);
+        make.right.equalTo(_breifInductionView.mas_right);
+        make.height.equalTo(@30);
+    }];
+    
+    _movieTitleLabel.font = [UIFont systemFontOfSize:18];
+    _movieTitleLabel.textAlignment = NSTextAlignmentCenter;
+    _movieTitleLabel.textColor = [UIColor blackColor];
+    
+    
+    // date
+    _dateLabel = [UILabel new];
+    [_breifInductionView addSubview:_dateLabel];
+    [_dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_movieTitleLabel.mas_bottom).with.offset(2);
+        make.height.equalTo(@20);
+        make.left.equalTo(_breifInductionView.mas_left);
+        make.right.equalTo(_breifInductionView.mas_right);
+    }];
+    
+    _dateLabel.font = [UIFont systemFontOfSize:13];
+    _dateLabel.textAlignment = NSTextAlignmentCenter;
+    _dateLabel.textColor = [UIColor lightGrayColor];
+    
+    
+    
+    // type
+    _plotTypeLabel = [UILabel new];
+    [_breifInductionView addSubview:_plotTypeLabel];
+    [_plotTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_dateLabel.mas_bottom).with.offset(2);
+        make.height.equalTo(@20);
+        make.left.equalTo(_breifInductionView.mas_left);
+        make.right.equalTo(_breifInductionView.mas_right);
+    }];
+    _plotTypeLabel.textColor = [UIColor lightGrayColor];
+    _plotTypeLabel.font = [UIFont systemFontOfSize:13];
+    _plotTypeLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
+    _languageLabel = [UILabel new];
+    [_breifInductionView addSubview:_languageLabel];
+    [_languageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_plotTypeLabel.mas_bottom).with.offset(2);
+        make.height.equalTo(@20);
+        make.left.equalTo(_breifInductionView.mas_left);
+        make.right.equalTo(_breifInductionView.mas_right);
+    }];
+    _languageLabel.textColor = [UIColor lightGrayColor];
+    _languageLabel.font = [UIFont systemFontOfSize:13];
+    _languageLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
+    _durationLabel = [UILabel new];
+    [_breifInductionView addSubview:_durationLabel];
+    [_durationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_languageLabel.mas_bottom).with.offset(2);
+        make.height.equalTo(@20);
+        make.left.equalTo(_breifInductionView.mas_left);
+        make.right.equalTo(_breifInductionView.mas_right);
+    }];
+    _durationLabel.textColor = [UIColor lightGrayColor];
+    _durationLabel.font = [UIFont systemFontOfSize:13];
+    _durationLabel.textAlignment = NSTextAlignmentCenter;
+    
     
 }
 
@@ -165,7 +249,7 @@
         make.right.equalTo(_movieInduction.mas_right).with.offset(-10);
     }];
     _summaryField.numberOfLines = 0;
-    
+    [_summaryField textRectForBounds:CGRectInset(_summaryField.bounds, 2, 10) limitedToNumberOfLines:0];
     _summaryField.lineBreakMode = NSLineBreakByWordWrapping;
     _summaryField.font = [UIFont systemFontOfSize:14];
     
@@ -238,6 +322,7 @@
                 NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:_movie.imageURL]];
                 if (imageData) {
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"fsgdhfj");
                         _movie.movieImage = [UIImage imageWithData:imageData];
                         _backImageView.image = _movie.movieImage;
                         _movieImageView.image = _movie.movieImage;
@@ -247,11 +332,17 @@
             });
         }
     }
+    else {
+        _movieImageView.image = _movie.movieImage;
+        _backImageView.image = _movie.movieImage;
+    }
 }
 
 
 - (void)favoriteButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Favorite");
+    RFDataManager *manager = [RFDataManager sharedManager];
+    [manager addFavoriteMovie:self.movie];
 }
 
 #pragma mark - Reuqest
@@ -270,6 +361,22 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         _summaryField.text = movies.summary;
         _movieDetail = movies;
+        
+        _languageLabel.text = movies.movieLanguage;
+        _movieTitleLabel.text = _movie.title;
+        _dateLabel.text = [movies.pubdate firstObject];
+        _durationLabel.text = movies.movieDuration;
+        NSMutableString *type = [NSMutableString new];
+        for (NSString *item in movies.genres) {
+            [type appendFormat:@"%@ ",item];
+        }
+        _plotTypeLabel.text = type;
+        
+        
+        
+        
+        
+        
         //NSLog(@"%@",)
     });
 }

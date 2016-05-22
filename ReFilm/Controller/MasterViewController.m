@@ -49,6 +49,7 @@
     
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     
+    
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     [self.view addSubview:_scrollView];
     
@@ -82,11 +83,13 @@
     
     self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     self.hotMovieView.delegate = self;
+    self.hotMovieView.tag = 10011;
     [_scrollView addSubview:self.hotMovieView];
     [self loadHotView];
     
     self.comingMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(MAIN_WIDTH, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     self.comingMovieView.delegate = self;
+    self.comingMovieView.tag = 10001;
     //self.comingMovieView.backgroundColor = [UIColor greenColor];
     [_scrollView addSubview:self.comingMovieView];
     [self loadComingView];
@@ -154,16 +157,43 @@
 }
 
 - (void)showSearchController:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+
     SearchController *search = [SearchController new];
     [self showViewController:search  sender:nil];
-    [_segmentControl removeFromSuperview];
+    self.hidesBottomBarWhenPushed = NO;
+
+  //  [_segmentControl removeFromSuperview];
 }
 
 
 #pragma mark - HotMovieViewDelegate
 
-- (void)touchCellAtIndex:(NSInteger)index {
+- (void)touchCollectionView:(UICollectionView *)tableView CellAtIndex:(NSInteger)index inView:(UIView *)view{
     NSLog(@"touch %lu",index);
+    if (view.tag == 10011) {
+        self.hidesBottomBarWhenPushed = YES;
+        
+        DetailController *detailController = [DetailController new];
+        detailController.movie = [self.hotMovies objectAtIndex:index];
+        
+        [self showViewController:detailController sender:nil];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+    else if (view.tag == 10001) {
+        self.hidesBottomBarWhenPushed = YES;
+        WebController *webController = [WebController new];
+        Movie *movie = [self.comingMovies objectAtIndex:index];
+        NSLog(@"%@",movie.alt);
+        NSString *url = movie.alt;//[RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
+        webController.openURL = url;
+        webController.movie = movie;
+        [self showViewController:webController sender:nil];
+        self.hidesBottomBarWhenPushed = NO;
+
+    }
+    
+    
     /// 打开WebController
 #if 0
     WebController *webController = [WebController new];
@@ -176,10 +206,7 @@
 #endif
     /// 打开DetailController
 #if 1
-    DetailController *detailController = [DetailController new];
-    detailController.movie = [self.hotMovies objectAtIndex:index];
 
-    [self showViewController:detailController sender:nil];
 #endif
     
 }

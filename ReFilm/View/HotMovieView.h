@@ -11,7 +11,7 @@
 
 @protocol HotMovieViewDelegate <NSObject>
 
-- (void)touchCellAtIndex:(NSInteger)index;
+- (void)touchCollectionView:(UICollectionView *)tableView CellAtIndex:(NSInteger)index inView:(UIView *)view;
 
 - (void)longTouchCellAtIndex:(NSInteger)index;
 
