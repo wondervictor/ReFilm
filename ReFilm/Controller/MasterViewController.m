@@ -18,6 +18,7 @@
 #import <Masonry.h>
 // View
 #import "HotMovieView.h"
+#import "TopView.h"
 
 
 #define MAIN_HEIGHT    (self.view.frame.size.height)
@@ -32,8 +33,10 @@
 @property (nonatomic, strong) UITapGestureRecognizer *searchTapGesture;
 @property (nonatomic, strong) HotMovieView *hotMovieView;
 @property (nonatomic, strong) HotMovieView *comingMovieView;
+@property (nonatomic, strong) TopView *topView;
 @property (nonatomic, strong) NSArray *hotMovies;
 @property (nonatomic, strong) NSArray *comingMovies;
+@property (nonatomic, strong) NSArray *topMovies;
 
 @end
 
@@ -93,8 +96,17 @@
     //self.comingMovieView.backgroundColor = [UIColor greenColor];
     [_scrollView addSubview:self.comingMovieView];
     [self loadComingView];
+    
+    self.topView = [[TopView alloc]initWithFrame:CGRectMake(MAIN_WIDTH * 2, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    [_scrollView addSubview:self.topView];
+    [self loadTopView];
 
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
 }
 
 - (void)loadHotView {
@@ -111,6 +123,14 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         RFDataManager *manager = [RFDataManager sharedManager];
         [manager sendRequestForCommingMovies];
+        manager.delegate = self;
+    });
+}
+
+- (void)loadTopView {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        RFDataManager *manager = [RFDataManager sharedManager];
+        [manager sendRequestForTop100Movies];
         manager.delegate = self;
     });
 }
@@ -232,12 +252,25 @@
 - (void)didReceiveCommingMovies:(NSArray *)movies error:(NSString *)error {
     if (error) {
         NSLog(@"errorz: %@",error);
-
+        
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.comingMovies = movies;
             [_comingMovieView loadDataWithArray:movies];
+        });
+    }
+}
+
+- (void)didReceiveTopMovies:(NSArray *)movies error:(NSString *)error {
+    if (error) {
+        NSLog(@"errorz: %@",error);
+        
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.topMovies = movies;
+            [_topView loadWithArray:movies];
         });
     }
 }

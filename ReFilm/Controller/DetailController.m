@@ -207,7 +207,7 @@
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
        // estimate height
-        make.height.equalTo(@80);
+        make.height.equalTo(@100);
     }];
     
     UILabel *titleLabel = [UILabel new];
@@ -222,7 +222,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:15];
     
-    summaryHeight = 40;
+    summaryHeight = 60;
     
     _inductionIndicator = [[UIButton alloc]init];
     [_movieInduction addSubview:_inductionIndicator];
@@ -240,18 +240,16 @@
     
     _summaryField = [[UILabel alloc]init];
     [_movieInduction addSubview:_summaryField];
-    [
-     
-     _summaryField mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_summaryField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom);
         make.bottom.equalTo(_inductionIndicator.mas_top);
         make.left.equalTo(_movieInduction.mas_left).with.offset(10);
         make.right.equalTo(_movieInduction.mas_right).with.offset(-10);
     }];
     _summaryField.numberOfLines = 0;
-    [_summaryField textRectForBounds:CGRectInset(_summaryField.bounds, 2, 10) limitedToNumberOfLines:0];
+    //[_summaryField textRectForBounds:CGRectInset(_summaryField.bounds, 2, 10) limitedToNumberOfLines:0];
     _summaryField.lineBreakMode = NSLineBreakByWordWrapping;
-    _summaryField.font = [UIFont systemFontOfSize:14];
+    _summaryField.font = [UIFont systemFontOfSize:12];
     
 }
 
@@ -259,22 +257,22 @@
     
     if (_isExpanded == NO) {
         NSString *text = _summaryField.text;
-         NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
+         NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
         CGRect rect = [text boundingRectWithSize:CGSizeMake(MAIN_WIDTH-20, 900) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
         summaryHeight = rect.size.height;
         [UIView animateWithDuration:0.3 animations:^{
             [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 40)]);
+                make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 60)]);
             }];
         }];
         [sender setTitle:@"收起" forState:UIControlStateNormal];
         _isExpanded = YES;
     }
     else {
-        summaryHeight = 40;
+        summaryHeight = 60;
         [UIView animateWithDuration:0.3 animations:^{
             [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo([NSNumber numberWithFloat:(80)]);
+                make.height.equalTo([NSNumber numberWithFloat:(100)]);
             }];
         }];
         [sender setTitle:@"展开" forState:UIControlStateNormal];

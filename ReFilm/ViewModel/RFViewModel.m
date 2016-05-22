@@ -158,7 +158,36 @@
     
 }
 
-
+- (void)handleTopTableCell:(TopMovieCell *)topCell withMovie:(Movie *)movie {
+    topCell.movieTitleLabel.text = movie.title;
+    //topCell setMovieImage:
+    if (!movie.movieImage) {
+        RFDataManager *manager = [RFDataManager sharedManager];
+        NSData *imgData = [manager getImageWithID:movie.movieID];
+        if (imgData) {
+            [topCell setMovieImage:[UIImage imageWithData:imgData]];
+        } else {
+            //cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+                if (imageData) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [topCell setMovieImage:[UIImage imageWithData:imageData]];
+                        [manager saveImageData:imageData imageID:movie.movieID];
+                        
+                    });
+                }
+            });
+        }
+        // 没有照片
+        
+    } else {
+        [topCell setMovieImage:movie.movieImage];
+    }
+    
+    
+}
 
 
 

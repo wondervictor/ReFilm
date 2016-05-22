@@ -46,6 +46,7 @@
 		2EE5B5BF1CE44F0A00590827 /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B5BE1CE44F0A00590827 /* TabButton.m */; };
 		2EE5B5C21CE44FAE00590827 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE5B5C11CE44FAD00590827 /* CoreData.framework */; };
 		2EF24D431CF1A6D7005FC8AE /* MovieDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF24D421CF1A6D7005FC8AE /* MovieDetail.m */; };
+		2EF24D461CF1EA16005FC8AE /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF24D451CF1EA16005FC8AE /* TopView.m */; };
 		E92D9500DBF676EC83DAF60C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E01C51F3416B55E8A9B7048 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,8 @@
 		2EE5B5C11CE44FAD00590827 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EF24D411CF1A6D7005FC8AE /* MovieDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieDetail.h; path = ReFilm/Model/MovieDetail.h; sourceTree = "<group>"; };
 		2EF24D421CF1A6D7005FC8AE /* MovieDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieDetail.m; path = ReFilm/Model/MovieDetail.m; sourceTree = "<group>"; };
+		2EF24D441CF1EA16005FC8AE /* TopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopView.h; path = ReFilm/View/TopView.h; sourceTree = "<group>"; };
+		2EF24D451CF1EA16005FC8AE /* TopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopView.m; path = ReFilm/View/TopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +328,8 @@
 				2EAB4AD01CE61A23009EE639 /* HotMovieView.m */,
 				2E3DCA821CE9C1510062BD26 /* TopMovieCell.h */,
 				2E3DCA831CE9C1510062BD26 /* TopMovieCell.m */,
+				2EF24D441CF1EA16005FC8AE /* TopView.h */,
+				2EF24D451CF1EA16005FC8AE /* TopView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 				2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */,
 				2EAB4AF31CE711F1009EE639 /* FavorieMovies+CoreDataProperties.m in Sources */,
 				2EAB4ACE1CE618BA009EE639 /* WebController.m in Sources */,
+				2EF24D461CF1EA16005FC8AE /* TopView.m in Sources */,
 				2EE5B5B81CE44A9D00590827 /* MovieTableCell.m in Sources */,
 				2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */,
 				2EAB4ADC1CE70C99009EE639 /* Movie.xcdatamodeld in Sources */,

@@ -10,4 +10,16 @@
 
 @interface TopMovieCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *movieImageView;
+
+@property (nonatomic, strong) UILabel *movieTitleLabel;
+
+@property (nonatomic, strong) UILabel *yearLabel;
+
+@property (nonatomic, strong) UILabel *typeLabel;
+
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+- (void)setMovieImage:(UIImage *)image;
+
 @end

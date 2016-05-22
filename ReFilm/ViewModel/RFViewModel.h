@@ -12,6 +12,7 @@
 #import "MovieCollectionCell.h"
 #import "MovieTableCell.h"
 #import "Movie.h"
+#import "TopMovieCell.h"
 #import "FavorieMovies.h"
 
 @interface RFViewModel : NSObject
@@ -29,5 +30,7 @@
 - (void)handleCollectionCell:(MovieCollectionCell *)cell withFavoriteMovies:(FavorieMovies *)movie;
 /// 处理TableView的 Movie model
 - (void)handleTableCell:(MovieTableCell *)cell withMovie:(Movie *)movie;
+/// 处理top100 movie
+- (void)handleTopTableCell:(TopMovieCell *)topCell withMovie:(Movie *)movie;
 
 @end
