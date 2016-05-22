@@ -17,6 +17,9 @@
 /// 电影名称
 @property (nonatomic, copy) NSString *movieName;
 
+/// 地区
+@property (nonatomic, copy) NSString *country;
+
 /// 年份
 @property (nonatomic, copy) NSString *year;
 
@@ -30,25 +33,25 @@
 @property (nonatomic, strong) NSArray *genres;
 
 /// 条目URL
-@property (nonatomic, strong) NSString *alt;
+@property (nonatomic, copy) NSString *alt;
 
 /// summary
-@property (nonatomic, strong) NSString *summary;
+@property (nonatomic, copy) NSString *summary;
 
 /// 电影网站
-@property (nonatomic, strong) NSString *movieWebSite;
+@property (nonatomic, copy) NSString *movieWebSite;
 
 /// 电影作者
-@property (nonatomic, strong) NSString *writer;
+@property (nonatomic, copy) NSString *writer;
 
 /// 电影发布日期
-@property (nonatomic, strong) NSString *pubdate;
+@property (nonatomic, strong) NSArray *pubdate;
 
 /// 电影时长
-@property (nonatomic, strong) NSString *movieDuration;
+@property (nonatomic, copy) NSString *movieDuration;
 
 /// 电影语言
-@property (nonatomic, strong) NSString *movieLanguage;
+@property (nonatomic, copy) NSString *movieLanguage;
 
 
 

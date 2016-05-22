@@ -9,6 +9,7 @@
 #import "DetailController.h"
 #import <Masonry.h>
 #import "RFDataManager.h"
+#import "MovieDetail.h"
 
 
 #define MAIN_HEIGHT    (self.view.frame.size.height)
@@ -32,6 +33,7 @@
 
 @property (nonatomic, strong) UIView *breifInductionView;
 
+@property (nonatomic, strong) MovieDetail *movieDetail;
 
 /// UIScrollView 的size 和 contentOffSet
 @property (nonatomic, assign) CGSize contentSize;
@@ -173,7 +175,7 @@
 }
 #pragma mark - RFDataManagerDelegate
 
-- (void)didReceiveMovieInfo:(Movie *)movies error:(NSString *)error {
-    
+- (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error {
+    NSLog(@"%@",movies);
 }
 @end

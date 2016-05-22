@@ -86,7 +86,9 @@
     NSString *url = [NSString stringWithFormat:@"http://api.douban.com/v2/movie/%@",movieID];
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:url success:^(NSDictionary *responseObject, NSURLResponse *response) {
-        NSLog(@"movie info----%@",responseObject);
+        //NSLog(@"movie info----%@",responseObject);
+        MovieDetail *detail = [RFParser parseForMovieDetail:responseObject];
+        [_delegate didReceiveMovieInfo:detail error:nil];
         //_delegate didReceiveMovieInfo: error:<#(NSString *)#>
     } failure:^(NSError *error, NSString *errorMsg) {
         

@@ -111,5 +111,46 @@
     return movie.alt;
 }
 
++ (MovieDetail *)parseForMovieDetail:(NSDictionary *)data {
+    MovieDetail *detail = [MovieDetail new];
+    detail.alt = [data valueForKey:@"alt"];
+    NSDictionary *attr = [data valueForKey:@"attrs"];
+    
+    NSArray *countries = [attr valueForKey:@"country"];
+    NSMutableString *country = [NSMutableString new];
+    for (NSString *item in countries) {
+        [country appendFormat:@"%@ ",item];
+    }
+    detail.country = country;
+    
+    NSMutableString *language = [NSMutableString new];
+    for (NSString *item in [attr valueForKey:@"language"]) {
+        [language appendFormat:@"%@ ",item];
+    }
+    detail.movieLanguage = language;
+    
+    detail.movieDuration = [[attr valueForKey:@"movie_duration"]firstObject];
+    
+    detail.pubdate = [attr valueForKey:@"pubdate"];
+    
+    /*
+    NSMutableString *movieType = [NSMutableString new];
+    for (NSString *item in [attr valueForKey:@"movie_type"]) {
+        [movieType appendFormat:@"%@ ",movieType];
+    }
+     */
+    
+    
+    detail.genres = [attr valueForKey:@"movie_type"];
+    
+    detail.year = [[attr valueForKey:@"year"]firstObject];
+    
+    detail.movieWebSite = [[attr valueForKey:@"website"]firstObject];
+    
+    detail.summary = [data valueForKey:@"summary"];
+    
+    return detail;
+}
+
 
 @end

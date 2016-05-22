@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Movie.h"
 #import "FavorieMovies.h"
-
+#import "MovieDetail.h"
 
 @protocol RFDataManagerDelegate <NSObject>
 // Movies NSArray<Movie>
@@ -22,7 +22,7 @@
 
 - (void)didReceiveSearchMovies:(NSArray *)movies error:(NSString *)error;
 
-- (void)didReceiveMovieInfo:(Movie *)movies error:(NSString *)error;
+- (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error;
 
 
 @end

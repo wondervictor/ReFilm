@@ -12,6 +12,7 @@
 #import "MovieTableCell.h"
 #import "MovieCollectionCell.h"
 #import "FavorieMovies.h"
+#import "MovieDetail.h"
 
 
 @interface RFParser : NSObject
@@ -29,6 +30,6 @@
 
 + (NSString *)getURLFromFavoriteMovies:(FavorieMovies *)movie;
 
-
++ (MovieDetail *)parseForMovieDetail:(NSDictionary *)data;
 
 @end
