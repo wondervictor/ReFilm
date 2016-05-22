@@ -30,7 +30,7 @@
 @property (nonatomic, strong) UITableView *actorTableView;
 /// 电影介绍
 @property (nonatomic, strong) UIView *movieInduction;
-@property (nonatomic, strong) UILabel *textView;
+@property (nonatomic, strong) UILabel *summaryField;
 @property (nonatomic, strong) UIButton *inductionIndicator;
 @property (nonatomic, assign) BOOL isExpanded;
 
@@ -154,25 +154,27 @@
     [_inductionIndicator setTitle:@"展开" forState:UIControlStateNormal];
     [_inductionIndicator addTarget:self action:@selector(expandInduction:) forControlEvents:UIControlEventTouchUpInside];
     
-    _textView = [[UILabel alloc]init];
-    [_movieInduction addSubview:_textView];
-    [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _summaryField = [[UILabel alloc]init];
+    [_movieInduction addSubview:_summaryField];
+    [
+     
+     _summaryField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom);
         make.bottom.equalTo(_inductionIndicator.mas_top);
         make.left.equalTo(_movieInduction.mas_left).with.offset(10);
         make.right.equalTo(_movieInduction.mas_right).with.offset(-10);
     }];
-    _textView.numberOfLines = 0;
+    _summaryField.numberOfLines = 0;
     
-    _textView.lineBreakMode = NSLineBreakByWordWrapping;
-    _textView.font = [UIFont systemFontOfSize:14];
+    _summaryField.lineBreakMode = NSLineBreakByWordWrapping;
+    _summaryField.font = [UIFont systemFontOfSize:14];
     
 }
 
 - (void)expandInduction:(UIButton *)sender {
     
     if (_isExpanded == NO) {
-        NSString *text = _textView.text;
+        NSString *text = _summaryField.text;
          NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
         CGRect rect = [text boundingRectWithSize:CGSizeMake(MAIN_WIDTH-20, 900) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
         summaryHeight = rect.size.height;
@@ -266,7 +268,7 @@
 - (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error {
     NSLog(@"%@",movies);
     dispatch_async(dispatch_get_main_queue(), ^{
-        _textView.text = movies.summary;
+        _summaryField.text = movies.summary;
         _movieDetail = movies;
         //NSLog(@"%@",)
     });
