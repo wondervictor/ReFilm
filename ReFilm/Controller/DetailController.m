@@ -17,6 +17,9 @@
 
 
 @interface DetailController()<UIScrollViewDelegate, RFDataManagerDelegate>
+{
+    CGFloat summaryHeight;
+}
 /// 主要的ScrollView
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 /// 电影海报
@@ -27,8 +30,10 @@
 @property (nonatomic, strong) UITableView *actorTableView;
 /// 电影介绍
 @property (nonatomic, strong) UIView *movieInduction;
-@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UILabel *textView;
 @property (nonatomic, strong) UIButton *inductionIndicator;
+@property (nonatomic, assign) BOOL isExpanded;
+
 /// 简短介绍(导演，上映时间，地区，类型)
 
 @property (nonatomic, strong) UIView *breifInductionView;
@@ -52,16 +57,18 @@
     _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,0, MAIN_WIDTH, MAIN_HEIGHT-49)];
     [self.view addSubview:_mainScrollView];
     _mainScrollView.showsVerticalScrollIndicator = YES;
-    _mainScrollView.backgroundColor = [UIColor greenColor];
+    _mainScrollView.backgroundColor = [UIColor whiteColor];
     _mainScrollView.pagingEnabled = NO;
     _mainScrollView.bounces = YES;
     
     _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 700);
     [self getImage];
-    [self getDetails];
     [self configureSubViews];
     [self configureMovieImageView];
     [self configureBriefInductionView];
+    [self configureInductionView];
+    [self getDetails];
+
     
 }
 
@@ -88,29 +95,110 @@
     
 }
 
+#pragma mark - 简介View
+
 - (void)configureBriefInductionView {
+    
     _breifInductionView = [UIView new];
-    [self.view addSubview:_breifInductionView];
+    _breifInductionView.backgroundColor = [UIColor whiteColor];
+    [self.mainScrollView addSubview:_breifInductionView];
     [_breifInductionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
         make.height.equalTo(@100);
-        make.top.equalTo(self.backImageView.mas_bottom);
+        make.top.equalTo(self.backImageView.mas_bottom).with.offset(3);
     }];
     
 }
 
 
-
+#pragma mark - 摘要
 // InductionView
 - (void)configureInductionView {
-    _movieInduction = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
-    
-    
-    
+    _movieInduction = [UIView new];
     [self.mainScrollView addSubview:_movieInduction];
+    _movieInduction.backgroundColor = [UIColor whiteColor];
+    [_movieInduction mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_breifInductionView.mas_bottom).with.offset(3);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+       // estimate height
+        make.height.equalTo(@80);
+    }];
+    
+    UILabel *titleLabel = [UILabel new];
+    [_movieInduction addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@20);
+        make.top.equalTo(_movieInduction.mas_top);
+        make.left.equalTo(_movieInduction.mas_left);
+        make.width.equalTo(@100);
+    }];
+    titleLabel.text = @"剧情简介:";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:15];
+    
+    summaryHeight = 40;
+    
+    _inductionIndicator = [[UIButton alloc]init];
+    [_movieInduction addSubview:_inductionIndicator];
+    [_inductionIndicator mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@20);
+        make.left.equalTo(_movieInduction.mas_left).with.offset(50);
+        make.right.equalTo(_movieInduction.mas_right).with.offset(-50);
+        make.bottom.equalTo(_movieInduction.mas_bottom);
+    }];
+    _isExpanded = NO;
+    [_inductionIndicator setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    _inductionIndicator.titleLabel.font = [UIFont systemFontOfSize:12];
+    [_inductionIndicator setTitle:@"展开" forState:UIControlStateNormal];
+    [_inductionIndicator addTarget:self action:@selector(expandInduction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _textView = [[UILabel alloc]init];
+    [_movieInduction addSubview:_textView];
+    [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(titleLabel.mas_bottom);
+        make.bottom.equalTo(_inductionIndicator.mas_top);
+        make.left.equalTo(_movieInduction.mas_left).with.offset(10);
+        make.right.equalTo(_movieInduction.mas_right).with.offset(-10);
+    }];
+    _textView.numberOfLines = 0;
+    
+    _textView.lineBreakMode = NSLineBreakByWordWrapping;
+    _textView.font = [UIFont systemFontOfSize:14];
+    
 }
 
+- (void)expandInduction:(UIButton *)sender {
+    
+    if (_isExpanded == NO) {
+        NSString *text = _textView.text;
+         NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
+        CGRect rect = [text boundingRectWithSize:CGSizeMake(MAIN_WIDTH-20, 900) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
+        summaryHeight = rect.size.height;
+        [UIView animateWithDuration:0.3 animations:^{
+            [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 40)]);
+            }];
+        }];
+        [sender setTitle:@"收起" forState:UIControlStateNormal];
+        _isExpanded = YES;
+    }
+    else {
+        summaryHeight = 40;
+        [UIView animateWithDuration:0.3 animations:^{
+            [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo([NSNumber numberWithFloat:(80)]);
+            }];
+        }];
+        [sender setTitle:@"展开" forState:UIControlStateNormal];
+
+        _isExpanded = NO;
+    }
+}
+
+
+#pragma mark - 电影封图
 - (void)configureMovieImageView {
     self.backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 150)];
     [_mainScrollView addSubview:_backImageView];
@@ -177,5 +265,10 @@
 
 - (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error {
     NSLog(@"%@",movies);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _textView.text = movies.summary;
+        _movieDetail = movies;
+        //NSLog(@"%@",)
+    });
 }
 @end
