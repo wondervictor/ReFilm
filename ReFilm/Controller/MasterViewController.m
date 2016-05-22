@@ -165,7 +165,7 @@
 - (void)touchCellAtIndex:(NSInteger)index {
     NSLog(@"touch %lu",index);
     /// 打开WebController
-    
+#if 0
     WebController *webController = [WebController new];
     Movie *movie = [self.hotMovies objectAtIndex:index];
     NSLog(@"%@",movie.alt);
@@ -173,11 +173,14 @@
     webController.openURL = url;
     webController.movie = movie;
     [self showViewController:webController sender:nil];
-    
+#endif
     /// 打开DetailController
-    //DetailController *detailController = [DetailController new];
-    //[self showViewController:detailController sender:nil];
-    
+#if 1
+    DetailController *detailController = [DetailController new];
+    detailController.movie = [self.hotMovies objectAtIndex:index];
+
+    [self showViewController:detailController sender:nil];
+#endif
     
 }
 

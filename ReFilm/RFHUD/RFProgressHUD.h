@@ -26,6 +26,9 @@ typedef NS_ENUM(NSInteger,RFProgressHUDType) {
 
 @property (nonatomic, weak) UIView *parentView;
 
+@property (nonatomic, strong) UIColor *backColor;
+
+@property (nonatomic, strong) UIColor *tintColor;
 
 
 

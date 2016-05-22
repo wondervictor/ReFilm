@@ -12,6 +12,8 @@
 
 @interface RFProgressHUD()
 
+@property (nonatomic, assign) RFProgressHUDType currentType;
+
 @end
 
 @implementation RFProgressHUD
@@ -58,7 +60,13 @@
     
 }
 
+- (void)defaultState {
+    //UIBezierPath *mainPath = [UIBezierPath alloc];
+}
 
+- (void)startAnimatingWithTitle:(NSString *)title {
+    
+}
 
 
 

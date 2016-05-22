@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class Movie;
+
 @interface DetailController : UIViewController
+
+@property (nonatomic, strong) Movie *movie;
+
+
 
 @end

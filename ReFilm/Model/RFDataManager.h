@@ -72,6 +72,7 @@
 /// 删除所有缓存
 - (void)removeAllImageData;
 
+
 @end
 
 

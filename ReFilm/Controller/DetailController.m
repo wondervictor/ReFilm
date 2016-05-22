@@ -8,6 +8,8 @@
 
 #import "DetailController.h"
 #import <Masonry.h>
+#import "RFDataManager.h"
+
 
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -26,7 +28,10 @@
 /// 简短介绍(导演，上映时间，地区，类型)
 @property (nonatomic, strong) UIView *breifInductionView;
 
+/// UIScrollView 的size 和 contentOffSet
+@property (nonatomic, assign) CGSize contentSize;
 
+@property (nonatomic, assign) CGFloat offSetY;
 
 @end
 
@@ -36,16 +41,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"详细信息";
-    self.edgesForExtendedLayout = UIRectEdgeAll;
     self.view.backgroundColor = [UIColor whiteColor];
-    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,0, MAIN_WIDTH, MAIN_HEIGHT-49)];
     [self.view addSubview:_mainScrollView];
     _mainScrollView.showsVerticalScrollIndicator = YES;
     _mainScrollView.backgroundColor = [UIColor greenColor];
+    _mainScrollView.pagingEnabled = NO;
+    _mainScrollView.bounces = YES;
     
+    _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 700);
+    [self getImage];
     
     [self configureSubViews];
+    [self configureMovieImageView];
+    
 }
+
+#if 1 //Test for Image
+- (void)getImage {
+//
+    RFDataManager *manager = [RFDataManager sharedManager];
+    NSData *imaData = [manager getImageWithID:@"26614128"];
+    self.movieImage = [UIImage imageWithData:imaData];
+}
+
+#endif
 
 - (void)configureSubViews {
     UIBarButtonItem *favoriteButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"favoriteButton"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButtonPressed:)];
@@ -71,14 +91,10 @@
 }
 
 - (void)configureMovieImageView {
-    self.backImageView = [UIImageView new];
+    self.backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 150)];
     [_mainScrollView addSubview:_backImageView];
-    [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_mainScrollView.mas_top);
-        make.left.equalTo(_mainScrollView.mas_left);
-        make.right.equalTo(_mainScrollView.mas_right);
-        make.height.equalTo(@150);
-    }];
+
+    _backImageView.contentMode = UIViewContentModeScaleToFill;
     
     UIVisualEffectView *visualView = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
     visualView.frame = CGRectMake(0, 0, MAIN_WIDTH, 150);
@@ -93,15 +109,41 @@
         make.centerY.equalTo(visualView.mas_centerY);
         make.centerX.equalTo(visualView.mas_centerX);
     }];
+    /*
+    _backImageView.image = self.movieImage;
+    _movieImageView.image = self.movieImage;
+    */
+    if (!_movie.movieImage) {
+        RFDataManager *manager = [RFDataManager sharedManager];
+        NSData *imaData = [manager getImageWithID:_movie.movieID];
+        if (imaData) {
+            _movie.movieImage = [UIImage imageWithData:imaData];
+            _movie.movieImage = [UIImage imageWithData:imaData];
+            _backImageView.image = _movie.movieImage;
+            _movieImageView.image = _movie.movieImage;
+        }
+        else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:_movie.imageURL]];
+                if (imageData) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        _movie.movieImage = [UIImage imageWithData:imageData];
+                        _backImageView.image = _movie.movieImage;
+                        _movieImageView.image = _movie.movieImage;
+                        [manager saveImageData:imaData imageID:_movie.movieID];
+                    });
+                }
+            });
+        }
+    }
     
-    
-
 }
 
 
 - (void)favoriteButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Favorite");
 }
+
 
 
 @end
