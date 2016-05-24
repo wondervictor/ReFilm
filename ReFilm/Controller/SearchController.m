@@ -72,7 +72,8 @@ static NSString *const cellIdentifier = @"cell";
     }
     else {
         [self seachMovie:search];
-        [self searchBarCancelButtonClicked:searchBar];
+        [self resignFirstResponder];
+        //[self searchBarCancelButtonClicked:searchBar];
     }
 }
 

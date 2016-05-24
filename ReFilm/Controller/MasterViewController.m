@@ -25,7 +25,7 @@
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
-@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate,RFDataManagerDelegate,HotMovieViewDelegate>
+@interface MasterViewController()<UIScrollViewDelegate,UISearchBarDelegate,RFDataManagerDelegate,HotMovieViewDelegate,TopViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
@@ -99,6 +99,7 @@
     
     self.topView = [[TopView alloc]initWithFrame:CGRectMake(MAIN_WIDTH * 2, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     [_scrollView addSubview:self.topView];
+    self.topView.delegate = self;
     [self loadTopView];
 
     
@@ -273,6 +274,17 @@
             [_topView loadWithArray:movies];
         });
     }
+}
+
+
+#pragma mark - TopViewDelegate
+
+- (void)didSelectedRowAtIndex:(NSInteger)index {
+    self.hidesBottomBarWhenPushed = YES;
+    DetailController *detailController = [DetailController new];
+    detailController.movie = [self.topMovies objectAtIndex:index];
+    [self showViewController:detailController sender:nil];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 @end

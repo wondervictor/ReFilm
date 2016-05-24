@@ -28,6 +28,7 @@ static NSString *const reuseIdentifier = @"as";
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT) style:UITableViewStylePlain];
+        
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self addSubview:self.tableView];
@@ -42,7 +43,7 @@ static NSString *const reuseIdentifier = @"as";
     if (cell == nil) {
         cell = [[TopMovieCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     RFViewModel *rfViewModel = [[RFViewModel alloc]init];
     [rfViewModel handleTopTableCell:cell withMovie:[self.topMovies objectAtIndex:indexPath.row]];
     return cell;

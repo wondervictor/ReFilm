@@ -89,6 +89,7 @@
     }];
     
     _movieTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18];
+
     
     _typeLabel = [UILabel new];
     [_visualView addSubview:_typeLabel];
@@ -100,11 +101,12 @@
     }];
     _typeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     
+    
     _yearLabel = [UILabel new];
     [_visualView addSubview:_yearLabel];
     [_yearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@30);
-        make.right.equalTo(_visualView.mas_right).with.offset(-10);
+        make.right.equalTo(_visualView.mas_right).with.offset(-5);
         make.left.equalTo(_movieImageView.mas_right).with.offset(10);
         make.top.equalTo(_typeLabel.mas_bottom).with.offset(2);
     }];
