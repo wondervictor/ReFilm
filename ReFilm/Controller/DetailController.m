@@ -132,7 +132,7 @@
         make.height.equalTo(@30);
     }];
     
-    _movieTitleLabel.font = [UIFont systemFontOfSize:18];
+    _movieTitleLabel.font = [UIFont systemFontOfSize:20];
     _movieTitleLabel.textAlignment = NSTextAlignmentCenter;
     _movieTitleLabel.textColor = [UIColor blackColor];
     
@@ -147,7 +147,7 @@
         make.right.equalTo(_breifInductionView.mas_right);
     }];
     
-    _dateLabel.font = [UIFont systemFontOfSize:13];
+    _dateLabel.font = [UIFont systemFontOfSize:15];
     _dateLabel.textAlignment = NSTextAlignmentCenter;
     _dateLabel.textColor = [UIColor lightGrayColor];
     
@@ -163,7 +163,7 @@
         make.right.equalTo(_breifInductionView.mas_right);
     }];
     _plotTypeLabel.textColor = [UIColor lightGrayColor];
-    _plotTypeLabel.font = [UIFont systemFontOfSize:13];
+    _plotTypeLabel.font = [UIFont systemFontOfSize:15];
     _plotTypeLabel.textAlignment = NSTextAlignmentCenter;
     
     
@@ -176,7 +176,7 @@
         make.right.equalTo(_breifInductionView.mas_right);
     }];
     _languageLabel.textColor = [UIColor lightGrayColor];
-    _languageLabel.font = [UIFont systemFontOfSize:13];
+    _languageLabel.font = [UIFont systemFontOfSize:15];
     _languageLabel.textAlignment = NSTextAlignmentCenter;
     
     
@@ -189,7 +189,7 @@
         make.right.equalTo(_breifInductionView.mas_right);
     }];
     _durationLabel.textColor = [UIColor lightGrayColor];
-    _durationLabel.font = [UIFont systemFontOfSize:13];
+    _durationLabel.font = [UIFont systemFontOfSize:15];
     _durationLabel.textAlignment = NSTextAlignmentCenter;
     
     
@@ -207,7 +207,7 @@
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
        // estimate height
-        make.height.equalTo(@100);
+        make.height.equalTo(@120);
     }];
     
     UILabel *titleLabel = [UILabel new];
@@ -222,19 +222,19 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:15];
     
-    summaryHeight = 60;
+    summaryHeight = 70;
     
     _inductionIndicator = [[UIButton alloc]init];
     [_movieInduction addSubview:_inductionIndicator];
     [_inductionIndicator mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@20);
+        make.height.equalTo(@30);
         make.left.equalTo(_movieInduction.mas_left).with.offset(50);
         make.right.equalTo(_movieInduction.mas_right).with.offset(-50);
         make.bottom.equalTo(_movieInduction.mas_bottom);
     }];
     _isExpanded = NO;
     [_inductionIndicator setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    _inductionIndicator.titleLabel.font = [UIFont systemFontOfSize:12];
+    _inductionIndicator.titleLabel.font = [UIFont systemFontOfSize:16];
     [_inductionIndicator setTitle:@"展开" forState:UIControlStateNormal];
     [_inductionIndicator addTarget:self action:@selector(expandInduction:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -249,10 +249,7 @@
     
 
     _summaryField.userInteractionEnabled = NO;
-   // _summaryField.numberOfLines = 0;
-    //[_summaryField textRectForBounds:CGRectInset(_summaryField.bounds, 2, 10) limitedToNumberOfLines:0];
-   // _summaryField.lineBreakMode = NSLineBreakByWordWrapping;
-    _summaryField.font = [UIFont systemFontOfSize:12];
+
     
 }
 
@@ -262,23 +259,23 @@
         NSString *text = _summaryField.text;
         NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
         paragrapgStyle.lineSpacing = 5;
-        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:12],NSParagraphStyleAttributeName:paragrapgStyle};
+        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSParagraphStyleAttributeName:paragrapgStyle};
         _summaryField.attributedText = [[NSAttributedString alloc]initWithString:text attributes:attribute];
         CGRect rect = [text boundingRectWithSize:CGSizeMake(MAIN_WIDTH-20, 900) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
         summaryHeight = rect.size.height;
         [UIView animateWithDuration:0.3 animations:^{
             [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 60)]);
+                make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 80)]);
             }];
         }];
         [sender setTitle:@"收起" forState:UIControlStateNormal];
         _isExpanded = YES;
     }
     else {
-        summaryHeight = 60;
+        summaryHeight = 70;
         [UIView animateWithDuration:0.3 animations:^{
             [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo([NSNumber numberWithFloat:(100)]);
+                make.height.equalTo([NSNumber numberWithFloat:(120)]);
             }];
         }];
         [sender setTitle:@"展开" forState:UIControlStateNormal];
@@ -366,7 +363,7 @@
        // _summaryField.text = movies.summary;
         NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
         paragrapgStyle.lineSpacing = 5;
-        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:12],NSParagraphStyleAttributeName:paragrapgStyle};
+        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSParagraphStyleAttributeName:paragrapgStyle};
         _summaryField.attributedText = [[NSAttributedString alloc]initWithString:movies.summary attributes:attribute];
         
         _movieDetail = movies;
