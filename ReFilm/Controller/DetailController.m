@@ -30,7 +30,7 @@
 @property (nonatomic, strong) UITableView *actorTableView;
 /// 电影介绍
 @property (nonatomic, strong) UIView *movieInduction;
-@property (nonatomic, strong) UILabel *summaryField;
+@property (nonatomic, strong) UITextView *summaryField;
 @property (nonatomic, strong) UIButton *inductionIndicator;
 @property (nonatomic, assign) BOOL isExpanded;
 
@@ -238,7 +238,7 @@
     [_inductionIndicator setTitle:@"展开" forState:UIControlStateNormal];
     [_inductionIndicator addTarget:self action:@selector(expandInduction:) forControlEvents:UIControlEventTouchUpInside];
     
-    _summaryField = [[UILabel alloc]init];
+    _summaryField = [[UITextView alloc]init];
     [_movieInduction addSubview:_summaryField];
     [_summaryField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom);
@@ -246,9 +246,12 @@
         make.left.equalTo(_movieInduction.mas_left).with.offset(10);
         make.right.equalTo(_movieInduction.mas_right).with.offset(-10);
     }];
-    _summaryField.numberOfLines = 0;
+    
+
+    _summaryField.userInteractionEnabled = NO;
+   // _summaryField.numberOfLines = 0;
     //[_summaryField textRectForBounds:CGRectInset(_summaryField.bounds, 2, 10) limitedToNumberOfLines:0];
-    _summaryField.lineBreakMode = NSLineBreakByWordWrapping;
+   // _summaryField.lineBreakMode = NSLineBreakByWordWrapping;
     _summaryField.font = [UIFont systemFontOfSize:12];
     
 }
@@ -257,7 +260,10 @@
     
     if (_isExpanded == NO) {
         NSString *text = _summaryField.text;
-         NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+        NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
+        paragrapgStyle.lineSpacing = 5;
+        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:12],NSParagraphStyleAttributeName:paragrapgStyle};
+        _summaryField.attributedText = [[NSAttributedString alloc]initWithString:text attributes:attribute];
         CGRect rect = [text boundingRectWithSize:CGSizeMake(MAIN_WIDTH-20, 900) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
         summaryHeight = rect.size.height;
         [UIView animateWithDuration:0.3 animations:^{
@@ -357,7 +363,12 @@
 - (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error {
     NSLog(@"%@",movies);
     dispatch_async(dispatch_get_main_queue(), ^{
-        _summaryField.text = movies.summary;
+       // _summaryField.text = movies.summary;
+        NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
+        paragrapgStyle.lineSpacing = 5;
+        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:12],NSParagraphStyleAttributeName:paragrapgStyle};
+        _summaryField.attributedText = [[NSAttributedString alloc]initWithString:movies.summary attributes:attribute];
+        
         _movieDetail = movies;
         
         _languageLabel.text = movies.movieLanguage;
