@@ -62,7 +62,12 @@ static NSString *const reuseIdentifier = @"as";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 120;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [_delegate didSelectedRowAtIndex:indexPath.row];
 }
 
 

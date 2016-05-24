@@ -52,7 +52,7 @@
     }];
     self.movieTitleLabel.adjustsFontSizeToFitWidth = YES;
     self.movieTitleLabel.numberOfLines = 2;
-    self.movieTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
+    self.movieTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];//[UIFont fontWithName:@"HelveticaNeue" size:18];
     self.movieTitleLabel.textColor = [UIColor blackColor];
     
     

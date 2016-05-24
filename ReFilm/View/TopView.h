@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TopViewDelegate <NSObject>
+
+- (void)didSelectedRowAtIndex:(NSInteger)index;
+
+@end
+
 @interface TopView : UIView
 
 @property (nonatomic, strong) NSArray *topMovies;
+
+@property (nonatomic, weak) id <TopViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame;
 

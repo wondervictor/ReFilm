@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) UILabel *typeLabel;
 
+@property (nonatomic, strong) UILabel *ratingLabel;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)setMovieImage:(UIImage *)image;

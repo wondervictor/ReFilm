@@ -161,6 +161,14 @@
 - (void)handleTopTableCell:(TopMovieCell *)topCell withMovie:(Movie *)movie {
     topCell.movieTitleLabel.text = movie.title;
     //topCell setMovieImage:
+    topCell.yearLabel.text = movie.year;
+    NSMutableString *types = [NSMutableString new];
+    for (NSString *item in movie.genres) {
+        [ types appendFormat:@"%@ ",item];
+    }
+    
+    topCell.typeLabel.text = types;
+    
     if (!movie.movieImage) {
         RFDataManager *manager = [RFDataManager sharedManager];
         NSData *imgData = [manager getImageWithID:movie.movieID];

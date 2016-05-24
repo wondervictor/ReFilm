@@ -11,6 +11,7 @@
 #import <Masonry.h>
 #import "MovieTableCell.h"
 #import "RFViewModel.h"
+#import "DetailController.h"
 
 
 @interface SearchController()<RFDataManagerDelegate,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -49,6 +50,7 @@ static NSString *const cellIdentifier = @"cell";
         make.bottom.equalTo(self.view.mas_bottom);
     }];
     
+    _resultTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _resultTableView.dataSource = self;
     _resultTableView.delegate = self;
     [_resultTableView registerClass:[MovieTableCell class] forCellReuseIdentifier:cellIdentifier];
@@ -135,8 +137,13 @@ static NSString *const cellIdentifier = @"cell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    DetailController *detailController = [DetailController new];
+    detailController.movie = [self.resultLists objectAtIndex:indexPath.row];
+    [self showViewController:detailController sender:nil];
 }
+
+
+
 
 #pragma mark - RFDataManagerDelegate
 - (void)didReceiveSearchMovies:(NSArray *)movies error:(NSString *)error {
@@ -150,5 +157,10 @@ static NSString *const cellIdentifier = @"cell";
         });
     }
 }
+
+
+
+
+
 
 @end
