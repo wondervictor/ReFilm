@@ -62,6 +62,10 @@
 
 - (void)defaultState {
     //UIBezierPath *mainPath = [UIBezierPath alloc];
+    
+    
+    
+    
 }
 
 - (void)startAnimatingWithTitle:(NSString *)title {
