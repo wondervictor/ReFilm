@@ -85,10 +85,12 @@
     UIBarButtonItem *search = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
     self.navigationItem.rightBarButtonItem = search;
     
+    
+    /*
     RFProgressHUD *hud = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 75, MAIN_HEIGHT/2.0 -75, 150, 150) radius:40 duration:2];
     [self.view addSubview:hud];
     [hud startAnimating];
-    
+    */
     
     self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     self.hotMovieView.delegate = self;
