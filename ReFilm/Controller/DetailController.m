@@ -12,6 +12,7 @@
 #import "MovieDetail.h"
 #import "ReFilm-Swift.h"
 #import "RFViewModel.h"
+#import "WebController.h"
 
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -86,7 +87,7 @@ static NSString *const collectionCellIdentifier = @"ActorCell";
     _mainScrollView.pagingEnabled = NO;
     _mainScrollView.bounces = YES;
     
-    _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 700);
+    _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 1000);
     numberOfActors = _movie.movieActors.count;
     self.movieActors = _movie.movieActors;
     [self getImage];
@@ -360,11 +361,22 @@ static NSString *const collectionCellIdentifier = @"ActorCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"count:%lu",self.movieActors.count);
     return self.movieActors.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(100, 150);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = indexPath.item;
+    MovieActor *actor = [_movieActors objectAtIndex:index];
+    self.hidesBottomBarWhenPushed = YES;
+    WebController *web = [[WebController alloc]init];
+    web.openURL = actor.actorInfo;
+    web.movie = self.movie;
+    [self showViewController:web sender:nil];
 }
 
 
