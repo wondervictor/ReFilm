@@ -38,6 +38,8 @@
 @property (nonatomic, strong) NSArray *hotMovies;
 @property (nonatomic, strong) NSArray *comingMovies;
 @property (nonatomic, strong) NSArray *topMovies;
+@property (nonatomic, strong) RFProgressHUD *progressHUD;
+
 
 @end
 
@@ -82,16 +84,12 @@
     //[self.navigationController.navigationBar addSubview:_segmentControl];
     //[self test];
     
+    self.progressHUD = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 60, MAIN_HEIGHT/2.0 - 100,120 , 120) radius:30 duration:3 parentView:self.view];
+    
     UIBarButtonItem *search = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
     self.navigationItem.rightBarButtonItem = search;
     
-    
-    /*
-    RFProgressHUD *hud = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 75, MAIN_HEIGHT/2.0 -75, 150, 150) radius:40 duration:2];
-    [self.view addSubview:hud];
-    [hud startAnimating];
-    */
-    
+    [self.progressHUD startAnimatingWithTitile:@"正在加载"];
     self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
     self.hotMovieView.delegate = self;
     self.hotMovieView.tag = 10011;
@@ -253,6 +251,7 @@
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.hotMovies = movies;
+            [self.progressHUD stopWithSuccess:@"数据已更新"];
             [_hotMovieView loadDataWithArray:movies];
         });
     }

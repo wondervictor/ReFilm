@@ -19,6 +19,8 @@
 		2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */; };
 		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
 		2E5CF98F1CF6C2E20082FDC7 /* RFProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CF98E1CF6C2E20082FDC7 /* RFProgressHUD.swift */; };
+		2E5CF9911CF6C3B50082FDC7 /* RFReachableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CF9901CF6C3B50082FDC7 /* RFReachableManager.swift */; };
+		2E5CF9931CF6C5350082FDC7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5CF9921CF6C5350082FDC7 /* SystemConfiguration.framework */; };
 		2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC21CE601A0009EE639 /* RFParser.m */; };
 		2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC51CE6079C009EE639 /* MovieActor.m */; };
 		2EAB4AC81CE61840009EE639 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAB4AC71CE61840009EE639 /* WebKit.framework */; };
@@ -94,6 +96,8 @@
 		2E447F921CE4A62500187C8E /* RFDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDataManager.m; path = ReFilm/Model/RFDataManager.m; sourceTree = "<group>"; };
 		2E5CF98B1CF60CAB0082FDC7 /* ReFilm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReFilm-Bridging-Header.h"; sourceTree = "<group>"; };
 		2E5CF98E1CF6C2E20082FDC7 /* RFProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFProgressHUD.swift; sourceTree = "<group>"; };
+		2E5CF9901CF6C3B50082FDC7 /* RFReachableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RFReachableManager.swift; path = ReFilm/Utlis/RFReachableManager.swift; sourceTree = "<group>"; };
+		2E5CF9921CF6C5350082FDC7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2EAB4AC11CE601A0009EE639 /* RFParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFParser.h; path = ReFilm/ViewModel/RFParser.h; sourceTree = "<group>"; };
 		2EAB4AC21CE601A0009EE639 /* RFParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFParser.m; path = ReFilm/ViewModel/RFParser.m; sourceTree = "<group>"; };
 		2EAB4AC41CE6079C009EE639 /* MovieActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieActor.h; path = ReFilm/Model/MovieActor.h; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E5CF9931CF6C5350082FDC7 /* SystemConfiguration.framework in Frameworks */,
 				2EAB4AC81CE61840009EE639 /* WebKit.framework in Frameworks */,
 				2EE5B5C21CE44FAE00590827 /* CoreData.framework in Frameworks */,
 				E92D9500DBF676EC83DAF60C /* libPods.a in Frameworks */,
@@ -365,6 +370,7 @@
 			children = (
 				2E447F8A1CE4909000187C8E /* UIImage+TintColor.h */,
 				2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */,
+				2E5CF9901CF6C3B50082FDC7 /* RFReachableManager.swift */,
 			);
 			name = Utlis;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 		2EE5B5C01CE44F9200590827 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E5CF9921CF6C5350082FDC7 /* SystemConfiguration.framework */,
 				2EAB4AC71CE61840009EE639 /* WebKit.framework */,
 				2EE5B5C11CE44FAD00590827 /* CoreData.framework */,
 			);
@@ -606,6 +613,7 @@
 				2EE5B5A61CE4477300590827 /* MasterViewController.m in Sources */,
 				2EE5B5B51CE44A8100590827 /* MovieCollectionCell.m in Sources */,
 				2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */,
+				2E5CF9911CF6C3B50082FDC7 /* RFReachableManager.swift in Sources */,
 				2EAB4AF31CE711F1009EE639 /* FavorieMovies+CoreDataProperties.m in Sources */,
 				2EAB4ACE1CE618BA009EE639 /* WebController.m in Sources */,
 				2EF24D461CF1EA16005FC8AE /* TopView.m in Sources */,
