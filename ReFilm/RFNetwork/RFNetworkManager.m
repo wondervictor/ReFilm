@@ -7,6 +7,8 @@
 //
 
 #import "RFNetworkManager.h"
+#import "ReFilm-Swift.h"
+
 
 @interface RFNetworkManager()
 
@@ -46,6 +48,12 @@
     NSString *finalUrlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [[NSURL alloc]initWithString:finalUrlString];
     NSLog(@"%@",url);
+    
+    
+    RFReachableManager *managr = [[RFReachableManager alloc]init];
+    //[managr checkNetWorkCondition];
+    [managr checkNetWorkCondition];
+    
     NSURLSessionDataTask *task = [self.session dataTaskWithURL:url
                                          completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                              if (!error) {
