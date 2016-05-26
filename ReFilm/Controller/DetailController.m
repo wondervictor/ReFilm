@@ -63,6 +63,12 @@
 
 @property (nonatomic, assign) CGFloat offSetY;
 
+/// 演员
+
+@property (nonatomic, strong) UICollectionView *movieActorView;
+
+
+
 @end
 
 
@@ -285,6 +291,19 @@
 }
 
 
+#pragma mark - 演员视图
+
+- (void)configureMovieActor {
+    
+    
+    
+    
+    
+}
+
+
+
+
 #pragma mark - 电影封图
 - (void)configureMovieImageView {
     self.backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 150)];
@@ -346,6 +365,9 @@
     [manager addFavoriteMovie:self.movie];
 }
 
+
+
+
 #pragma mark - Reuqest
 
 - (void)getDetails {
@@ -377,9 +399,6 @@
             [type appendFormat:@"%@ ",item];
         }
         _plotTypeLabel.text = type;
-        
-        
-        
         
         
         

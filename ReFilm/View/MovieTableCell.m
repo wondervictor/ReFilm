@@ -76,7 +76,6 @@
     self.actorsLabel.adjustsFontSizeToFitWidth = YES;
     
     
-
 }
 
 - (void)layoutSubviews {

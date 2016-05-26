@@ -32,6 +32,7 @@
 		2EAB4AF31CE711F1009EE639 /* FavorieMovies+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AF01CE711F1009EE639 /* FavorieMovies+CoreDataProperties.m */; };
 		2EAB4AF41CE711F1009EE639 /* FavorieMovies.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AF21CE711F1009EE639 /* FavorieMovies.m */; };
 		2ED3AEE21CE4D7FD00DF1F7E /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */; };
+		2EE3F6521CF732A8002724B7 /* ActorCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3F6511CF732A7002724B7 /* ActorCollectionCell.swift */; };
 		2EE5B3A51CE3578300590827 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A41CE3578300590827 /* main.m */; };
 		2EE5B3A81CE3578300590827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5B3A71CE3578300590827 /* AppDelegate.m */; };
 		2EE5B3B01CE3578300590827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5B3AF1CE3578300590827 /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		2EAB4AF21CE711F1009EE639 /* FavorieMovies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavorieMovies.m; path = ReFilm/Model/CoreDataModel/FavorieMovies.m; sourceTree = "<group>"; };
 		2ED3AEE01CE4D7FC00DF1F7E /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchController.h; path = ReFilm/Controller/SearchController.h; sourceTree = "<group>"; };
 		2ED3AEE11CE4D7FC00DF1F7E /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchController.m; path = ReFilm/Controller/SearchController.m; sourceTree = "<group>"; };
+		2EE3F6511CF732A7002724B7 /* ActorCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActorCollectionCell.swift; path = ReFilm/View/ActorCollectionCell.swift; sourceTree = "<group>"; };
 		2EE5B3A01CE3578200590827 /* ReFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE5B3A41CE3578300590827 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2EE5B3A61CE3578300590827 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				2E3DCA831CE9C1510062BD26 /* TopMovieCell.m */,
 				2EF24D441CF1EA16005FC8AE /* TopView.h */,
 				2EF24D451CF1EA16005FC8AE /* TopView.m */,
+				2EE3F6511CF732A7002724B7 /* ActorCollectionCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				2EE5B5BB1CE44AC300590827 /* CoreDataManager.m in Sources */,
 				2EE5B5B21CE44A2800590827 /* Movie.m in Sources */,
 				2E3DCA841CE9C1510062BD26 /* TopMovieCell.m in Sources */,
+				2EE3F6521CF732A8002724B7 /* ActorCollectionCell.swift in Sources */,
 				2EE5B5BF1CE44F0A00590827 /* TabButton.m in Sources */,
 				2EE5B5A61CE4477300590827 /* MasterViewController.m in Sources */,
 				2EE5B5B51CE44A8100590827 /* MovieCollectionCell.m in Sources */,
