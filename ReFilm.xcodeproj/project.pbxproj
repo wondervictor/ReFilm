@@ -18,7 +18,7 @@
 		2E447F8C1CE4909000187C8E /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8B1CE4909000187C8E /* UIImage+TintColor.m */; };
 		2E447F901CE49FFD00187C8E /* RFNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F8F1CE49FFD00187C8E /* RFNetworkManager.m */; };
 		2E447F931CE4A62500187C8E /* RFDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E447F921CE4A62500187C8E /* RFDataManager.m */; };
-		2E5CF98D1CF60CAC0082FDC7 /* RFProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CF98C1CF60CAC0082FDC7 /* RFProgressHUD.swift */; };
+		2E5CF98F1CF6C2E20082FDC7 /* RFProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CF98E1CF6C2E20082FDC7 /* RFProgressHUD.swift */; };
 		2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC21CE601A0009EE639 /* RFParser.m */; };
 		2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC51CE6079C009EE639 /* MovieActor.m */; };
 		2EAB4AC81CE61840009EE639 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAB4AC71CE61840009EE639 /* WebKit.framework */; };
@@ -93,7 +93,7 @@
 		2E447F911CE4A62500187C8E /* RFDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDataManager.h; path = ReFilm/Model/RFDataManager.h; sourceTree = "<group>"; };
 		2E447F921CE4A62500187C8E /* RFDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDataManager.m; path = ReFilm/Model/RFDataManager.m; sourceTree = "<group>"; };
 		2E5CF98B1CF60CAB0082FDC7 /* ReFilm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReFilm-Bridging-Header.h"; sourceTree = "<group>"; };
-		2E5CF98C1CF60CAC0082FDC7 /* RFProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFProgressHUD.swift; sourceTree = "<group>"; };
+		2E5CF98E1CF6C2E20082FDC7 /* RFProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFProgressHUD.swift; sourceTree = "<group>"; };
 		2EAB4AC11CE601A0009EE639 /* RFParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFParser.h; path = ReFilm/ViewModel/RFParser.h; sourceTree = "<group>"; };
 		2EAB4AC21CE601A0009EE639 /* RFParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFParser.m; path = ReFilm/ViewModel/RFParser.m; sourceTree = "<group>"; };
 		2EAB4AC41CE6079C009EE639 /* MovieActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieActor.h; path = ReFilm/Model/MovieActor.h; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		2EAB4AD21CE6F910009EE639 /* RFHUD */ = {
 			isa = PBXGroup;
 			children = (
-				2E5CF98C1CF60CAC0082FDC7 /* RFProgressHUD.swift */,
+				2E5CF98E1CF6C2E20082FDC7 /* RFProgressHUD.swift */,
 				2EAB4AD31CE6F928009EE639 /* RFProgressHUD.h */,
 				2EAB4AD41CE6F928009EE639 /* RFProgressHUD.m */,
 				2E5CF98B1CF60CAB0082FDC7 /* ReFilm-Bridging-Header.h */,
@@ -596,7 +596,7 @@
 				2EAB4ACB1CE61897009EE639 /* DetailController.m in Sources */,
 				2E2387961CECA317002738DC /* MovieImage.m in Sources */,
 				2E2387901CECA1C4002738DC /* MovieComment.m in Sources */,
-				2E5CF98D1CF60CAC0082FDC7 /* RFProgressHUD.swift in Sources */,
+				2E5CF98F1CF6C2E20082FDC7 /* RFProgressHUD.swift in Sources */,
 				2EAB4AD11CE61A23009EE639 /* HotMovieView.m in Sources */,
 				2EAB4AF41CE711F1009EE639 /* FavorieMovies.m in Sources */,
 				2EE5B5BB1CE44AC300590827 /* CoreDataManager.m in Sources */,
