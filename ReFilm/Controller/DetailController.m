@@ -10,14 +10,16 @@
 #import <Masonry.h>
 #import "RFDataManager.h"
 #import "MovieDetail.h"
-
+#import "ReFilm-Swift.h"
+#import "RFViewModel.h"
 
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
 
-@interface DetailController()<UIScrollViewDelegate, RFDataManagerDelegate>
+@interface DetailController()<UIScrollViewDelegate, RFDataManagerDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
 {
+    NSInteger numberOfActors;
     CGFloat summaryHeight;
 }
 /// 主要的ScrollView
@@ -26,8 +28,6 @@
 @property (nonatomic, strong) UIImageView *movieImageView;
 @property (nonatomic, strong) UIImageView *backImageView;
 @property (nonatomic, strong) UIImage *movieImage;
-/// 演员列表
-@property (nonatomic, strong) UITableView *actorTableView;
 /// 电影介绍
 @property (nonatomic, strong) UIView *movieInduction;
 @property (nonatomic, strong) UITextView *summaryField;
@@ -64,13 +64,14 @@
 @property (nonatomic, assign) CGFloat offSetY;
 
 /// 演员
-
+@property (nonatomic, strong) UIView *actorView;
 @property (nonatomic, strong) UICollectionView *movieActorView;
-
+@property (nonatomic, strong) NSArray *movieActors;
 
 
 @end
 
+static NSString *const collectionCellIdentifier = @"ActorCell";
 
 @implementation DetailController
 
@@ -86,13 +87,15 @@
     _mainScrollView.bounces = YES;
     
     _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 700);
+    numberOfActors = _movie.movieActors.count;
+    self.movieActors = _movie.movieActors;
     [self getImage];
     [self configureSubViews];
     [self configureMovieImageView];
     [self configureBriefInductionView];
     [self configureInductionView];
     [self getDetails];
-
+    [self configureMovieActor];
     
 }
 
@@ -221,12 +224,13 @@
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@20);
         make.top.equalTo(_movieInduction.mas_top);
-        make.left.equalTo(_movieInduction.mas_left);
+        make.left.equalTo(_movieInduction.mas_left).with.offset(15);
         make.width.equalTo(@100);
     }];
     titleLabel.text = @"剧情简介:";
-    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.font = [UIFont systemFontOfSize:15];
+    titleLabel.textColor = [UIColor greenColor];
     
     summaryHeight = 70;
     
@@ -295,13 +299,73 @@
 
 - (void)configureMovieActor {
     
+    _actorView = [UIView new];
+    [self.mainScrollView addSubview:_actorView];
+    [_actorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.movieInduction.mas_bottom).with.offset(10);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.equalTo(@174);
+    }];
+    _actorView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *titleLabel = [UILabel new];
+    [self.actorView addSubview:titleLabel];
+    titleLabel.text = @"演员";
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.font = [UIFont systemFontOfSize:15];
+    titleLabel.textColor = [UIColor greenColor];
+    
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@20);
+        make.top.equalTo(_actorView.mas_top);
+        make.left.equalTo(_actorView.mas_left).with.offset(15);
+        make.width.equalTo(@100);
+    }];
     
     
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     
-    
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    flowLayout.sectionInset = UIEdgeInsetsMake(5, 10, 5, 10);
+    //flowLayout.minimumInteritemSpacing = 5;
+    self.movieActorView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:flowLayout];
+    [self.actorView addSubview:self.movieActorView];
+    //self.movieActorView.
+    [self.movieActorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(titleLabel.mas_bottom).with.offset(4);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.equalTo([NSNumber numberWithFloat:150]);
+    }];
+    self.movieActorView.backgroundColor = [UIColor whiteColor];
+    self.movieActorView.delegate = self;
+    self.movieActorView.dataSource = self;
+    [self.movieActorView registerClass:[ActorCollectionCell class] forCellWithReuseIdentifier:@"ActorCell"];
+
 }
 
+#pragma mark - UICollectionViewDataSource
 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ActorCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionCellIdentifier forIndexPath:indexPath ];
+    
+    RFViewModel *rfViewModel = [[RFViewModel alloc]init];
+    [rfViewModel handleMovieActorCell:cell withMovie:[self.movieActors objectAtIndex:indexPath.item]];
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.movieActors.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 150);
+}
 
 
 #pragma mark - 电影封图
@@ -402,7 +466,6 @@
         
         
         
-        //NSLog(@"%@",)
     });
 }
 @end

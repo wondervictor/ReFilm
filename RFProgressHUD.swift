@@ -28,6 +28,7 @@ public class RFProgressHUD: UIView {
     private var shapePoint: CGPoint = CGPointMake(0, 0)
     private var progressView: UIView!
     private var parentView: UIView?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.shapePoint = CGPointMake(frame.size.height/2.0, (self.frame.size.height - 30)/2.0 )
