@@ -226,12 +226,23 @@ static NSString *const collectionCellIdentifier = @"ActorCell";
         make.height.equalTo(@20);
         make.top.equalTo(_movieInduction.mas_top);
         make.left.equalTo(_movieInduction.mas_left).with.offset(15);
-        make.width.equalTo(@100);
+        make.right.equalTo(_movieInduction.mas_right).with.offset(-15);
     }];
     titleLabel.text = @"剧情简介:";
     titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.font = [UIFont systemFontOfSize:15];
     titleLabel.textColor = [UIColor greenColor];
+    
+    CAShapeLayer *lineLayer = [CAShapeLayer layer];
+    lineLayer.strokeColor = [UIColor greenColor].CGColor;
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, 20);
+    CGPathAddLineToPoint(path, NULL, MAIN_WIDTH-30, 20);
+    lineLayer.path = path;
+    CGPathRelease(path);
+    [titleLabel.layer addSublayer:lineLayer];
+    
+    
     
     summaryHeight = 70;
     
@@ -321,10 +332,17 @@ static NSString *const collectionCellIdentifier = @"ActorCell";
         make.height.equalTo(@20);
         make.top.equalTo(_actorView.mas_top);
         make.left.equalTo(_actorView.mas_left).with.offset(15);
-        make.width.equalTo(@100);
+        make.right.equalTo(_actorView.mas_right).with.offset(-15);
     }];
-    
-    
+    CAShapeLayer *lineLayer = [CAShapeLayer layer];
+    lineLayer.strokeColor = [UIColor greenColor].CGColor;
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, 20);
+    CGPathAddLineToPoint(path, NULL, MAIN_WIDTH-30, 20);
+    lineLayer.path = path;
+    CGPathRelease(path);
+    [titleLabel.layer addSublayer:lineLayer];
+
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
