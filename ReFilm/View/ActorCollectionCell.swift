@@ -26,17 +26,7 @@ public class ActorCollectionCell: UICollectionViewCell {
         self.imageView = UIImageView(frame: CGRectMake(0, 0, 90, 120))
         self.imageView.center = CGPointMake(self.frame.size.width/2.0 , (self.frame.size.height-30)/2.0)
         self.contentView.addSubview(self.imageView)
-        /*
-        let imageViewConstraintTop = NSLayoutConstraint(item: self.imageView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: 5)
-        self.contentView.addConstraint(imageViewConstraintTop)
-        let imageViewConstrainLeft = NSLayoutConstraint(item: self.imageView, attribute: .Left, relatedBy: .Equal, toItem: self.contentView, attribute: .Left, multiplier: 1, constant: 5)
-        self.contentView.addConstraint(imageViewConstrainLeft)
-        
-        let imageViewConstrainRight = NSLayoutConstraint(item: self.imageView, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: -5)
-        self.contentView.addConstraint(imageViewConstrainRight)
-        
-        self.contentView .addConstraint(NSLayoutConstraint(item: self.imageView, attribute: .Bottom, relatedBy: .Equal, toItem: self.contentView, attribute: .Bottom, multiplier: 1, constant:  -30))
- */
+
         self.imageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         self.nameLabel = UILabel(frame: CGRectMake(0,0,self.frame.size.width,30))

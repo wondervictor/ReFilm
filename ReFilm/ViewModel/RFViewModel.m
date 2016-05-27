@@ -200,6 +200,7 @@
 
 - (void)handleMovieActorCell:(ActorCollectionCell *)cell withMovie:(MovieActor *)movie {
     cell.nameLabel.text = movie.name;
+    NSLog(@"%@",movie.name);
     RFDataManager *manager = [RFDataManager sharedManager];
     NSData *imageData = [manager getImageWithID:movie.actorID];
     if (!imageData) {
@@ -217,6 +218,35 @@
         cell.imageView.image = [UIImage imageWithData:imageData];
     }
     
+}
+
+- (void)handleComingCell:(ComingMovieViewCell *)cell withMovie:(Movie *)movie {
+    cell.titleLabel.text = movie.title;
+    NSLog(@"-----%@",movie.title);
+    if (!movie.movieImage) {
+        RFDataManager *manager = [RFDataManager sharedManager];
+        NSData *imgData = [manager getImageWithID:movie.movieID];
+        if (imgData) {
+            cell.movieImageView.image = [UIImage imageWithData:imgData];
+        } else {
+            //cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+                if (imageData) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        cell.movieImageView.image = [UIImage imageWithData:imageData];
+                        [manager saveImageData:imageData imageID:movie.movieID];
+                        
+                    });
+                }
+            });
+        }
+        // 没有照片
+        
+    } else {
+        cell.movieImageView.image = movie.movieImage;
+    }
 }
 
 

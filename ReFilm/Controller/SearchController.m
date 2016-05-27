@@ -66,13 +66,13 @@ static NSString *const cellIdentifier = @"cell";
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
     NSString *search = searchBar.text;
     if ([search isEqualToString:@""]) {
         return;
     }
     else {
         [self seachMovie:search];
-        [self resignFirstResponder];
         //[self searchBarCancelButtonClicked:searchBar];
     }
 }

@@ -458,7 +458,6 @@ static NSString *const collectionCellIdentifier = @"ActorCell";
 - (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error {
     NSLog(@"%@",movies);
     dispatch_async(dispatch_get_main_queue(), ^{
-       // _summaryField.text = movies.summary;
         NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
         paragrapgStyle.lineSpacing = 5;
         NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSParagraphStyleAttributeName:paragrapgStyle};

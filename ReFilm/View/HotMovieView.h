@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
+typedef NS_ENUM(NSInteger, MovieViewType) {
+    MovieViewTypeHotMovie,
+    MovieViewTypeComingMovie
+};
+
+
 @protocol HotMovieViewDelegate <NSObject>
 
 - (void)touchCollectionView:(UICollectionView *)tableView CellAtIndex:(NSInteger)index inView:(UIView *)view;
@@ -19,13 +25,13 @@
 
 
 
-
 @interface HotMovieView : UIView
 
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, weak) id <HotMovieViewDelegate> delegate;
+@property (nonatomic, assign) MovieViewType movieViewType;
 
-- (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame type:(MovieViewType)type;
 
 - (void)loadDataWithArray:(NSArray *)array;
 

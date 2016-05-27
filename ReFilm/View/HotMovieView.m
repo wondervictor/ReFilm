@@ -10,6 +10,7 @@
 #import "MovieCollectionCell.h"
 #import "RFParser.h"
 #import "RFViewModel.h"
+#import "ReFilm-Swift.h"
 
 
 #define MAIN_WIDTH   (self.frame.size.width)
@@ -26,10 +27,11 @@
 @end
 
 static NSString *cellIdentifier = @"hotMovieCollectionCell";
+static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
 
 @implementation HotMovieView
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame type:(MovieViewType)type {
     self = [super initWithFrame:frame];
     if (self) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
@@ -45,7 +47,13 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
         self.collectionView.backgroundColor = [UIColor whiteColor];
         self.collectionView.dataSource = self;
 
-        [self.collectionView registerClass:[MovieCollectionCell class] forCellWithReuseIdentifier:cellIdentifier];
+        _movieViewType = type;
+        if (type == MovieViewTypeHotMovie) {
+            [self.collectionView registerClass:[MovieCollectionCell class] forCellWithReuseIdentifier:cellIdentifier];
+        } else if (type == MovieViewTypeComingMovie) {
+            [self.collectionView registerClass:[ComingMovieViewCell class] forCellWithReuseIdentifier:cellCommingIdentifier];
+        }
+        
         UILabel *sourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 20)];
         sourceLabel.text = @"电影信息来源于[豆瓣电影]";
         sourceLabel.textAlignment = NSTextAlignmentCenter;
@@ -77,16 +85,28 @@ static NSString *cellIdentifier = @"hotMovieCollectionCell";
 
     NSLog(@"index: %lu",index);
 
-    MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    RFViewModel *rfViewModel = [[RFViewModel alloc]init];
-    Movie *movie = [self.movies objectAtIndex:index];
-    if (movie == nil) {
-        return nil;
+    if (_movieViewType == MovieViewTypeHotMovie) {
+        MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        RFViewModel *rfViewModel = [[RFViewModel alloc]init];
+        Movie *movie = [self.movies objectAtIndex:index];
+        if (movie == nil) {
+            return nil;
+        }
+        [rfViewModel handleCollectionCell:cell withMovie:movie];
+        return cell;
+        
+    } else if (_movieViewType == MovieViewTypeComingMovie) {
+        ComingMovieViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellCommingIdentifier forIndexPath:indexPath];
+        RFViewModel *rfViewModel = [[RFViewModel alloc]init];
+        Movie *movie = [self.movies objectAtIndex:index];
+        if (movie == nil) {
+            return nil;
+        }
+        [rfViewModel handleComingCell:cell withMovie:movie];
+        return cell;
+
     }
-    [rfViewModel handleCollectionCell:cell withMovie:movie];
-    
-    
-    return cell;
+    return nil;
 }
 
 

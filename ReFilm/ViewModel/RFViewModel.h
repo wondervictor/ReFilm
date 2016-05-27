@@ -38,4 +38,7 @@
 /// Movie Actor Cell View Model
 - (void)handleMovieActorCell:(ActorCollectionCell *)cell withMovie:(MovieActor *)actor;
 
+- (void)handleComingCell:(ComingMovieViewCell *)cell withMovie:(Movie *)movie;
+
+
 @end

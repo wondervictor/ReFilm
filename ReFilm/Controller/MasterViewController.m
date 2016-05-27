@@ -90,13 +90,13 @@
     self.navigationItem.rightBarButtonItem = search;
     
     [self.progressHUD startAnimatingWithTitile:@"正在加载"];
-    self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    self.hotMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT-113) type:MovieViewTypeHotMovie];
     self.hotMovieView.delegate = self;
     self.hotMovieView.tag = 10011;
     [_scrollView addSubview:self.hotMovieView];
     [self loadHotView];
     
-    self.comingMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(MAIN_WIDTH, 0, MAIN_WIDTH, MAIN_HEIGHT-113)];
+    self.comingMovieView = [[HotMovieView alloc]initWithFrame:CGRectMake(MAIN_WIDTH, 0, MAIN_WIDTH, MAIN_HEIGHT-113) type:MovieViewTypeComingMovie];
     self.comingMovieView.delegate = self;
     self.comingMovieView.tag = 10001;
     //self.comingMovieView.backgroundColor = [UIColor greenColor];
