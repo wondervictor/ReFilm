@@ -1,16 +1,30 @@
 # ReFilm
-Task - 3  - Unique Studio
 
-image:
+### 一个基于豆瓣的影讯App(Open Source) 
+**(From Unique Studio, HUST)**
 
-到5月14日：
+* **Swift 与 Objective－C 首次混编项目**    
+* **架构：MVVM**   
+* **开源框架使用：Masonry**
 
-![](https://github.com/wondervictor/ReFilm/blob/master/favoriteView.png)
+ ***
 
-已经完成了主页。收藏页的基本搭建，Model层和ViewModel层的基本功能。继续。
+####Main Interface
 
-主界面：
+![](https://github.com/wondervictor/ReFilm/blob/master/main.png?raw=true)
 
-![](https://github.com/wondervictor/ReFilm/blob/master/main.png)
+#### Favorite Interface
 
-还需要一些界面上的工作
+![](https://github.com/wondervictor/ReFilm/blob/master/favoriteView.png?raw=true)
+
+#### Detail Interface
+
+![](https://github.com/wondervictor/ReFilm/blob/master/detail.png?raw=true)
+
+***
+
+### 后续工作：
+
+* 存储优化
+* 网络优化
+* 获取影评接口
