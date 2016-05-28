@@ -6,7 +6,7 @@
 * **Swift 与 Objective－C 首次混编项目**    
 * **架构：MVVM**   
 * **开源框架使用：Masonry**
-
+* version 1.0
  ***
 
 ####Main Interface
@@ -27,4 +27,4 @@
 
 * 存储优化
 * 网络优化
-* 获取影评接口
+* 获取影评接口(爬虫获取，详情查看[ReFilm-Web](https://github.com/wondervictor/ReFilmWeb)还在学习中)
