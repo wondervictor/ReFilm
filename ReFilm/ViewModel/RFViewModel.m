@@ -250,6 +250,9 @@
 
 - (void)handleCommentCell:(CommentCell *)cell withComment:(MovieComment *)comment {
     cell.nameLabel.text = comment.name;
+    if (!comment.comment) {
+        return;
+    }
     NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
     paragrapgStyle.lineSpacing = 5;
     NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:13],NSParagraphStyleAttributeName:paragrapgStyle};

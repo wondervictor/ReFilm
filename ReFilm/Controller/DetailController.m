@@ -112,7 +112,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [self configureBriefInductionView];
     [self configureInductionView];
     [self getDetails];
-    
+    self.comments = [NSArray new];
     [self setCommentArray];
     
     
@@ -535,6 +535,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         make.left.equalTo(_movieReview.mas_left).with.offset(15);
         make.right.equalTo(_movieReview.mas_right).with.offset(-15);
     }];
+    
     CAShapeLayer *lineLayer = [CAShapeLayer layer];
     lineLayer.strokeColor = [UIColor greenColor].CGColor;
     CGMutablePathRef path = CGPathCreateMutable();
@@ -543,14 +544,14 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     lineLayer.path = path;
     CGPathRelease(path);
     [titleLabel.layer addSublayer:lineLayer];
-    
+
     self.commentTable = [UITableView new];
     [self.movieReview addSubview:self.commentTable];
     
     [self.commentTable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLabel.mas_bottom).with.offset(4);
-        make.left.equalTo(self.mainScrollView.mas_left);
-        make.right.equalTo(self.mainScrollView.mas_right);
+        make.left.equalTo(self.movieReview.mas_left);
+        make.right.equalTo(self.movieReview.mas_right);
         make.height.equalTo(@300);
     }];
     
@@ -560,7 +561,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     self.commentTable.estimatedRowHeight = 60;
     self.commentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.commentTable registerClass:[CommentCell class] forCellReuseIdentifier:commentCellIdentifier];
-    
+
 }
 
 #pragma mark - UITableViewDelegate || UITableViewDataSource
@@ -580,7 +581,8 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *text = [self.comments objectAtIndex:indexPath.row];
+    MovieComment *commnet = [self.comments objectAtIndex:indexPath.row];
+    NSString *text = commnet.comment;
     NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
     paragrapgStyle.lineSpacing = 5;
     NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:13],NSParagraphStyleAttributeName:paragrapgStyle};

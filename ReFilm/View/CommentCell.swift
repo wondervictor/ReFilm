@@ -73,7 +73,7 @@ public class CommentCell: UITableViewCell {
             attribute:.Height,
             relatedBy: .Equal,
             toItem: self.contentView,
-            attribute: .Top,
+            attribute: .Height,
             multiplier: 0,
             constant: 20)
         nameConstraintHeight.active = true
@@ -87,17 +87,17 @@ public class CommentCell: UITableViewCell {
         self.commentLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.commentLabel)
         let commentTop = NSLayoutConstraint(
-            item: self.nameLabel,
+            item: self.commentLabel,
             attribute:.Top,
             relatedBy: .Equal,
             toItem: self.nameLabel,
-            attribute: .Top,
+            attribute: .Bottom,
             multiplier: 1,
             constant: 0)
         commentTop.active = true
         
         let commentLeft = NSLayoutConstraint(
-            item: self.nameLabel,
+            item: self.commentLabel,
             attribute:.Left,
             relatedBy: .Equal,
             toItem: self.contentView,
@@ -107,7 +107,7 @@ public class CommentCell: UITableViewCell {
         commentLeft.active = true
         
         let commentRight = NSLayoutConstraint(
-            item: self.nameLabel,
+            item: self.commentLabel,
             attribute:.Right,
             relatedBy: .Equal,
             toItem: self.contentView,
@@ -117,11 +117,11 @@ public class CommentCell: UITableViewCell {
         commentRight.active = true
         
         let commentBottom = NSLayoutConstraint(
-            item: self.nameLabel,
-            attribute:.Height,
+            item: self.commentLabel,
+            attribute:.Bottom,
             relatedBy: .Equal,
             toItem: self.contentView,
-            attribute: .Top,
+            attribute: .Bottom,
             multiplier: 1,
             constant: 0)
         commentBottom.active = true
