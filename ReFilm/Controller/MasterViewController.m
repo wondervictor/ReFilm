@@ -197,7 +197,6 @@
 #pragma mark - HotMovieViewDelegate
 
 - (void)touchCollectionView:(UICollectionView *)tableView CellAtIndex:(NSInteger)index inView:(UIView *)view{
-    NSLog(@"touch %lu",index);
     if (view.tag == 10011) {
         self.hidesBottomBarWhenPushed = YES;
         
@@ -211,7 +210,6 @@
         self.hidesBottomBarWhenPushed = YES;
         WebController *webController = [WebController new];
         Movie *movie = [self.comingMovies objectAtIndex:index];
-        NSLog(@"%@",movie.alt);
         NSString *url = movie.alt;//[RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
         webController.openURL = url;
         webController.movie = movie;

@@ -83,7 +83,6 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.row + indexPath.section * 2;
 
-    NSLog(@"index: %lu",index);
 
     if (_movieViewType == MovieViewTypeHotMovie) {
         MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -113,7 +112,6 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    NSLog(@"%lu",self.movies.count);
     if (self.movies.count == 0) {
         return 0;
     } else if (self.movies.count %2 == 0) {
@@ -191,7 +189,6 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
 #pragma mark - UIGesture
 
 - (void)longPressed:(UILongPressGestureRecognizer *)recognizer {
-    NSLog(@"adfsghd");
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"long begin");
         CGPoint point = [recognizer locationInView:self];

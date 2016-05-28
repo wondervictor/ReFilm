@@ -23,6 +23,7 @@
 		2E9DF7EC1CF88CA900F7BAF0 /* ComingMovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9DF7EB1CF88CA900F7BAF0 /* ComingMovieViewCell.swift */; };
 		2E9DF7EF1CF8ABC900F7BAF0 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9DF7ED1CF8ABC900F7BAF0 /* main.png */; };
 		2E9DF7F01CF8ABC900F7BAF0 /* detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9DF7EE1CF8ABC900F7BAF0 /* detail.png */; };
+		2E9DF8051CF9596200F7BAF0 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9DF8041CF9596200F7BAF0 /* CommentCell.swift */; };
 		2EAB4AC31CE601A0009EE639 /* RFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC21CE601A0009EE639 /* RFParser.m */; };
 		2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB4AC51CE6079C009EE639 /* MovieActor.m */; };
 		2EAB4AC81CE61840009EE639 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAB4AC71CE61840009EE639 /* WebKit.framework */; };
@@ -102,6 +103,7 @@
 		2E9DF7EB1CF88CA900F7BAF0 /* ComingMovieViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComingMovieViewCell.swift; path = ReFilm/View/ComingMovieViewCell.swift; sourceTree = "<group>"; };
 		2E9DF7ED1CF8ABC900F7BAF0 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		2E9DF7EE1CF8ABC900F7BAF0 /* detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail.png; sourceTree = "<group>"; };
+		2E9DF8041CF9596200F7BAF0 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentCell.swift; path = ReFilm/View/CommentCell.swift; sourceTree = "<group>"; };
 		2EAB4AC11CE601A0009EE639 /* RFParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFParser.h; path = ReFilm/ViewModel/RFParser.h; sourceTree = "<group>"; };
 		2EAB4AC21CE601A0009EE639 /* RFParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFParser.m; path = ReFilm/ViewModel/RFParser.m; sourceTree = "<group>"; };
 		2EAB4AC41CE6079C009EE639 /* MovieActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieActor.h; path = ReFilm/Model/MovieActor.h; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				2EF24D451CF1EA16005FC8AE /* TopView.m */,
 				2EE3F6511CF732A7002724B7 /* ActorCollectionCell.swift */,
 				2E9DF7EB1CF88CA900F7BAF0 /* ComingMovieViewCell.swift */,
+				2E9DF8041CF9596200F7BAF0 /* CommentCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				2EAB4AF31CE711F1009EE639 /* FavorieMovies+CoreDataProperties.m in Sources */,
 				2EAB4ACE1CE618BA009EE639 /* WebController.m in Sources */,
 				2EF24D461CF1EA16005FC8AE /* TopView.m in Sources */,
+				2E9DF8051CF9596200F7BAF0 /* CommentCell.swift in Sources */,
 				2EE5B5B81CE44A9D00590827 /* MovieTableCell.m in Sources */,
 				2EAB4AC61CE6079C009EE639 /* MovieActor.m in Sources */,
 				2EAB4ADC1CE70C99009EE639 /* Movie.xcdatamodeld in Sources */,

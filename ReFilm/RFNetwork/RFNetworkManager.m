@@ -77,7 +77,9 @@
 }
 
 
-
+- (void)requestCommentWithURL:(NSString *)urlStirng success:(ComplitionBlock)success failure:(ErrorBlock)failure {
+    
+}
 
 
 @end

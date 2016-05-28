@@ -10,4 +10,8 @@
 
 @interface MovieComment : NSObject
 
+@property (nonatomic, copy) NSString *comment;
+
+@property (nonatomic, copy) NSString *name;
+
 @end

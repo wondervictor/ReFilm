@@ -49,7 +49,6 @@
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:urlString success:^(NSDictionary *responseObject, NSURLResponse *response) {
         NSArray *movies = [RFParser parseForSearchMovie:responseObject];
-        NSLog(@"%@",responseObject);
         [_delegate didReceiveCommingMovies:movies error:nil];
     } failure:^(NSError *error, NSString *errorMsg) {
         NSLog(@"error: %@",errorMsg);
@@ -72,8 +71,7 @@
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:url success:^(NSDictionary *responseObject, NSURLResponse *response) {
         NSArray *array = [RFParser parseForSearchMovie:responseObject];
-        Movie *movie = [array firstObject];
-        NSLog(@"movie name: %@",movie.movieName);
+        //Movie *movie = [array firstObject];
         [_delegate didReceiveSearchMovies:array error:nil];
         
     } failure:^(NSError *error, NSString *errorMsg) {
@@ -89,6 +87,7 @@
         //NSLog(@"movie info----%@",responseObject);
         MovieDetail *detail = [RFParser parseForMovieDetail:responseObject];
         [_delegate didReceiveMovieInfo:detail error:nil];
+        NSLog(@"%@",responseObject);
         //_delegate didReceiveMovieInfo: error:<#(NSString *)#>
     } failure:^(NSError *error, NSString *errorMsg) {
         
@@ -99,7 +98,6 @@
     NSString *url = [NSString stringWithFormat:@"http://api.douban.com/v2/movie/subject/%@/comments",movieID];
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:url success:^(NSDictionary *responseObject, NSURLResponse *response) {
-        NSLog(@"----%@",responseObject);
     } failure:^(NSError *error, NSString *errorMsg) {
         
     }];

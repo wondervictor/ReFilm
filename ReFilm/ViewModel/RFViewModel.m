@@ -222,7 +222,6 @@
 
 - (void)handleComingCell:(ComingMovieViewCell *)cell withMovie:(Movie *)movie {
     cell.titleLabel.text = movie.title;
-    NSLog(@"-----%@",movie.title);
     if (!movie.movieImage) {
         RFDataManager *manager = [RFDataManager sharedManager];
         NSData *imgData = [manager getImageWithID:movie.movieID];
@@ -249,6 +248,13 @@
     }
 }
 
+- (void)handleCommentCell:(CommentCell *)cell withComment:(MovieComment *)comment {
+    cell.nameLabel.text = comment.name;
+    NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
+    paragrapgStyle.lineSpacing = 5;
+    NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:13],NSParagraphStyleAttributeName:paragrapgStyle};
+    cell.commentLabel.attributedText = [[NSAttributedString alloc]initWithString:comment.comment attributes:attribute];
+}
 
 
 @end
