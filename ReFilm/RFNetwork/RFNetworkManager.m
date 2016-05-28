@@ -25,6 +25,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc]init];
+        [sharedManager session]; 
     });
     return sharedManager;
 }

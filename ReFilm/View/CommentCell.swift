@@ -55,7 +55,7 @@ public class CommentCell: UITableViewCell {
             toItem: self.contentView,
             attribute: .Left,
             multiplier: 1,
-            constant: 10)
+            constant: 15)
         nameConstraintLeft.active = true
        
         let nameConstraintRight = NSLayoutConstraint(
@@ -65,7 +65,7 @@ public class CommentCell: UITableViewCell {
             toItem: self.contentView,
             attribute: .Right,
             multiplier: 1,
-            constant: -10)
+            constant: -15)
         nameConstraintRight.active = true
         
         let nameConstraintHeight = NSLayoutConstraint(
@@ -103,7 +103,7 @@ public class CommentCell: UITableViewCell {
             toItem: self.contentView,
             attribute: .Left,
             multiplier: 1,
-            constant: 10)
+            constant: 15)
         commentLeft.active = true
         
         let commentRight = NSLayoutConstraint(
@@ -113,7 +113,7 @@ public class CommentCell: UITableViewCell {
             toItem: self.contentView,
             attribute: .Right,
             multiplier: 1,
-            constant: -10)
+            constant: -15)
         commentRight.active = true
         
         let commentBottom = NSLayoutConstraint(
@@ -127,7 +127,7 @@ public class CommentCell: UITableViewCell {
         commentBottom.active = true
         self.commentLabel.textColor = UIColor.blackColor()
         self.commentLabel.font = UIFont(name: "HelveticaNeue", size: 13)
-       
+        self.commentLabel.numberOfLines = 0
 
         
         

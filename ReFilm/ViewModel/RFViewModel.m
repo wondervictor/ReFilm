@@ -249,7 +249,8 @@
 }
 
 - (void)handleCommentCell:(CommentCell *)cell withComment:(MovieComment *)comment {
-    cell.nameLabel.text = comment.name;
+    cell.nameLabel.text = [NSString stringWithFormat:@"- %@: -", comment.name];
+    
     if (!comment.comment) {
         return;
     }

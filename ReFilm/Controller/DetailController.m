@@ -96,13 +96,14 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [super viewDidLoad];
     self.title = @"详细信息";
     self.view.backgroundColor = [UIColor whiteColor];
-    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,0, MAIN_WIDTH, MAIN_HEIGHT-49)];
+    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,0, MAIN_WIDTH, MAIN_HEIGHT)];
     [self.view addSubview:_mainScrollView];
     _mainScrollView.showsVerticalScrollIndicator = YES;
     _mainScrollView.backgroundColor = [UIColor whiteColor];
     _mainScrollView.pagingEnabled = NO;
+    _mainScrollView.delegate = self;
     _mainScrollView.bounces = YES;
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 1500);
     numberOfActors = _movie.movieActors.count;
     self.movieActors = _movie.movieActors;
@@ -140,6 +141,11 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     
 }
 
+- (void)viewDidLayoutSubviews {
+    _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, 1500);
+
+}
+
 
 #pragma mark - Test for Comment
 
@@ -149,17 +155,17 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     comment1.comment = @"第一次看的时候，觉得这就是三个无关联的故事。 第一个故事里，陈经理去广西出差，在陌生的城市跟踪从小就没见过了的父亲。 曾经炒掉过几百人的父亲，如今是个有不少白发的瘸子，做最低廉的工作。 而陈经理事业有成，出差在外，有人唯唯诺诺地跟着。 这样的一个冷静克制，风度翩翩（难以接近）的人，跟在落魄的父亲身后，就像在拍纪录片一样记录老人生活的细节—— 去找活............ ";
     
     MovieComment *comment2 = [MovieComment new];
-    comment2.comment = @"世界那么大";
-    comment2.name = @"5月10日的北京颐堤港，陈柏霖穿着非常得体的西服在影厅门口为首映礼做准备，不知被哪个粉丝看见了忽然大叫了一声他的名字。陈抬起头本能就是一个微笑，既然被发现了他就大大方方的抢了一个话筒，他说，好像主持人还没来哎，我就先代替一下吧。说着就领着大队伍浩浩荡荡的进了场。 怎么回事啊？他在大场合下是如此的自如又得体。 我们回到电影，在那样能发觉每一个细微表情的............";
+    comment2.name = @"世界那么大";
+    comment2.comment = @"5月10日的北京颐堤港，陈柏霖穿着非常得体的西服在影厅门口为首映礼做准备，不知被哪个粉丝看见了忽然大叫了一声他的名字。陈抬起头本能就是一个微笑，既然被发现了他就大大方方的抢了一个话筒，他说，好像主持人还没来哎，我就先代替一下吧。说着就领着大队伍浩浩荡荡的进了场。 怎么回事啊？他在大场合下是如此的自如又得体。 我们回到电影，在那样能发觉每一个细微表情的............";
     MovieComment *comment3 = [MovieComment new];
-    comment2.comment = @" yueer";
-    comment2.name = @"刚看完由陈哲艺监製，并跨国连三位新生代忻钰坤、陈世杰、Sivaroj Kongsakul导演，陈柏霖、秦沛、蒋雯丽、杨祐宁、小茶领衔主演的《再见，在也不见》，感受是闷、很闷、极度闷。 主角失落的人生让我极度失望。 三个故事，三种情感，三段人生。温吞到沉闷的矫情作品，无法相认的父子俩，万千阻隔的断背情，暗涌深藏的师生恋，每段都矫情， 陈柏霖的表演在我看得好累，亲情、同............";
+    comment3.name = @" yueer";
+    comment3.comment = @"刚看完由陈哲艺监製，并跨国连三位新生代忻钰坤、陈世杰、Sivaroj Kongsakul导演，陈柏霖、秦沛、蒋雯丽、杨祐宁、小茶领衔主演的《再见，在也不见》，感受是闷、很闷、极度闷。 主角失落的人生让我极度失望。 三个故事，三种情感，三段人生。温吞到沉闷的矫情作品，无法相认的父子俩，万千阻隔的断背情，暗涌深藏的师生恋，每段都矫情， 陈柏霖的表演在我看得好累，亲情、同............";
     MovieComment *comment4 = [MovieComment new];
-    comment2.comment = @"梦沉雨夜";
-    comment2.name = @"金马影展的开幕影片，一部真正意义上的分段式电影，讲述亲情、友情、爱情三段不同的故事，由三个不同的导演打造，却由同一个人演绎，保持统一的情感基调，别有一番韵味。 《再见，在也不见》，一个很有意思的片名，既然再见，那难道不是再也不见，为何又在，也不见呢，主题曲《在，也不见》更是让人产生无限遐想，而影片的英文名《Distance》则像是在说，即使相见也有那永远无...........";
+    comment4.name = @"梦沉雨夜";
+    comment4.comment = @"金马影展的开幕影片，一部真正意义上的分段式电影，讲述亲情、友情、爱情三段不同的故事，由三个不同的导演打造，却由同一个人演绎，保持统一的情感基调，别有一番韵味。 《再见，在也不见》，一个很有意思的片名，既然再见，那难道不是再也不见，为何又在，也不见呢，主题曲《在，也不见》更是让人产生无限遐想，而影片的英文名《Distance》则像是在说，即使相见也有那永远无...........";
     MovieComment *comment5 = [MovieComment new];
-    comment2.comment = @"水漾薄荷";
-    comment2.name = @"被电影名吸引而进入影院，开始看到这个片名的时候略感意外，为什么是“再见，在也不见”，而不是“再见，再也不见”呢？看了片子后明白，有些事，有些人，错过了，即使还在，见还不如不见，这点我非常认同。有些过去的往事，随风而逝，随时间的流逝，各自已不再是当时的那个自己，即便再见，也不再是当年的模样和心境，何不如留住曾经的美好！存在记忆的心底，作为一种怀念，......";
+    comment5.name = @"水漾薄荷";
+    comment5.comment = @"被电影名吸引而进入影院，开始看到这个片名的时候略感意外，为什么是“再见，在也不见”，而不是“再见，再也不见”呢？看了片子后明白，有些事，有些人，错过了，即使还在，见还不如不见，这点我非常认同。有些过去的往事，随风而逝，随时间的流逝，各自已不再是当时的那个自己，即便再见，也不再是当年的模样和心境，何不如留住曾经的美好！存在记忆的心底，作为一种怀念，......";
     
     NSMutableArray *list = [NSMutableArray new];
     [list addObject:comment1];
@@ -512,17 +518,36 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 - (void)configureCommentView {
    
     
-    self.movieReview = [UIView new];
+    self.movieReview = [[UIView alloc]init]; //WithFrame:CGRectMake(0, 700, MAIN_WIDTH, 320)];
     [self.mainScrollView addSubview:self.movieReview];
+    self.mainScrollView.scrollEnabled = YES;
+
+    self.movieReview.translatesAutoresizingMaskIntoConstraints = NO;
+    NSLayoutConstraint *topConstriant = [NSLayoutConstraint constraintWithItem:self.movieReview attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.movieInduction attribute:NSLayoutAttributeBottom multiplier:1 constant:190];
+    topConstriant.active = YES;
+    
+    NSLayoutConstraint *leftConstriant = [NSLayoutConstraint constraintWithItem:self.movieReview attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+    leftConstriant.active = YES;
+    
+    NSLayoutConstraint *rightConstriant = [NSLayoutConstraint constraintWithItem:self.movieReview attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+    rightConstriant.active = YES;
+    
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.movieReview attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:1 constant:370];
+    heightConstraint.active = YES;
+                        
+    /*
     [self.movieReview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.movieActorView.mas_bottom).with.offset(4);
+        make.top.equalTo(self.movieActorView.mas_bottom).with.offset(10);
         make.left.equalTo(self.mainScrollView.mas_left);
         make.right.equalTo(self.mainScrollView.mas_right);
         make.height.equalTo(@330);
     }];
     
-    UILabel *titleLabel = [UILabel new];
+    */
+    self.movieReview.backgroundColor = [UIColor whiteColor];
     
+    UILabel *titleLabel = [UILabel new];
+    self.mainScrollView.scrollEnabled = YES;
     [self.movieReview addSubview:titleLabel];
     titleLabel.text = @"电影评论";
     titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -552,15 +577,24 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         make.top.equalTo(titleLabel.mas_bottom).with.offset(4);
         make.left.equalTo(self.movieReview.mas_left);
         make.right.equalTo(self.movieReview.mas_right);
-        make.height.equalTo(@300);
+        make.height.equalTo(@350);
     }];
-    
+    CAShapeLayer *lineLayers = [CAShapeLayer layer];
+    lineLayers.strokeColor = [UIColor greenColor].CGColor;
+    lineLayers.lineWidth = 1;
+    CGMutablePathRef paths = CGPathCreateMutable();
+    CGPathMoveToPoint(paths, NULL, 15, 375);
+    CGPathAddLineToPoint(paths, NULL, MAIN_WIDTH-30, 375);
+    lineLayers.path = paths;
+    CGPathRelease(paths);
+    [self.movieReview.layer addSublayer:lineLayers];
     
     self.commentTable.delegate = self;
     self.commentTable.dataSource = self;
     self.commentTable.estimatedRowHeight = 60;
     self.commentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.commentTable registerClass:[CommentCell class] forCellReuseIdentifier:commentCellIdentifier];
+    self.mainScrollView.scrollEnabled = YES;
 
 }
 
@@ -602,8 +636,17 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 - (void)configureFooterView {
     
 }
+/*
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"asDFGFDHJKHJHGFDS");
+}
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scroll");
+}
 
+*/
 
 #pragma mark - Reuqest
 
