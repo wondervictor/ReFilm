@@ -485,7 +485,7 @@
 				TargetAttributes = {
 					2EE5B39F1CE3578200590827 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = J22TFZQX2Y;
+						DevelopmentTeam = 23D5PVYLWJ;
 					};
 					2EE5B3B81CE3578300590827 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -775,7 +775,7 @@
 				INFOPLIST_FILE = ReFilm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilm;
+				PRODUCT_BUNDLE_IDENTIFIER = wondervictor.ReFilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReFilm-Bridging-Header.h";
@@ -794,7 +794,7 @@
 				INFOPLIST_FILE = ReFilm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Victor.ReFilm;
+				PRODUCT_BUNDLE_IDENTIFIER = wondervictor.ReFilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReFilm-Bridging-Header.h";

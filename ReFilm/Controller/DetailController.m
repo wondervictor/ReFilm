@@ -70,6 +70,12 @@
 @property (nonatomic, strong) NSArray *movieActors;
 
 
+
+/// FooterView
+@property (nonatomic, strong) UIView *footView;
+@property (nonatomic, strong) UIButton *openWebButton;
+@property (nonatomic, strong) UILabel *footerLabel;
+
 @end
 
 static NSString *const collectionCellIdentifier = @"ActorCell";
@@ -459,6 +465,9 @@ static NSString *const collectionCellIdentifier = @"ActorCell";
     [manager addFavoriteMovie:self.movie];
 }
 
+- (void)configureFooterView {
+    
+}
 
 
 

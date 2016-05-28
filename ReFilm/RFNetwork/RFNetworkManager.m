@@ -50,10 +50,12 @@
     NSLog(@"%@",url);
     
     
+
+// TODO: reachablity
+    /*
     RFReachableManager *managr = [[RFReachableManager alloc]init];
-    //[managr checkNetWorkCondition];
     [managr checkNetWorkCondition];
-    
+     */
     NSURLSessionDataTask *task = [self.session dataTaskWithURL:url
                                          completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                              if (!error) {
