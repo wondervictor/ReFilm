@@ -96,7 +96,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [super viewDidLoad];
     self.title = @"详细信息";
     self.view.backgroundColor = [UIColor whiteColor];
-    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,0, MAIN_WIDTH, MAIN_HEIGHT)];
+    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64, MAIN_WIDTH, MAIN_HEIGHT-64)];
     [self.view addSubview:_mainScrollView];
     _mainScrollView.showsVerticalScrollIndicator = YES;
     _mainScrollView.backgroundColor = [UIColor whiteColor];
