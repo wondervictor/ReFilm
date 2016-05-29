@@ -158,7 +158,6 @@
     NSData *genresData = [NSKeyedArchiver archivedDataWithRootObject:movie.genres];
     fmovie.movieActors = actorData;
     fmovie.movieDirectors = directorData;
-    
     fmovie.genres = genresData;
     
     [self.coreDataManager saveContext];

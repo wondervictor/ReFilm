@@ -166,7 +166,7 @@
     NSMutableArray *actors = [NSMutableArray new];
     
     for (NSDictionary *dict in movieActors) {
-        MovieActor *actor = [self parseForActor:dict];
+        MovieActor *actor = [self parseDictIntoMovieActor:dict];
         [actors addObject:actor];
     }
     aMovie.movieActors = actors;
@@ -175,7 +175,7 @@
     NSMutableArray *directors = [NSMutableArray new];
     
     for (NSDictionary *dict in movirDirectors) {
-        MovieActor *director = [self parseForActor:dict];
+        MovieActor *director = [self parseDictIntoMovieActor:dict];
         [directors addObject:director];
     }
     aMovie.movieDirectors = directors;
