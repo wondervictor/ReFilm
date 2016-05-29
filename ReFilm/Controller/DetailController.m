@@ -26,6 +26,9 @@
     NSInteger numberOfActors;
     CGFloat summaryHeight;
 }
+
+@property (nonatomic, strong) RFProgressHUD *progressHUD;
+
 /// 主要的ScrollView
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 /// 电影海报
@@ -96,8 +99,12 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [super viewDidLoad];
     self.title = @"详细信息";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.progressHUD = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 60, MAIN_HEIGHT/2.0 - 100,120 , 120) radius:30 duration:3 parentView:self.view];
+    [self.progressHUD startAnimating];
     _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64, MAIN_WIDTH, MAIN_HEIGHT-64)];
     [self.view addSubview:_mainScrollView];
+    
     _mainScrollView.showsVerticalScrollIndicator = YES;
     _mainScrollView.backgroundColor = [UIColor whiteColor];
     _mainScrollView.pagingEnabled = NO;
@@ -579,12 +586,13 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         make.right.equalTo(self.movieReview.mas_right);
         make.height.equalTo(@350);
     }];
+    
     CAShapeLayer *lineLayers = [CAShapeLayer layer];
     lineLayers.strokeColor = [UIColor greenColor].CGColor;
     lineLayers.lineWidth = 1;
     CGMutablePathRef paths = CGPathCreateMutable();
     CGPathMoveToPoint(paths, NULL, 15, 375);
-    CGPathAddLineToPoint(paths, NULL, MAIN_WIDTH-30, 375);
+    CGPathAddLineToPoint(paths, NULL, MAIN_WIDTH-25, 375);
     lineLayers.path = paths;
     CGPathRelease(paths);
     [self.movieReview.layer addSublayer:lineLayers];
@@ -679,7 +687,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         }
         _plotTypeLabel.text = type;
         
-        
+        [self.progressHUD stopWithSuccess:@"加载完成"];
         
     });
 }

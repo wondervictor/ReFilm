@@ -12,9 +12,15 @@
 #import "MovieTableCell.h"
 #import "RFViewModel.h"
 #import "DetailController.h"
+#import "ReFilm-Swift.h"
 
+
+#define MAIN_HEIGHT    (self.view.frame.size.height)
+#define MAIN_WIDTH    (self.view.frame.size.width)
 
 @interface SearchController()<RFDataManagerDelegate,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) RFProgressHUD *progressHUD;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
@@ -40,6 +46,7 @@ static NSString *const cellIdentifier = @"cell";
     _searchBar.delegate = self;
     _searchBar.placeholder = @"输入您感兴趣的电影";
     self.navigationItem.titleView = _searchBar;
+    self.progressHUD = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 60, MAIN_HEIGHT/2.0 - 100,120 , 120) radius:30 duration:3 parentView:self.view];
 
     _resultTableView = [[UITableView alloc]init];
     [self.view addSubview:_resultTableView];
@@ -73,6 +80,7 @@ static NSString *const cellIdentifier = @"cell";
     }
     else {
         [self seachMovie:search];
+        [self.progressHUD startAnimatingWithTitile:@"正在搜索"];
         //[self searchBarCancelButtonClicked:searchBar];
     }
 }
@@ -150,11 +158,13 @@ static NSString *const cellIdentifier = @"cell";
 - (void)didReceiveSearchMovies:(NSArray *)movies error:(NSString *)error {
     if (error) {
         NSLog(@"error : %@",error);
+        [self.progressHUD stopWithError:@"搜索故障"];
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.resultLists = movies;
             [self.resultTableView reloadData];
+            [self.progressHUD stopWithSuccess:@"搜索成功"];
         });
     }
 }

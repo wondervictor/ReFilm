@@ -8,6 +8,7 @@
 
 #import "SettingController.h"
 #import "RFDataManager.h"
+#import "ReFilm-Swift.h"
 
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -20,6 +21,8 @@
 
 @property (nonatomic, strong) NSArray *settings;
 
+@property (nonatomic, strong) RFProgressHUD *progressHUD;
+
 @end
 
 @implementation SettingController
@@ -30,6 +33,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.settings = @[@"清除缓存记录"];
     self.settingTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT - 64) style:UITableViewStyleGrouped];
+    self.progressHUD = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 60, MAIN_HEIGHT/2.0 - 100,120 , 120) radius:30 duration:3 parentView:self.view];;
+    
     self.settingTableView.delegate = self;
     self.settingTableView.dataSource = self;
     [self.view addSubview:self.settingTableView];
@@ -86,6 +91,7 @@
 - (void)removeStoreCache {
     RFDataManager *manager = [RFDataManager sharedManager];
     [manager removeAllImageData];
+    [self.progressHUD stopWithSuccess:@"清除成功"];
 }
 
 
