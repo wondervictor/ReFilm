@@ -153,4 +153,37 @@
 }
 
 
++ (Movie *)convertFavoriteMovie:(FavorieMovies *)movie {
+    Movie *aMovie = [Movie new];
+    aMovie.movieName = movie.movieName;
+    aMovie.movieID = movie.movieID;
+    aMovie.alt = movie.alt;
+    aMovie.averageRating = movie.averageRating.floatValue;
+    aMovie.year = movie.year;
+    aMovie.movieImage = [UIImage imageWithData:movie.movieImage];
+    aMovie.imageURL = movie.imageURL;
+    NSArray *movieActors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieActors];
+    NSMutableArray *actors = [NSMutableArray new];
+    
+    for (NSDictionary *dict in movieActors) {
+        MovieActor *actor = [self parseForActor:dict];
+        [actors addObject:actor];
+    }
+    aMovie.movieActors = actors;
+    
+    NSArray *movirDirectors = [NSKeyedUnarchiver unarchiveObjectWithData:movie.movieDirectors];
+    NSMutableArray *directors = [NSMutableArray new];
+    
+    for (NSDictionary *dict in movirDirectors) {
+        MovieActor *director = [self parseForActor:dict];
+        [directors addObject:director];
+    }
+    aMovie.movieDirectors = directors;
+    
+    aMovie.genres = [NSKeyedUnarchiver unarchiveObjectWithData:movie.genres];
+    
+    return aMovie;
+}
+
+
 @end

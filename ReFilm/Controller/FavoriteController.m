@@ -11,9 +11,10 @@
 #import "RFDataManager.h"
 #import "MovieActor.h"
 #import "Movie.h"
+#import "RFParser.h"
 #import "CoreDataManager.h"
 #import "RFViewModel.h"
-
+#import "DetailController.h"
 
 #define MAIN_HEIGHT   (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
@@ -130,6 +131,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Detail Controller
+    FavorieMovies *fmovie = [self.movies objectAtIndex:indexPath.row];
+    Movie *movie = [RFParser convertFavoriteMovie:fmovie];
+    
+    DetailController *detail = [[DetailController alloc]init];
+    detail.movie = movie;
+    self.hidesBottomBarWhenPushed = YES;
+    [self showViewController:detail sender:nil];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 

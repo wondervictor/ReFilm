@@ -32,4 +32,7 @@
 
 + (MovieDetail *)parseForMovieDetail:(NSDictionary *)data;
 
++ (Movie *)convertFavoriteMovie:(FavorieMovies *)movie;
+
+
 @end

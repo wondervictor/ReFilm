@@ -211,6 +211,7 @@
         [self.coreDataManager.context deleteObject:item];
     }
     [self.coreDataManager saveContext];
+
 }
 
 
