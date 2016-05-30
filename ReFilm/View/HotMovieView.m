@@ -23,8 +23,11 @@
 }
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 @end
+
 
 static NSString *cellIdentifier = @"hotMovieCollectionCell";
 static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
@@ -53,6 +56,7 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
         } else if (type == MovieViewTypeComingMovie) {
             [self.collectionView registerClass:[ComingMovieViewCell class] forCellWithReuseIdentifier:cellCommingIdentifier];
         }
+        
         
         UILabel *sourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 20)];
         sourceLabel.text = @"电影信息来源于[豆瓣电影]";
@@ -152,9 +156,7 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
     [_delegate touchCollectionView:collectionView CellAtIndex:index inView:self];
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
+
 
 /*
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

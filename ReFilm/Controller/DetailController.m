@@ -82,10 +82,11 @@
 @property (nonatomic, strong) NSArray *comments;
 @property (nonatomic, strong) NSArray *rowHeightList;
 @property (nonatomic, assign) CGFloat commentTableHeight;
-/// FooterView
-@property (nonatomic, strong) UIView *footView;
-@property (nonatomic, strong) UIButton *openWebButton;
-@property (nonatomic, strong) UILabel *footerLabel;
+
+
+/// check in Douban
+@property (nonatomic, strong) UIView *checkView;
+@property (nonatomic, strong) UIButton *checkButton;
 
 @end
 
@@ -127,6 +128,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     
     [self configureMovieActor];
     [self configureCommentView];
+    [self configureCheckButton];
     
 }
 
@@ -149,9 +151,9 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 }
 
 - (void)viewDidLayoutSubviews {
-    CGFloat height = 150 + (_commentTableHeight + 20) + 120 + 180 + 120 + 20;
+    CGFloat height = 150 + (_commentTableHeight + 20) + 120 + 180 + 120 + 20 + 60;
     if (_isExpanded == YES) {
-        height = 150 + (_commentTableHeight + 20) + 120 + 180 + 120+summaryHeight;
+        height = 150 + (_commentTableHeight + 20) + 120 + 180 + 120+summaryHeight+60;
     }
     _mainScrollView.contentSize = CGSizeMake(MAIN_WIDTH, height);
 
@@ -404,13 +406,6 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         }];
         [_movieInduction.superview layoutIfNeeded];
 
-        /*
-        [UIView animateWithDuration:0.5 animations:^{
-            [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 80)]);
-            }];
-        }];
-         */
         [sender setTitle:@"收起" forState:UIControlStateNormal];
         _isExpanded = YES;
     }
@@ -493,6 +488,8 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         make.right.equalTo(self.view.mas_right);
         make.height.equalTo([NSNumber numberWithFloat:150]);
     }];
+    self.movieActorView.bounces = YES;
+    self.movieActorView.scrollEnabled = YES;
     self.movieActorView.backgroundColor = [UIColor whiteColor];
     self.movieActorView.delegate = self;
     self.movieActorView.dataSource = self;
@@ -724,9 +721,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [manager addFavoriteMovie:self.movie];
 }
 
-- (void)configureFooterView {
-    
-}
+
 /*
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"asDFGFDHJKHJHGFDS");
@@ -774,4 +769,59 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         
     });
 }
+
+
+#pragma mark - Check in Button
+
+- (void)configureCheckButton {
+    self.checkView = [UIView new];
+    [self.mainScrollView addSubview:self.checkView];
+    [self.checkView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.movieReview.mas_bottom).with.offset(5);
+        make.height.equalTo(@60);
+        make.centerX.equalTo(self.movieReview.mas_centerX);
+        make.width.equalTo(@300);
+        
+        //make.right.equalTo(self.view.mas_right);
+        //make.left.equalTo(self.view.mas_left);
+    }];
+    
+    UILabel *titleLabel = [UILabel new];
+    [self.checkView addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@20);
+        make.top.equalTo(self.checkView.mas_top);
+        make.right.equalTo(self.checkView.mas_right).with.offset(-50);
+        make.left.equalTo(self.checkView.mas_left).with.offset(50);
+    }];
+    
+    titleLabel.text = @"打开豆瓣电影网页";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor lightGrayColor];
+    titleLabel.font = [UIFont systemFontOfSize:13];
+    
+    self.checkButton = [UIButton new];
+    [self.checkView addSubview:self.checkButton];
+    [self.checkButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(titleLabel.mas_bottom);
+        make.centerX.equalTo(self.checkView.mas_centerX);
+        make.height.equalTo(@40);
+        make.width.equalTo(@40);
+    }];
+    [self.checkButton setBackgroundImage:[UIImage imageNamed:@"douban"] forState:UIControlStateNormal];
+    [self.checkButton addTarget:self action:@selector(openWeb:) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    
+
+}
+
+- (void)openWeb:(UIButton *)sender {
+    WebController *web = [[WebController alloc]init];
+    web.openURL = self.movie.alt;
+    self.hidesBottomBarWhenPushed = YES;
+    [self showViewController:web sender:nil];
+}
+
+
 @end
