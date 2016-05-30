@@ -393,21 +393,49 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         _summaryField.attributedText = [[NSAttributedString alloc]initWithString:text attributes:attribute];
         CGRect rect = [text boundingRectWithSize:CGSizeMake(MAIN_WIDTH-20, 900) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
         summaryHeight = rect.size.height;
-        [UIView animateWithDuration:0.3 animations:^{
+        [_movieInduction.superview layoutIfNeeded];
+        [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 80)]);
+        }];
+        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            
+        }];
+        [_movieInduction.superview layoutIfNeeded];
+
+        /*
+        [UIView animateWithDuration:0.5 animations:^{
             [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 80)]);
             }];
         }];
+         */
         [sender setTitle:@"收起" forState:UIControlStateNormal];
         _isExpanded = YES;
     }
     else {
         summaryHeight = 70;
+        /*
         [UIView animateWithDuration:0.3 animations:^{
             [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.equalTo([NSNumber numberWithFloat:(120)]);
             }];
         }];
+        */
+        [_movieInduction.superview layoutIfNeeded];
+        [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo([NSNumber numberWithFloat:(120)]);
+
+        }];
+        
+        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            
+        }];
+        [_movieInduction.superview layoutIfNeeded];
+
         [sender setTitle:@"展开" forState:UIControlStateNormal];
 
         _isExpanded = NO;
