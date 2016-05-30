@@ -34,7 +34,7 @@
     self.settings = @[@"清除缓存记录"];
     self.settingTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, MAIN_HEIGHT - 64) style:UITableViewStyleGrouped];
     self.progressHUD = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 60, MAIN_HEIGHT/2.0 - 100,120 , 120) radius:30 duration:3 parentView:self.view];;
-    
+    self.settingTableView.backgroundColor = [UIColor whiteColor];
     self.settingTableView.delegate = self;
     self.settingTableView.dataSource = self;
     [self.view addSubview:self.settingTableView];

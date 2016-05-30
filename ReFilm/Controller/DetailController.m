@@ -153,6 +153,22 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    //NSLog(@"%@",NSStringFromCGPoint(self.backImageView.frame.origin))
+    CGFloat offset = scrollView.contentOffset.y;
+    NSLog(@"%f", offset);
+    
+    if (offset<=0) {
+        CGRect rect = _backImageView.frame;
+        rect.origin.y = offset;
+        rect.size.height = 150 -offset;
+        _backImageView.frame = rect;
+    }
+}
+
+
 
 #pragma mark - Test for Comment
 
@@ -184,6 +200,8 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [self.commentTable reloadData];
 
 }
+
+
 
 
 #pragma mark - 简介View
@@ -474,9 +492,18 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     _backImageView.contentMode = UIViewContentModeScaleToFill;
     
     UIVisualEffectView *visualView = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    visualView.frame = CGRectMake(0, 0, MAIN_WIDTH, 150);
-    
+    //visualView.frame = _backImageView.bounds;//CGRectMake(0, 0, MAIN_WIDTH, 150);
     [_backImageView addSubview:visualView];
+    [visualView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_backImageView.mas_top);
+        make.left.equalTo(_backImageView.mas_left);
+        make.right.equalTo(_backImageView.mas_right);
+        make.bottom.equalTo(_backImageView.mas_bottom);
+    }];
+    
+    
+    
+    
     
     _movieImageView = [[UIImageView alloc]init];
     [visualView addSubview:_movieImageView];

@@ -49,6 +49,8 @@
 
 
 - (void)configureSubViews {
+    
+    /*
     _backImageView = [UIImageView new];
     [self.contentView addSubview:_backImageView];
     [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -66,36 +68,36 @@
         make.left.equalTo(_backImageView.mas_left);
         make.bottom.equalTo(_backImageView.mas_bottom);
     }];
-    
+    */
     _movieImageView = [UIImageView new];
-    [_visualView addSubview:_movieImageView];
-    
+    //[_visualView addSubview:_movieImageView];
+    [self.contentView addSubview:_movieImageView];
     [_movieImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_visualView.mas_top).with.offset(5);
+        make.top.equalTo(self.contentView.mas_top).with.offset(5);
         //make.bottom.equalTo(_visualView.mas_bottom).with.offset(-5);
-        make.left.equalTo(_visualView.mas_left).with.offset(5);
+        make.left.equalTo(self.contentView.mas_left).with.offset(5);
         //make.width.equalTo([NSNumber numberWithFloat:self.contentView.frame.size.height-10]).multipliedBy(42/60.0);
         make.height.equalTo(@110);
         make.width.equalTo([NSNumber numberWithFloat:110*42/60.0]);
     }];
     
     _movieTitleLabel = [UILabel new];
-    [_visualView addSubview:_movieTitleLabel];
+    [self.contentView addSubview:_movieTitleLabel];
     [_movieTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@40);
-        make.right.equalTo(_visualView.mas_right).with.offset(-10);
+        make.right.equalTo(self.contentView.mas_right).with.offset(-10);
         make.left.equalTo(_movieImageView.mas_right).with.offset(10);
-        make.top.equalTo(_visualView.mas_top).with.offset(5);
+        make.top.equalTo(self.contentView.mas_top).with.offset(5);
     }];
     
     _movieTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18];
 
     
     _typeLabel = [UILabel new];
-    [_visualView addSubview:_typeLabel];
+    [self.contentView addSubview:_typeLabel];
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@30);
-        make.right.equalTo(_visualView.mas_right).with.offset(-10);
+        make.right.equalTo(self.contentView.mas_right).with.offset(-10);
         make.left.equalTo(_movieImageView.mas_right).with.offset(10);
         make.top.equalTo(_movieTitleLabel.mas_bottom).with.offset(2);
     }];
@@ -103,10 +105,10 @@
     
     
     _yearLabel = [UILabel new];
-    [_visualView addSubview:_yearLabel];
+    [self.contentView addSubview:_yearLabel];
     [_yearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@30);
-        make.right.equalTo(_visualView.mas_right).with.offset(-5);
+        make.right.equalTo(self.contentView.mas_right).with.offset(-5);
         make.left.equalTo(_movieImageView.mas_right).with.offset(10);
         make.top.equalTo(_typeLabel.mas_bottom).with.offset(2);
     }];
