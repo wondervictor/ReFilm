@@ -238,6 +238,8 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
 - (void)finishRefreshWithArray:(NSArray *)array {
     self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新完成" attributes:nil];
     [self.refreshControl endRefreshing];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" attributes:nil];
+    
     self.movies = array;
     [self.collectionView reloadData];
 }
