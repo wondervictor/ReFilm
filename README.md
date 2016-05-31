@@ -21,10 +21,19 @@
 
 ![](https://github.com/wondervictor/ReFilm/blob/master/detail.png?raw=true)
 
+#### Top Movie List With HUD
+
+![](https://github.com/wondervictor/ReFilm/blob/master/topMovie.png?raw=true)
 ***
 
-### 后续工作：
+## TODO:
 
-* 存储优化
-* 网络优化
-* 获取影评接口(爬虫获取，详情查看[ReFilm-Web](https://github.com/wondervictor/ReFilmWeb)还在学习中)
+1. 网络模块优化，搭建Reachablity
+2. 评论接口
+3. 用户设置
+4. 界面设计
+5. 控件的制作：标签按钮，搜索。
+
+
+### Version1.01尽情期待
+
