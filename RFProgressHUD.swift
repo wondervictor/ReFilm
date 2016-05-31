@@ -9,7 +9,7 @@
 import UIKit
 
 enum RFProgressHUDType {
-    case RFProgressHUDTypeDefault, RFProgressHUDTypeError, RFProgressHUDTypeSuccess
+    case Default, Error, Success
 
 }
 
@@ -28,6 +28,7 @@ public class RFProgressHUD: UIView {
     private var shapePoint: CGPoint = CGPointMake(0, 0)
     private var progressView: UIView!
     private var parentView: UIView?
+    private var state: RFProgressHUDType = .Default
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,6 +47,10 @@ public class RFProgressHUD: UIView {
         print(shapePoint)
         self.backgroundColor = UIColor.whiteColor()
         self.layer.cornerRadius = 15;
+        let imageFrame = CGRectMake(0, 0, self.frame.size.height * 0.4, self.frame.size.height * 0.4)
+        self.imageView = UIImageView(frame: imageFrame)
+        self.imageView.center = self.shapePoint
+
     
     }
     
@@ -88,6 +93,9 @@ public class RFProgressHUD: UIView {
     }
     
     public func startAnimating() {
+
+        self.imageView.removeFromSuperview()
+        
         self.addSubview(progressView)
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.duration = Double(self.duration)
@@ -105,6 +113,7 @@ public class RFProgressHUD: UIView {
 
             })
         }
+        self.state = .Default
         
     }
     
@@ -126,11 +135,9 @@ public class RFProgressHUD: UIView {
     }
     
     public func stopWithError(error: String) {
-        let imageFrame = CGRectMake(0, 0, self.frame.size.height * 0.4, self.frame.size.height * 0.4)
-        self.imageView = UIImageView(frame: imageFrame)
-        self.imageView.center = self.shapePoint
         imageView.image = UIImage(named: "error")
         titleLabel.text = error
+        state = .Error
         self.shapeLayer.removeAnimationForKey("rotationAnimation")
         self.progressView.removeFromSuperview()
         self.addSubview(self.imageView)
@@ -170,17 +177,17 @@ public class RFProgressHUD: UIView {
     
     public func stopWithSuccess(success: String) {
         
-        let imageFrame = CGRectMake(0, 0, self.frame.size.height * 0.4, self.frame.size.height * 0.4)
-        self.imageView = UIImageView(frame: imageFrame)
-        self.imageView.center = self.shapePoint
+
         imageView.image = UIImage(named: "success")
         titleLabel.text = success
+        state = .Success
         self.shapeLayer.removeAnimationForKey("rotationAnimation")
         self.progressView.removeFromSuperview()
         self.addSubview(self.imageView)
         if isAnimating == false {
             self.showImageState()
         }
+        isAnimating = false;
         self.dismiss()
 
     }
