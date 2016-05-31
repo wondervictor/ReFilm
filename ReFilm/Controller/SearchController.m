@@ -148,7 +148,9 @@ static NSString *const cellIdentifier = @"cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailController *detailController = [DetailController new];
     detailController.movie = [self.resultLists objectAtIndex:indexPath.row];
+    self.hidesBottomBarWhenPushed = YES;
     [self showViewController:detailController sender:nil];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 
