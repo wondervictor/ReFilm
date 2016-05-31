@@ -132,16 +132,18 @@
         } else {
             //cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
-                if (imageData) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        cell.movieImage.image = [UIImage imageWithData:imageData];
-                        [manager saveImageData:imageData imageID:movie.movieID];
-                        
-                    });
-                }
-            });
+            if (![movie.imageURL isKindOfClass:[NSNull class]]) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+                    if (imageData) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            cell.movieImage.image = [UIImage imageWithData:imageData];
+                            [manager saveImageData:imageData imageID:movie.movieID];
+                            
+                        });
+                    }
+                });
+            }
         }
         // 没有照片
         
@@ -177,16 +179,18 @@
         } else {
             topCell.movieImageView.image = [UIImage imageNamed:@"movieImageDefault"];
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
-                if (imageData) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [topCell setMovieImage:[UIImage imageWithData:imageData]];
-                        [manager saveImageData:imageData imageID:movie.movieID];
-                        
-                    });
-                }
-            });
+            if (![movie.imageURL isKindOfClass:[NSNull class]]) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+                    if (imageData) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [topCell setMovieImage:[UIImage imageWithData:imageData]];
+                            [manager saveImageData:imageData imageID:movie.movieID];
+                            
+                        });
+                    }
+                });
+            }
         }
         // 没有照片
         
@@ -208,13 +212,14 @@
     if (!imageData) {
         cell.imageView.image = [UIImage imageNamed:@"movieImageDefault"];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
-            if (data) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [manager saveImageData:data imageID:movie.actorID];
-                    cell.imageView.image = [UIImage imageWithData:data];
-                });
+            if (![movie.imageURL isKindOfClass:[NSNull class]]) {
+                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+                if (data) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [manager saveImageData:data imageID:movie.actorID];
+                        cell.imageView.image = [UIImage imageWithData:data];
+                    });
+                }
             }
         });
     } else {
@@ -233,13 +238,15 @@
         } else {
             cell.movieImageView.image = [UIImage imageNamed:@"movieImageDefault"];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
-                if (imageData) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        cell.movieImageView.image = [UIImage imageWithData:imageData];
-                        [manager saveImageData:imageData imageID:movie.movieID];
-                        
-                    });
+                if (![movie.imageURL isKindOfClass:[NSNull class]]) {
+                    NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
+                    if (imageData) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            cell.movieImageView.image = [UIImage imageWithData:imageData];
+                            [manager saveImageData:imageData imageID:movie.movieID];
+                            
+                        });
+                    }
                 }
             });
         }
