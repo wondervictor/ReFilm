@@ -175,7 +175,7 @@
         if (imgData) {
             [topCell setMovieImage:[UIImage imageWithData:imgData]];
         } else {
-            //cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
+            topCell.movieImageView.image = [UIImage imageNamed:@"movieImageDefault"];
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
@@ -196,6 +196,8 @@
     
     
 }
+
+
 
 
 - (void)handleMovieActorCell:(ActorCollectionCell *)cell withMovie:(MovieActor *)movie {
@@ -229,8 +231,7 @@
         if (imgData) {
             cell.movieImageView.image = [UIImage imageWithData:imgData];
         } else {
-            //cell.movieImage.image = [UIImage imageNamed:@"movieImageDefault"];
-            
+            cell.movieImageView.image = [UIImage imageNamed:@"movieImageDefault"];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:movie.imageURL]];
                 if (imageData) {

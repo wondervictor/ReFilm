@@ -26,7 +26,7 @@ public class RFReachableManager: NSObject {
             switch flags {
             case SCNetworkReachabilityFlags.Reachable : print("reachable")
             case SCNetworkReachabilityFlags.IsWWAN: print("WWAN")
-            default: print("default")
+            default: print("unreachable")
                 
             }
             

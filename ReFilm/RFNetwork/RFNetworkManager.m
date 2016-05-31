@@ -36,7 +36,7 @@
         _session = [NSURLSession sharedSession];
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         configuration.timeoutIntervalForRequest = 60;
-        configuration.allowsCellularAccess = YES;
+        configuration.allowsCellularAccess = YES;        
         _session = [NSURLSession sessionWithConfiguration:configuration];
 
     }
@@ -53,10 +53,10 @@
     
 
 // TODO: reachablity
-    /*
+    
     RFReachableManager *managr = [[RFReachableManager alloc]init];
     [managr checkNetWorkCondition];
-     */
+     
     NSURLSessionDataTask *task = [self.session dataTaskWithURL:url
                                          completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                              if (!error) {
@@ -67,6 +67,7 @@
                                                  
                                              }
                                              else {
+                                                 NSLog(@"error: %@",error);
                                                  NSString *errorMsg = error.localizedFailureReason;
                                                  failure(error,errorMsg);
                                              }

@@ -102,7 +102,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.progressHUD = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 60, MAIN_HEIGHT/2.0 - 100,120 , 120) radius:30 duration:3 parentView:self.view];
-    [self.progressHUD startAnimating];
+    self.progressHUD.layer.zPosition = 5;
     _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64, MAIN_WIDTH, MAIN_HEIGHT-64)];
     [self.view addSubview:_mainScrollView];
     
@@ -740,6 +740,10 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     RFDataManager *manager = [RFDataManager sharedManager];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [manager sendRequestForMovieWithID:_movie.movieID];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.progressHUD startAnimatingWithTitile:@"正在加载"];
+
+        });
         manager.delegate = self;
     });
 }
@@ -747,27 +751,36 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 
 - (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error {
     NSLog(@"%@",movies);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
-        paragrapgStyle.lineSpacing = 5;
-        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSParagraphStyleAttributeName:paragrapgStyle};
-        _summaryField.attributedText = [[NSAttributedString alloc]initWithString:movies.summary attributes:attribute];
-        
-        _movieDetail = movies;
-        
-        _languageLabel.text = movies.movieLanguage;
-        _movieTitleLabel.text = _movie.title;
-        _dateLabel.text = [movies.pubdate firstObject];
-        _durationLabel.text = movies.movieDuration;
-        NSMutableString *type = [NSMutableString new];
-        for (NSString *item in movies.genres) {
-            [type appendFormat:@"%@ ",item];
-        }
-        _plotTypeLabel.text = type;
-        
-        [self.progressHUD stopWithSuccess:@"加载完成"];
-        
-    });
+    if (!error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
+            paragrapgStyle.lineSpacing = 5;
+            NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSParagraphStyleAttributeName:paragrapgStyle};
+            _summaryField.attributedText = [[NSAttributedString alloc]initWithString:movies.summary attributes:attribute];
+            
+            _movieDetail = movies;
+            
+            _languageLabel.text = movies.movieLanguage;
+            _movieTitleLabel.text = _movie.title;
+            _dateLabel.text = [movies.pubdate firstObject];
+            _durationLabel.text = movies.movieDuration;
+            NSMutableString *type = [NSMutableString new];
+            for (NSString *item in movies.genres) {
+                [type appendFormat:@"%@ ",item];
+            }
+            _plotTypeLabel.text = type;
+            
+            [self.progressHUD stopWithSuccess:@"加载完成"];
+            
+        });
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.progressHUD stopWithError:error];
+
+        });
+    }
+
 }
 
 

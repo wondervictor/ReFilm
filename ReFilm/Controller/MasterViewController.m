@@ -290,7 +290,7 @@
     [self.scrollView setScrollEnabled:YES];
 
     if (error) {
-        NSLog(@"errorz: %@",error);
+        [self.progressHUD stopWithError:error];
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -307,7 +307,8 @@
 
     if (error) {
         NSLog(@"errorz: %@",error);
-        
+        [self.progressHUD stopWithError:error];
+
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -323,7 +324,7 @@
     [self.scrollView setScrollEnabled:YES];
     if (error) {
         NSLog(@"errorz: %@",error);
-        
+        [self.progressHUD stopWithError:error];
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{

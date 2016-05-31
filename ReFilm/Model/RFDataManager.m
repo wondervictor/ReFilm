@@ -48,7 +48,7 @@
         NSArray *movies = [RFParser parseForSearchMovie:responseObject];
         [_delegate didReceiveHotMovieDataWith:movies error:nil];
     } failure:^(NSError *error, NSString *errorMsg) {
-        NSLog(@"error : %@",errorMsg);
+        [_delegate didReceiveHotMovieDataWith:nil error:@"网络故障"];
     }];
 }
 
@@ -59,7 +59,7 @@
         NSArray *movies = [RFParser parseForSearchMovie:responseObject];
         [_delegate didReceiveCommingMovies:movies error:nil];
     } failure:^(NSError *error, NSString *errorMsg) {
-        NSLog(@"error: %@",errorMsg);
+        [_delegate didReceiveCommingMovies:nil error:@"网络故障"];
     }];
 }
 
@@ -70,7 +70,8 @@
         NSArray *movies = [RFParser parseForSearchMovie:responseObject];
         [_delegate didReceiveTopMovies:movies error:nil];
     } failure:^(NSError *error, NSString *errorMsg) {
-        NSLog(@"error %@",errorMsg);
+
+        [_delegate didReceiveTopMovies:nil error:@"网络故障"];
     }];
 }
 
@@ -83,7 +84,7 @@
         [_delegate didReceiveSearchMovies:array error:nil];
         
     } failure:^(NSError *error, NSString *errorMsg) {
-        NSLog(@"error: %@",errorMsg);
+        [_delegate didReceiveSearchMovies:nil error:@"网络故障"];
     }];
 
 }
@@ -98,7 +99,8 @@
         NSLog(@"%@",responseObject);
         //_delegate didReceiveMovieInfo: error:<#(NSString *)#>
     } failure:^(NSError *error, NSString *errorMsg) {
-        
+        NSLog(@"eerror");
+        [_delegate didReceiveMovieInfo:nil error:@"网络故障"];
     }];
 }
 
