@@ -21,6 +21,9 @@ typedef NS_ENUM(NSInteger, MovieViewType) {
 
 - (void)longTouchCellAtIndex:(NSInteger)index;
 
+
+- (void)refreshMoviesWithView:(UIView *)view;
+
 @end
 
 
@@ -34,5 +37,7 @@ typedef NS_ENUM(NSInteger, MovieViewType) {
 - (id)initWithFrame:(CGRect)frame type:(MovieViewType)type;
 
 - (void)loadDataWithArray:(NSArray *)array;
+
+- (void)finishRefreshWithArray:(NSArray *)array;
 
 @end

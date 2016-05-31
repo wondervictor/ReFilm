@@ -15,6 +15,9 @@ typedef void (^ErrorBlock) (NSError *error, NSString *errorMsg);
 
 + (RFNetworkManager *)sharedManager;
 
+
+
+
 /**
  *  @name 请求电影
  *

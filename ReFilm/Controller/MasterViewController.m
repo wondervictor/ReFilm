@@ -39,7 +39,7 @@
 @property (nonatomic, strong) NSArray *comingMovies;
 @property (nonatomic, strong) NSArray *topMovies;
 @property (nonatomic, strong) RFProgressHUD *progressHUD;
-
+@property (nonatomic, assign) BOOL isRefreshing;
 
 @end
 
@@ -85,7 +85,7 @@
     //[self test];
     
     self.progressHUD = [[RFProgressHUD alloc]initWithFrame:CGRectMake(MAIN_WIDTH/2.0 - 60, MAIN_HEIGHT/2.0 - 100,120 , 120) radius:30 duration:3 parentView:self.view];
-    
+    self.isRefreshing = YES;
     UIBarButtonItem *search = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
     self.navigationItem.rightBarButtonItem = search;
     
@@ -119,26 +119,29 @@
 - (void)loadHotView {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        RFDataManager *manager = [RFDataManager sharedManager];
+        RFDataManager *manager = [[RFDataManager alloc]init];
         [manager sendRequestForHotMovies];
         manager.delegate = self;
+
     });
     
 }
 
 - (void)loadComingView {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        RFDataManager *manager = [RFDataManager sharedManager];
+        RFDataManager *manager = [[RFDataManager alloc]init];
         [manager sendRequestForCommingMovies];
         manager.delegate = self;
+
     });
 }
 
 - (void)loadTopView {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        RFDataManager *manager = [RFDataManager sharedManager];
+        RFDataManager *manager = [[RFDataManager alloc]init];
         [manager sendRequestForTop100Movies];
         manager.delegate = self;
+
     });
 }
 
@@ -184,6 +187,10 @@
 }
 
 - (void)showSearchController:(id)sender {
+    if (_isRefreshing == YES) {
+        return;
+    }
+    
     self.hidesBottomBarWhenPushed = YES;
 
     SearchController *search = [SearchController new];
@@ -197,6 +204,10 @@
 #pragma mark - HotMovieViewDelegate
 
 - (void)touchCollectionView:(UICollectionView *)tableView CellAtIndex:(NSInteger)index inView:(UIView *)view{
+    if (_isRefreshing == YES) {
+        return;
+    }
+    
     if (view.tag == 10011) {
         self.hidesBottomBarWhenPushed = YES;
         
@@ -208,6 +219,7 @@
     }
     else if (view.tag == 10001) {
         self.hidesBottomBarWhenPushed = YES;
+#if 0
         WebController *webController = [WebController new];
         Movie *movie = [self.comingMovies objectAtIndex:index];
         NSString *url = movie.alt;//[RFParser getURLFromFavoriteMovies:[self.hotMovies objectAtIndex:index]];
@@ -215,7 +227,15 @@
         webController.movie = movie;
         [self showViewController:webController sender:nil];
         self.hidesBottomBarWhenPushed = NO;
-
+#endif
+        
+        self.hidesBottomBarWhenPushed = YES;
+        
+        DetailController *detailController = [DetailController new];
+        detailController.movie = [self.comingMovies objectAtIndex:index];
+        
+        [self showViewController:detailController sender:nil];
+        self.hidesBottomBarWhenPushed = NO;
     }
     
     
@@ -240,9 +260,35 @@
     NSLog(@"long touch %lu",index);
 }
 
+- (void)refreshMoviesWithView:(UIView *)view {
+    _isRefreshing = YES;
+    switch (view.tag) {
+        case 10011:{
+            // 请求刷新数据
+            RFDataManager *manager = [[RFDataManager alloc]init];
+            [manager sendRequestForHotMovies];
+            manager.delegate = self;
+            [self.scrollView setScrollEnabled:NO];
+            [self.progressHUD startAnimatingWithTitile:@"正在刷新"];
+        
+        };break;
+        case 10001:{
+            RFDataManager *manager = [[RFDataManager alloc]init];
+            [manager sendRequestForCommingMovies];
+            [self.scrollView setScrollEnabled:NO];
+            manager.delegate = self;
+            [self.progressHUD startAnimatingWithTitile:@"正在刷新"];
+        };break;
+        default:
+        break;
+    }
+}
+
 
 #pragma mark - RFDataManagerDelegate
 - (void)didReceiveHotMovieDataWith:(NSArray *)movies error:(NSString *)error {
+    [self.scrollView setScrollEnabled:YES];
+
     if (error) {
         NSLog(@"errorz: %@",error);
     }
@@ -251,11 +297,14 @@
             self.hotMovies = movies;
             [self.progressHUD stopWithSuccess:@"数据已更新"];
             [_hotMovieView loadDataWithArray:movies];
+            self.isRefreshing = NO;
         });
     }
 }
 
 - (void)didReceiveCommingMovies:(NSArray *)movies error:(NSString *)error {
+    [self.scrollView setScrollEnabled:YES];
+
     if (error) {
         NSLog(@"errorz: %@",error);
         
@@ -263,12 +312,15 @@
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.comingMovies = movies;
+            [self.progressHUD stopWithSuccess:@"数据已更新"];
             [_comingMovieView loadDataWithArray:movies];
+            self.isRefreshing = NO;
         });
     }
 }
 
 - (void)didReceiveTopMovies:(NSArray *)movies error:(NSString *)error {
+    [self.scrollView setScrollEnabled:YES];
     if (error) {
         NSLog(@"errorz: %@",error);
         

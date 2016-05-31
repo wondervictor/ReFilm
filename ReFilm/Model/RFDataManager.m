@@ -33,6 +33,14 @@
     return sharedManager;
 }
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)sendRequestForHotMovies {
     NSString *urlString = @"http://api.douban.com/v2/movie/in_theaters";
     RFNetworkManager *manager = [RFNetworkManager sharedManager];

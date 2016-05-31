@@ -34,6 +34,8 @@
 
 + (RFDataManager *)sharedManager;
 
+- (id)init;
+
 /// Network Request
 
 // Hot movies

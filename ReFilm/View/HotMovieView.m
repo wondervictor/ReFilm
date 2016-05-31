@@ -17,6 +17,7 @@
 #define MAIN_HEIGHT  (self.frame.size.height)
 
 
+
 @interface HotMovieView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
 {
     CGSize itemSize;
@@ -50,6 +51,14 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
         self.collectionView.backgroundColor = [UIColor whiteColor];
         self.collectionView.dataSource = self;
 
+        self.refreshControl = [[UIRefreshControl alloc]init];
+        [self.refreshControl addTarget:self action:@selector(refreshMovies:) forControlEvents:UIControlEventValueChanged];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" attributes:nil];
+        self.refreshControl.tintColor = [UIColor greenColor];
+        [self.collectionView addSubview:self.refreshControl];
+        self.collectionView.alwaysBounceVertical = YES;
+        
+        
         _movieViewType = type;
         if (type == MovieViewTypeHotMovie) {
             [self.collectionView registerClass:[MovieCollectionCell class] forCellWithReuseIdentifier:cellIdentifier];
@@ -79,6 +88,23 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
         
     }
     return self;
+}
+
+- (void)refreshMovies:(UIRefreshControl *)refreshControl {
+    NSLog(@"refresh");
+    
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新" attributes:nil];
+    [_delegate refreshMoviesWithView:self];
+    
+    
+    /*
+    [NSThread sleepForTimeInterval:5];
+    if (refreshControl.refreshing == YES) {
+        [refreshControl endRefreshing];
+    }
+    
+    */
+    
 }
 
 
@@ -167,9 +193,12 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
 
 
 - (void)loadDataWithArray:(NSArray *)array {
-    self.movies = array;    
+    self.movies = array;
     [self.collectionView reloadData];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新完成" attributes:nil];
+    [self.refreshControl endRefreshing];
 }
+
 /*
 - (void)longPressedCellWith:(MovieCollectionCell *)cell {
     NSLog(@"adfsghc");
@@ -203,6 +232,14 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     return YES;
+}
+
+
+- (void)finishRefreshWithArray:(NSArray *)array {
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新完成" attributes:nil];
+    [self.refreshControl endRefreshing];
+    self.movies = array;
+    [self.collectionView reloadData];
 }
 
 
