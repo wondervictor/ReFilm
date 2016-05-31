@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) WKWebView *mainWebView;
 @property (nonatomic, strong) UIView *toolbar;
-
+@property (nonatomic, strong) UIProgressView *progressView;
 
 @end
 
@@ -61,6 +61,13 @@
         make.top.equalTo(self.view.mas_top);
     }];
     _mainWebView.navigationDelegate = self;
+    self.progressView = [[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleBar];
+    self.progressView.trackTintColor = [UIColor whiteColor];
+    self.progressView.tintColor = [UIColor orangeColor];
+    [self.progressView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 0)];
+    self.progressView.layer.zPosition = 1;
+    [self.view addSubview:self.progressView];
+    [_mainWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)loadWeb:(NSString *)urlString {
@@ -89,6 +96,7 @@
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"openURL"];
+    [self.mainWebView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
 - (void)configureWebButtons {
@@ -150,16 +158,30 @@
     [_mainWebView reload];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"openURL"]) {
-        [self loadWeb:_openURL];
-    }
-}
+
 
 
 - (void)favoriteButtonPressed:(UIBarButtonItem *)sender {
     RFDataManager *manager = [RFDataManager sharedManager];
     [manager addFavoriteMovie:self.movie];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+
+    if (object == self.mainWebView && [keyPath isEqualToString:@"estimatedProgress"]) {
+        CGFloat newProgress = [[change objectForKey:NSKeyValueChangeNewKey]doubleValue];
+        if (newProgress == 1) {
+            self.progressView.hidden = YES;
+            [self.progressView setProgress:0 animated:NO];
+        }
+        else {
+            self.progressView.hidden = NO;
+            [self.progressView setProgress:newProgress animated:YES];
+        }
+    }
+    if ([keyPath isEqualToString:@"openURL"]) {
+        [self loadWeb:_openURL];
+    }
 }
 
 @end

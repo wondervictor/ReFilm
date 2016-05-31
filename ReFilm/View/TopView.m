@@ -16,6 +16,8 @@
 @interface TopView()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 @end
 
@@ -32,6 +34,11 @@ static NSString *const reuseIdentifier = @"as";
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self addSubview:self.tableView];
+        self.refreshControl = [[UIRefreshControl alloc]init];
+        [self.refreshControl addTarget:self action:@selector(refreshMovies:) forControlEvents:UIControlEventValueChanged];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" attributes:nil];
+        self.refreshControl.tintColor = [UIColor greenColor];
+        [self.tableView addSubview:self.refreshControl];
     }
     return self;
 }
@@ -59,6 +66,10 @@ static NSString *const reuseIdentifier = @"as";
 
 - (void)loadWithArray:(NSArray *)movies {
     self.topMovies = movies;
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新成功" attributes:nil];
+    [self.refreshControl endRefreshing];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" attributes:nil];
+    
     [self.tableView reloadData];
 }
 
@@ -71,6 +82,16 @@ static NSString *const reuseIdentifier = @"as";
     [_delegate didSelectedRowAtIndex:indexPath.row];
 }
 
+- (void)refreshMovies:(UIRefreshControl *)rc {
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新" attributes:nil];
+    [_delegate refreshTopMovies];
+}
+
+- (void)loadError {
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新失败" attributes:nil];
+    [self.refreshControl endRefreshing];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" attributes:nil];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

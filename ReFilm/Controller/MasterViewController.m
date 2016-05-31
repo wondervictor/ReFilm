@@ -290,6 +290,7 @@
     [self.scrollView setScrollEnabled:YES];
 
     if (error) {
+        [_hotMovieView loadError];
         [self.progressHUD stopWithError:error];
     }
     else {
@@ -308,7 +309,7 @@
     if (error) {
         NSLog(@"errorz: %@",error);
         [self.progressHUD stopWithError:error];
-
+        [_comingMovieView loadError];
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -325,11 +326,15 @@
     if (error) {
         NSLog(@"errorz: %@",error);
         [self.progressHUD stopWithError:error];
+        [_topView loadError];
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.topMovies = movies;
             [_topView loadWithArray:movies];
+            [self.progressHUD stopWithSuccess:@"数据已更新"];
+            self.isRefreshing = NO;
+
         });
     }
 }
@@ -343,6 +348,14 @@
     detailController.movie = [self.topMovies objectAtIndex:index];
     [self showViewController:detailController sender:nil];
     self.hidesBottomBarWhenPushed = NO;
+}
+
+- (void)refreshTopMovies {
+    RFDataManager *manager = [[RFDataManager alloc]init];
+    [manager sendRequestForTop100Movies];
+    [self.scrollView setScrollEnabled:NO];
+    manager.delegate = self;
+    [self.progressHUD startAnimatingWithTitile:@"正在刷新"];
 }
 
 @end

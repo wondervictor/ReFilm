@@ -38,6 +38,5 @@ typedef NS_ENUM(NSInteger, MovieViewType) {
 
 - (void)loadDataWithArray:(NSArray *)array;
 
-- (void)finishRefreshWithArray:(NSArray *)array;
-
+- (void)loadError;
 @end

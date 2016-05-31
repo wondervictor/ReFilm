@@ -12,6 +12,8 @@
 
 - (void)didSelectedRowAtIndex:(NSInteger)index;
 
+- (void)refreshTopMovies;
+
 @end
 
 @interface TopView : UIView
@@ -23,5 +25,7 @@
 - (id)initWithFrame:(CGRect)frame;
 
 - (void)loadWithArray:(NSArray *)movies;
+
+- (void)loadError;
 
 @end

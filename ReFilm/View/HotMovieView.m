@@ -138,6 +138,12 @@ static NSString *cellCommingIdentifier = @"commingMovieCollectionCell";
     return nil;
 }
 
+- (void)loadError {
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新失败" attributes:nil];
+    [self.refreshControl endRefreshing];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新" attributes:nil];
+    
+}
 
 
 
