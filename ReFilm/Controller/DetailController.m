@@ -16,7 +16,6 @@
 #import "MovieComment.h"
 
 
-
 #define MAIN_HEIGHT    (self.view.frame.size.height)
 #define MAIN_WIDTH    (self.view.frame.size.width)
 
@@ -88,6 +87,7 @@
 @property (nonatomic, strong) UIView *checkView;
 @property (nonatomic, strong) UIButton *checkButton;
 
+
 @end
 
 static NSString *const collectionCellIdentifier = @"ActorCell";
@@ -122,7 +122,6 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [self configureInductionView];
     [self getDetails];
     self.comments = [NSArray new];
-    [self setCommentArray];
     
     
     
@@ -141,6 +140,31 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 }
 
 #endif
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        RFDataManager *manager = [RFDataManager sharedManager];
+        [manager sendRequestForCommentWithMovieID:self.movie.movieID];
+    });
+
+}
+
+- (void)didReceiveComments:(NSArray *)comments error:(NSString *)error {
+    self.comments = comments;
+    NSMutableArray *list = [NSMutableArray new];
+    for (MovieComment *cm in comments) {
+        [list addObject:[NSNumber numberWithFloat:[self getRowHeightWithReview:cm.comment]]];
+    }
+    self.rowHeightList = list;
+    for (NSNumber *num in list) {
+        _commentTableHeight += num.floatValue + 40;
+    }
+
+    [self.commentTable reloadData];
+}
+
 
 - (void)configureSubViews {
     UIBarButtonItem *favoriteButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"favoriteButton"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButtonPressed:)];
@@ -162,7 +186,6 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    //NSLog(@"%@",NSStringFromCGPoint(self.backImageView.frame.origin))
     CGFloat offset = scrollView.contentOffset.y;
     if (offset<=0) {
         CGRect rect = _backImageView.frame;
@@ -175,7 +198,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
 
 
 #pragma mark - Test for Comment
-
+/*
 - (void)setCommentArray {
     NSMutableArray *list = [NSMutableArray new];
     MovieComment *comment1 = [MovieComment new];
@@ -217,7 +240,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     [self.commentTable reloadData];
 
 }
-
+*/
 - (CGFloat)getRowHeightWithReview:(NSString *)text {
     NSMutableParagraphStyle *paragrapgStyle = [[NSMutableParagraphStyle alloc]init];
     paragrapgStyle.lineSpacing = 5;
@@ -396,9 +419,11 @@ static NSString *const commentCellIdentifier = @"CommentCell";
         CGRect rect = [text boundingRectWithSize:CGSizeMake(MAIN_WIDTH-20, 900) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
         summaryHeight = rect.size.height;
         [_movieInduction.superview layoutIfNeeded];
+        
         [_movieInduction mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo([NSNumber numberWithFloat:(summaryHeight + 80)]);
         }];
+        
         [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -719,6 +744,7 @@ static NSString *const commentCellIdentifier = @"CommentCell";
     NSLog(@"Favorite");
     RFDataManager *manager = [RFDataManager sharedManager];
     [manager addFavoriteMovie:self.movie];
+    [self.progressHUD stopWithSuccess:@"收藏成功"];
 }
 
 

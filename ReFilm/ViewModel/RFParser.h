@@ -27,12 +27,13 @@
 
 + (MovieActor *)parseDictIntoMovieActor:(NSDictionary *)dict;
 
-
 + (NSString *)getURLFromFavoriteMovies:(FavorieMovies *)movie;
 
 + (MovieDetail *)parseForMovieDetail:(NSDictionary *)data;
 
 + (Movie *)convertFavoriteMovie:(FavorieMovies *)movie;
+
++ (NSArray *)parseForCommentWithDict:(NSDictionary *)dict;
 
 
 @end

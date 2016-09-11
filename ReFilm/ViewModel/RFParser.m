@@ -7,7 +7,7 @@
 //
 
 #import "RFParser.h"
-
+#import "MovieComment.h"
 
 @implementation RFParser
 
@@ -179,10 +179,30 @@
         [directors addObject:director];
     }
     aMovie.movieDirectors = directors;
-    
     aMovie.genres = [NSKeyedUnarchiver unarchiveObjectWithData:movie.genres];
-    
     return aMovie;
+}
+
+
++ (NSArray *)parseForCommentWithDict:(NSDictionary *)dict {
+    NSMutableArray *array = [NSMutableArray new];
+    for (int i = 1; i <= 5; i ++) {
+        
+        
+        NSDictionary *item = [dict objectForKey:[NSString stringWithFormat:@"%d",i]];
+        
+        NSString *content = [item objectForKey:@"content"];
+        NSString *name = [item objectForKey:@"name"];
+        
+        MovieComment *comment = [MovieComment new];
+
+        comment.name = name;
+        comment.comment = content;
+        [array addObject:comment];
+        
+    }
+    return array;
+
 }
 
 

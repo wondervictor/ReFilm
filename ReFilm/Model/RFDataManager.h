@@ -25,6 +25,8 @@
 - (void)didReceiveMovieInfo:(MovieDetail *)movies error:(NSString *)error;
 
 
+- (void)didReceiveComments:(NSArray *)comments error:(NSString *)error;
+
 @end
 
 @interface RFDataManager : NSObject

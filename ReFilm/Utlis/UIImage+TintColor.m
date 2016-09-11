@@ -11,6 +11,7 @@
 @implementation UIImage (TintColor)
 
 - (UIImage *)imageWithColor:(UIColor *)color {
+    
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, 0, self.size.height);
@@ -23,6 +24,7 @@
     UIImage*newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+
 }
 
 

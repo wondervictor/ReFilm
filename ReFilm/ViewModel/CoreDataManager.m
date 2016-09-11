@@ -9,7 +9,6 @@
 #import "CoreDataManager.h"
 
 
-
 @implementation CoreDataManager
 
 static NSString *storeFileName = @"movie.sqlite";

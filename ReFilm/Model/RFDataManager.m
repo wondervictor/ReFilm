@@ -105,11 +105,14 @@
 }
 
 - (void)sendRequestForCommentWithMovieID:(NSString *)movieID {
-    NSString *url = [NSString stringWithFormat:@"http://api.douban.com/v2/movie/subject/%@/comments",movieID];
+    NSString *url = [NSString stringWithFormat:@"http://123.206.42.134/refilm/find_movie.php?id=%@",movieID];
     RFNetworkManager *manager = [RFNetworkManager sharedManager];
     [manager requestMovieDataWithURL:url success:^(NSDictionary *responseObject, NSURLResponse *response) {
+        NSLog(@"%@",responseObject);
+        NSArray *result = [RFParser parseForCommentWithDict:responseObject];
+        [_delegate didReceiveComments:result error:nil];
     } failure:^(NSError *error, NSString *errorMsg) {
-        
+        NSLog(@"%@",errorMsg);
     }];
 
 }

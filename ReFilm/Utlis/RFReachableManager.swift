@@ -18,7 +18,7 @@ public class RFReachableManager: NSObject {
         super.init()
     }
     
-   public func checkNetWorkCondition() {
+    public func checkNetWorkCondition() {
         let scRef: SCNetworkReachabilityRef = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "www.baidu.com")!
         var flags = SCNetworkReachabilityFlags()
         let reach = SCNetworkReachabilityGetFlags(scRef, &flags)

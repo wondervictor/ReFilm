@@ -25,6 +25,8 @@ typedef void (^ErrorBlock) (NSError *error, NSString *errorMsg);
 
 - (void)requestMovieDataWithURL:(NSString *)urlString success:(ComplitionBlock)success failure:(ErrorBlock)failure;
 
+
+
 - (void)requestCommentWithURL:(NSString *)urlStirng success:(ComplitionBlock)success failure:(ErrorBlock)failure;
 
 @end
